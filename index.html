@@ -49,7 +49,7 @@
     <h2>Skills</h2>
     <ul>
         <li>📊 Excel, SQL, Python (Pandas, NumPy, Matplotlib, Seaborn)</li>
-        <li>📈 Power BI, Tableau</li>
+        <li>📈 Power BI</li>
         <li>🧹 Data Cleaning & Wrangling</li>
         <li>🔍 Exploratory Data Analysis (EDA)</li>
         <li>📉 Data Visualization</li>
@@ -59,23 +59,35 @@
 <section id="projects">
     <h2>Projects</h2>
 
-    <div class="project">
-        <h3>📊 Sales Dashboard</h3>
-        <p>Interactive Tableau dashboard analyzing sales trends over time.</p>
-        <a href="YOUR_TABLEAU_LINK" target="_blank">View Dashboard <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+    <section id="projects">
+    <h2>Projects</h2>
+
+    <div class="project" style="max-width: 800px; background: #fff; border-radius: 8px; padding: 15px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
+        
+        <!-- Carousel Container -->
+        <div class="carousel" style="position: relative; overflow: hidden; border-radius: 6px;">
+            <div class="carousel-images" style="display: flex; transition: transform 0.5s ease-in-out; width: 300%;">
+                <img src="projects/ecommerce-analysis/Page1.png" alt="Dashboard Page 1" style="width: 100%;">
+                <img src="projects/ecommerce-analysis/Page2.png" alt="Dashboard Page 2" style="width: 100%;">
+                <img src="projects/ecommerce-analysis/Page3.png" alt="Dashboard Page 3" style="width: 100%;">
+            </div>
+            <!-- Navigation Buttons -->
+            <button class="carousel-btn prev" style="position: absolute; top: 50%; left: 10px; transform: translateY(-50%); background: rgba(0,0,0,0.5); color: white; border: none; padding: 8px 12px; cursor: pointer; border-radius: 4px;">&#10094;</button>
+            <button class="carousel-btn next" style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); background: rgba(0,0,0,0.5); color: white; border: none; padding: 8px 12px; cursor: pointer; border-radius: 4px;">&#10095;</button>
+        </div>
+
+        <h3 style="margin-top: 15px;">📦 E-Commerce Sales Analysis</h3>
+        <p>
+            End-to-end project using MySQL for database, Python for analytics, and Power BI for interactive dashboards.
+            This project includes three main dashboard views — sales trends, customer analysis, and payment insights.
+        </p>
+        <a href="projects/ecommerce-analysis/index.html" target="_blank" style="display: inline-block; background: #004080; color: white; padding: 10px 15px; border-radius: 6px; text-decoration: none; margin-top: 10px;">
+            View Project <i class="fa-solid fa-arrow-up-right-from-square"></i>
+        </a>
     </div>
 
-    <div class="project">
-        <h3>📈 Customer Churn Analysis</h3>
-        <p>Python analysis with predictive modeling to identify churn risks.</p>
-        <a href="YOUR_GITHUB_REPO" target="_blank">View Code <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-    </div>
+</section>
 
-    <div class="project">
-        <h3>💰 Budget Tracker</h3>
-        <p>Power BI financial dashboard tracking income and expenses.</p>
-        <a href="YOUR_POWERBI_LINK" target="_blank">View Dashboard <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-    </div>
 </section>
 
 <section id="articles">
@@ -95,6 +107,28 @@
 <footer>
     <p>© 2025 [Your Name]. Built with ❤️ for data.</p>
 </footer>
+
+<script>
+    const carousel = document.querySelector('.carousel-images');
+    const images = document.querySelectorAll('.carousel-images img');
+    const prevBtn = document.querySelector('.prev');
+    const nextBtn = document.querySelector('.next');
+    let counter = 0;
+
+    function updateCarousel() {
+        carousel.style.transform = `translateX(-${counter * 100}%)`;
+    }
+
+    nextBtn.addEventListener('click', () => {
+        counter = (counter + 1) % images.length;
+        updateCarousel();
+    });
+
+    prevBtn.addEventListener('click', () => {
+        counter = (counter - 1 + images.length) % images.length;
+        updateCarousel();
+    });
+</script>
 
 </body>
 </html>
