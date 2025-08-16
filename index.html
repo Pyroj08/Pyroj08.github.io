@@ -56,14 +56,15 @@
     ul { padding-left: 20px; line-height: 1.8; }
 
     /* Navbar */
-    nav {
+   /* Navbar */
+nav {
   position: sticky;
   top: 0;
   z-index: 1000;
   display: flex;
-  flex-wrap: wrap;             /* allow wrapping into rows */
-  justify-content: center;     /* center items */
-  gap: 12px 18px;              /* space between items */
+  flex-wrap: wrap;            /* ✅ allows wrapping into rows */
+  justify-content: center;    /* ✅ centers horizontally */
+  gap: 12px 24px;             /* spacing between items */
   background: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
@@ -72,16 +73,17 @@
 }
 
 nav a {
-  flex: 0 1 auto;              /* flexible but not full width */
-  min-width: 90px;             /* ensures neat wrapping */
+  display: inline-flex;        /* ✅ inline, not block */
+  align-items: center;
+  justify-content: center;
+  min-width: 100px;            /* ✅ keeps buttons neat */
   max-width: 140px;
-  display: inline-block;       /* ✅ important fix (was block before) */
   text-align: center;
   color: #fff;
   text-decoration: none;
   font-weight: 500;
   font-size: 0.9rem;
-  padding: 6px 10px;
+  padding: 6px 12px;
   border-radius: 6px;
   transition: background 0.3s ease, color 0.3s ease;
 }
@@ -89,6 +91,7 @@ nav a {
 nav a:hover {
   background: rgba(255, 255, 255, 0.25);
 }
+
 
     /* Header */
     .hero {
@@ -231,6 +234,15 @@ nav a:hover {
   }
   .hero .meta h1 {
     font-size: 1.5rem;
+  }
+}
+@media (max-width: 768px) {
+  nav {
+    justify-content: space-evenly;
+  }
+  nav a {
+    flex: 1 1 calc(25% - 10px);  /* ✅ 4 items per row */
+    max-width: 120px;
   }
 }
 
