@@ -57,43 +57,38 @@
 
     /* Navbar */
     nav {
-  position: sticky; top: 0; z-index: 1000;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
   display: flex;
-  flex-wrap: wrap;         /* allow multiple rows */
+  flex-wrap: wrap;             /* allow multiple rows */
   justify-content: center;
-  gap: 14px 24px;          /* row-gap, col-gap */
-  background: rgba(255,255,255,0.18);
+  gap: 12px 20px;              /* row-gap / column-gap */
+  background: rgba(255, 255, 255, 0.18);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   padding: 12px 10px;
-  border-bottom: 1px solid rgba(255,255,255,0.35);
-}
-nav {
-  flex-wrap: wrap;
-}
-nav a {
-  flex: 1 1 120px;   /* each link takes at least 120px, so they break into 2 rows */
-  text-align: center;
-}
-    nav.shrink { padding: 8px 10px; }
-    nav {
-  position: sticky; top: 0; z-index: 1000;
-  display: flex; justify-content: center; gap: 18px;
-  background: rgba(255,255,255,0.18);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  padding: 12px 10px;
-  border-bottom: 1px solid rgba(255,255,255,0.35);
-  transition: padding .25s ease;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.35);
 }
 
-    nav a {
-      color: #fff; text-decoration: none; font-weight: 500;
-      font-size: 0.95rem; padding: 6px 10px; border-radius: 8px;
-      display: inline-flex; align-items: center; gap: 6px;
-      transition: background .25s ease, color .25s ease;
-    }
-    nav a:hover { background: rgba(255,255,255,0.25); }
+nav a {
+  flex: 1 1 auto;              /* flexible width */
+  min-width: 100px;            /* ensures neat wrapping */
+  max-width: 160px;
+  text-align: center;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.9rem;
+  padding: 6px 12px;
+  border-radius: 8px;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+nav a:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
 
     /* Header */
     .hero {
