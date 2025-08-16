@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E-Commerce Data Analysis Project</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+  <style>
+    /* 🌟 Global */
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0; padding: 0;
+      background: #f9fafc; color: #333;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+
+    h2 { color: #004080; margin-bottom: 15px; }
+
+    /* 🌟 Navbar */
+    nav {
+      position: sticky; top: 0; z-index: 1000;
+      background: #004080; padding: 10px 20px;
+      display: flex; justify-content: center; gap: 20px;
+    }
+    nav a {
+      color: white; text-decoration: none;
+      font-weight: 500; transition: color 0.3s;
+    }
+    nav a:hover { color: #ffdd57; }
+
+    /* 🌟 Header */
+    header {
+      background: linear-gradient(135deg, #004080, #0066cc);
+      color: white; text-align: center;
+      padding: 70px 20px;
+    }
+    header h1 { margin: 0; font-size: 2.5rem; }
+    header p { margin-top: 10px; font-size: 1.2rem; }
+
+    /* 🌟 Sections */
+    section {
+      max-width: 1000px; margin: auto;
+      padding: 50px 20px;
+      border-bottom: 1px solid #eee;
+    }
+    .highlight {
+      background: #e6f0ff;
+      padding: 15px;
+      border-left: 5px solid #004080;
+      border-radius: 5px;
+    }
+
+    /* 🌟 Images */
+    img.shadow-img {
+      max-width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      margin: 10px 0;
+      transition: transform 0.3s ease;
+    }
+    img.shadow-img:hover { transform: scale(1.02); }
+
+    /* 🌟 Dashboard gallery */
+    .dashboard-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    /* 🌟 File links */
+    ul.view-links { list-style: none; padding: 0; }
+    ul.view-links li { margin: 10px 0; }
+    ul.view-links a {
+      display: inline-block;
+      background: #004080; color: white;
+      padding: 10px 20px;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+    ul.view-links a:hover { background: #0066cc; }
+
+    /* 🌟 Footer */
+    footer {
+      text-align: center; padding: 20px;
+      background: #004080; color: white;
+    }
+    footer a { color: #ffdd57; text-decoration: none; }
+
+    /* 🌟 Dark Mode */
+    body.dark { background: #121212; color: #f5f5f5; }
+    body.dark nav { background: #222; }
+    body.dark nav a { color: #ddd; }
+    body.dark nav a:hover { color: #ffdd57; }
+    body.dark header { background: linear-gradient(135deg, #222, #444); }
+    body.dark h2 { color: #ffdd57; }
+    body.dark ul.view-links a { background: #ffdd57; color: #222; }
+    body.dark footer { background: #222; }
+  </style>
+</head>
+<body>
+
+<!-- 🌟 Navbar -->
+<nav>
+  <a href="#overview">Overview</a>
+  <a href="#schema">Schema</a>
+  <a href="#dashboard">Dashboard</a>
+  <a href="#insights">Insights</a>
+  <a href="#files">Files</a>
+</nav>
+
+<!-- 🌟 Header -->
+<header>
+  <div class="header-content">
+    <h1>📦 E-Commerce Data Analysis</h1>
+    <p>End-to-end analytics project using MySQL, Python, and Power BI to uncover customer, sales, and payment insights.</p>
+  </div>
+</header>
+
+<!-- 🌟 Project Overview -->
+<section id="overview">
+  <h2>1. Project Overview</h2>
+  <p class="highlight">
+    This project analyzes an e-commerce dataset to identify trends, customer behavior, and sales performance.
+    The workflow includes:<br>
+    • Data storage & querying in MySQL<br>
+    • Data cleaning & transformation with Python (SQLAlchemy, Pandas, Matplotlib)<br>
+    • Visualization and dashboard creation in Power BI
+  </p>
+</section>
+
+<!-- 🌟 Database Schema -->
+<section id="schema">
+  <h2>2. Database Schema</h2>
+  <p>The database contains five main tables: <code>customers</code>, <code>orders</code>, <code>order_items</code>, <code>payments</code>, and <code>products</code>.</p>
+  <img src="assets/schema_diagram.png" alt="Database Schema Diagram" class="shadow-img">
+</section>
+
+<!-- 🌟 Power BI Dashboard -->
+<section id="dashboard">
+  <h2>3. Power BI Dashboard</h2>
+  <p>Snapshots from the interactive dashboard highlighting KPIs like total sales, top products, customer distribution, and payment trends.</p>
+  <div class="dashboard-gallery">
+    <img src="assets/Page1.png" alt="Dashboard Page 1" class="shadow-img">
+    <img src="assets/Page2.png" alt="Dashboard Page 2" class="shadow-img">
+    <img src="assets/Page3.png" alt="Dashboard Page 3" class="shadow-img">
+  </div>
+</section>
+
+<!-- 🌟 Key Insights -->
+<section id="insights">
+  <h2>4. Key Insights</h2>
+  <ul>
+    <li>Sales peak during holiday seasons with noticeable spikes in Q4.</li>
+    <li>Top 10 customers contribute to over 40% of total revenue.</li>
+    <li>Credit card payments dominate with 75% usage.</li>
+    <li>Average delivery time is 12 days, with delays linked to specific regions.</li>
+  </ul>
+</section>
+
+<!-- 🌟 Project Files -->
+<section id="files">
+  <h2>5. Project Files</h2>
+  <ul class="view-links">
+    <li><a href="E_commerce_project_sqlalchemy.ipynb" target="_blank">📓 View Python Notebook</a></li>
+    <li><a href="Table%20Creation.sql" target="_blank">🗄 View Table Creation SQL</a></li>
+    <li><a href="Table%20Import.sql" target="_blank">📥 View Table Import SQL</a></li>
+    <li><a href="customers.csv" target="_blank">📄 View Customers CSV</a></li>
+    <li><a href="orders.csv" target="_blank">📄 View Orders CSV</a></li>
+    <li><a href="order_items.csv" target="_blank">📄 View Order Items CSV</a></li>
+    <li><a href="payments.csv" target="_blank">📄 View Payments CSV</a></li>
+    <li><a href="products.csv" target="_blank">📄 View Products CSV</a></li>
+    <li><a href="E_commerce_project.pbix" target="_blank">📊 View Power BI File</a></li>
+  </ul>
+</section>
+
+<!-- 🌟 Footer -->
+<footer>
+  <p>Made with ❤️ by Vaibhav | <a href="../../index.html">⬅ Back to Portfolio</a></p>
+  <button id="darkModeToggle">🌙 Toggle Dark Mode</button>
+</footer>
+
+<script>
+  // 🌙 Dark Mode Toggle
+  document.getElementById("darkModeToggle").addEventListener("click", () => {
+    document.body.classList.toggle("dark");
+  });
+</script>
+</body>
+</html>
