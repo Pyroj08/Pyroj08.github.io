@@ -148,6 +148,23 @@ nav a:hover {
       backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
       transition: transform .2s ease, box-shadow .2s ease;
     }
+    .cert-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.cert-link .cert-card {
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s ease;
+}
+
+.cert-link .cert-card:hover {
+  background: rgba(255, 255, 255, 0.75);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+}
+
     .cert-card:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0,0,0,.08); }
     .cert-card i { font-size: 1.2rem; color: #8a5fd2; }
     .cert-card h3 { margin: 0; font-size: 1rem; font-weight: 600; }
@@ -266,10 +283,13 @@ nav a:hover {
     </ul>
   </section>
 
-  <!-- Certifications -->
-  <section id="certifications" class="panel">
-    <h2><i class="fa-solid fa-award"></i> Certifications</h2>
-    <div class="cert-grid">
+ <!-- Certifications -->
+<section id="certifications" class="panel">
+  <h2><i class="fa-solid fa-award"></i> Certifications</h2>
+  <div class="cert-grid">
+    
+    <!-- Python Programming -->
+    <a href="YOUR_URL_1" target="_blank" class="cert-link">
       <div class="cert-card">
         <i class="fa-solid fa-certificate"></i>
         <div>
@@ -277,6 +297,10 @@ nav a:hover {
           <p>Simplilearn</p>
         </div>
       </div>
+    </a>
+
+    <!-- Python Libraries -->
+    <a href="YOUR_URL_2" target="_blank" class="cert-link">
       <div class="cert-card">
         <i class="fa-solid fa-certificate"></i>
         <div>
@@ -284,6 +308,10 @@ nav a:hover {
           <p>Simplilearn</p>
         </div>
       </div>
+    </a>
+
+    <!-- SQL -->
+    <a href="YOUR_URL_3" target="_blank" class="cert-link">
       <div class="cert-card">
         <i class="fa-solid fa-certificate"></i>
         <div>
@@ -291,15 +319,19 @@ nav a:hover {
           <p>Simplilearn</p>
         </div>
       </div>
-      <div class="cert-card">
-        <i class="fa-solid fa-certificate"></i>
-        <div>
-          <h3>Data Analytics Using Python</h3>
-          <p>Ducat (2025)</p>
-        </div>
+    </a>
+
+    <!-- Ducat (leave as normal card) -->
+    <div class="cert-card">
+      <i class="fa-solid fa-certificate"></i>
+      <div>
+        <h3>Data Analytics Using Python</h3>
+        <p>Ducat (2025)</p>
       </div>
     </div>
-  </section>
+
+  </div>
+</section>
 
   <!-- Achievements -->
   <section id="achievements" class="panel">
