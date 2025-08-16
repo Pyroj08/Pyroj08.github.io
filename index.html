@@ -149,6 +149,76 @@
       .hero .meta h1 { font-size: 1.9rem; }
       .quick-links { justify-content: center; flex-wrap: wrap; }
     }
+    /* ---------- Mobile Friendly Enhancements ---------- */
+@media (max-width: 768px) {
+  /* Navbar stacks vertically */
+  nav {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  nav a {
+    font-size: 0.9rem;
+    padding: 8px 12px;
+  }
+
+  /* Hero Section */
+  .hero {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .hero .meta h1 {
+    font-size: 1.8rem;
+  }
+  .profile-pic {
+    margin: 0 auto 12px;
+    width: 120px;
+    height: 120px;
+  }
+  .quick-links {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  /* Panels */
+  .panel {
+    margin: 16px;
+    padding: 18px;
+  }
+
+  /* Certification Cards */
+  .cert-card {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  /* Project Gallery */
+  .image-gallery {
+    grid-template-columns: 1fr; /* stack dashboards one by one */
+  }
+  .image-gallery img {
+    max-width: 100%;
+  }
+
+  /* Buttons full width on mobile */
+  .btn, .quick-links a {
+    width: 100%;
+    justify-content: center;
+  }
+}
+@media (max-width: 480px) {
+  nav {
+    flex-direction: column;
+    align-items: center;
+  }
+  nav a {
+    font-size: 0.85rem;
+    padding: 6px 10px;
+  }
+  .hero .meta h1 {
+    font-size: 1.5rem;
+  }
+}
+
   </style>
 </head>
 <body>
