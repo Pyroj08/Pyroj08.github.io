@@ -1,214 +1,349 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>E-Commerce Data Analysis Project</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Vaibhav Jaiswal - Professional Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
   <style>
+    /* Reset & Base */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
-      margin: 0;
-      font-family: "Poppins", sans-serif;
-      background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb, #a1c4fd, #c2e9fb);
-      background-size: 400% 400%;
-      animation: gradientShift 18s ease infinite;
+      font-family: 'Poppins', sans-serif;
       color: #222;
-      line-height: 1.6;
+      background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%); /* Dreamy */
+      min-height: 100vh;
     }
-    @keyframes gradientShift {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-    nav {
-      background: rgba(0,0,0,0.6);
-      padding: 12px;
-      text-align: center;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      backdrop-filter: blur(8px);
-    }
-    nav a {
-      color: white;
-      margin: 0 12px;
-      text-decoration: none;
-      font-weight: 500;
-      font-size: 0.95rem;
-      transition: color 0.3s;
-    }
-    nav a:hover { color: #ffcc00; }
-    .section {
-      background: rgba(255, 255, 255, 0.85);
-      border-radius: 16px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
-      padding: 2rem;
-      margin: 2rem auto;
-      width: 90%;
+
+    /* Container Panels (Glass) */
+    .panel {
       max-width: 1100px;
-      backdrop-filter: blur(12px);
+      margin: 28px auto;
+      padding: 26px;
+      background: rgba(255,255,255,0.28);
+      border: 1px solid rgba(255,255,255,0.35);
+      border-radius: 16px;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity .8s ease, transform .8s ease;
     }
-    h1, h2 {
-      font-weight: 700;
-      color: #111;
-      margin-bottom: 0.5em;
-      text-align: center;
+    .panel.visible { opacity: 1; transform: translateY(0); }
+
+    h1, h2, h3 { letter-spacing: 0.2px; }
+    h2 {
+      font-size: 1.6rem;
+      margin-bottom: 12px;
+      color: #4b0082;
+      position: relative;
     }
-    h1 { font-size: 2.3rem; }
-    h2 { font-size: 1.6rem; margin-top: 0; }
-    p { margin: 0.5rem 0 1.5rem; text-align: justify; color: #333; }
-    ul { margin: 0.5rem 0 1.5rem 1.2rem; }
-    .pipeline {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      align-items: center;
-      gap: 12px;
-      margin: 1.5rem 0;
-      font-size: 1rem;
-      font-weight: 500;
-    }
-    .pipeline div {
-      background: rgba(255,255,255,0.9);
-      padding: 10px 16px;
-      border-radius: 30px;
-      box-shadow: 0 3px 8px rgba(0,0,0,0.15);
-    }
-    .pipeline i { margin-right: 6px; }
-    .pipeline span { font-size: 1.2rem; }
-    img {
+    h2 i { margin-right: 8px; }
+    h2::after {
+      content: "";
       display: block;
-      margin: 1.2rem auto;
-      max-width: 85%;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      width: 64px;
+      height: 3px;
+      background: #ff85b2;
+      margin-top: 8px;
+      border-radius: 3px;
     }
-    .buttons {
-      text-align: center;
-      margin-top: 1.2rem;
+    p { line-height: 1.7; }
+    ul { padding-left: 20px; line-height: 1.8; }
+
+    /* Navbar */
+    nav {
+      position: sticky; top: 0; z-index: 1000;
+      display: flex; justify-content: center; gap: 18px;
+      background: rgba(255,255,255,0.18);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      padding: 12px 10px;
+      border-bottom: 1px solid rgba(255,255,255,0.35);
+      transition: padding .25s ease;
     }
-    .btn {
-      display: inline-block;
-      margin: 0.4rem;
-      padding: 0.6rem 1.4rem;
-      font-size: 0.95rem;
-      font-weight: 600;
-      text-decoration: none;
-      border-radius: 30px;
-      background: linear-gradient(135deg, #ff758c, #ff7eb3);
-      color: #fff;
-      transition: all 0.3s ease;
+    nav.shrink { padding: 8px 10px; }
+    nav a {
+      color: #fff; text-decoration: none; font-weight: 500;
+      font-size: 0.95rem; padding: 6px 10px; border-radius: 8px;
+      display: inline-flex; align-items: center; gap: 6px;
+      transition: background .25s ease, color .25s ease;
     }
-    .btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+    nav a:hover { background: rgba(255,255,255,0.25); }
+    nav a.active { color: #ffd700; }
+
+    /* Header */
+    .hero {
+      max-width: 1100px;
+      margin: 22px auto 0;
+      padding: 18px;
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 20px;
+      align-items: center;
     }
+    .profile-pic {
+      width: 140px; height: 140px; border-radius: 50%;
+      object-fit: cover; border: 4px solid rgba(255,255,255,0.65);
+      background: rgba(255,255,255,0.25);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+      transition: transform .35s ease, box-shadow .35s ease;
+      backdrop-filter: blur(6px);
+    }
+    .profile-pic:hover { transform: scale(1.03); box-shadow: 0 12px 28px rgba(0,0,0,0.20); }
+    .hero .meta h1 { font-size: 2.2rem; font-weight: 600; color: #1f1f1f; }
+    .hero .meta p.tagline { margin-top: 4px; opacity: 0.9; }
+    .quick-links { margin-top: 10px; display: flex; gap: 12px; }
+    .quick-links a {
+      display: inline-flex; align-items: center; gap: 8px;
+      text-decoration: none; color: #1f1f1f; font-weight: 500;
+      background: rgba(255,255,255,0.55); border: 1px solid rgba(255,255,255,0.35);
+      padding: 8px 12px; border-radius: 10px; transition: transform .2s ease, box-shadow .2s ease;
+      backdrop-filter: blur(6px);
+    }
+    .quick-links a:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+
+    /* Certifications Grid */
+    .cert-grid {
+      display: grid; gap: 14px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
+    .cert-card {
+      display: flex; align-items: center; gap: 12px;
+      background: rgba(255,255,255,0.55);
+      border: 1px solid rgba(255,255,255,0.35);
+      border-radius: 12px; padding: 12px 14px;
+      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .cert-card:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0,0,0,.08); }
+    .cert-card i { font-size: 1.2rem; color: #8a5fd2; }
+    .cert-card h3 { margin: 0; font-size: 1rem; font-weight: 600; }
+    .cert-card p { margin: 2px 0 0 0; font-size: .9rem; opacity: .85; }
+
+    /* Project gallery */
+    .image-gallery {
+      display: grid; gap: 12px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      margin-top: 10px;
+    }
+    .image-gallery img {
+      width: 100%; border-radius: 10px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.10);
+      transition: transform .25s ease, box-shadow .25s ease;
+      background: #fff;
+    }
+    .image-gallery img:hover { transform: translateY(-3px); box-shadow: 0 12px 26px rgba(0,0,0,0.15); }
+
+    /* Footer */
     footer {
-      text-align: center;
-      padding: 1rem;
-      color: #fff;
-      font-size: 0.9rem;
-      margin-top: 2rem;
+      text-align: center; padding: 18px; margin: 32px 0;
+      color: #1f1f1f; opacity: 0.9;
+    }
+
+    @media (max-width: 720px) {
+      .hero { grid-template-columns: 1fr; text-align: center; }
+      .hero .meta h1 { font-size: 1.9rem; }
+      .quick-links { justify-content: center; flex-wrap: wrap; }
     }
   </style>
 </head>
 <body>
 
   <!-- Navbar -->
-  <nav>
-    <a href="index.html"><i class="fa-solid fa-arrow-left"></i> Back to Portfolio</a>
-    <a href="#overview"><i class="fa-solid fa-chart-line"></i> Overview</a>
-    <a href="#schema"><i class="fa-solid fa-database"></i> Schema</a>
-    <a href="#dashboard"><i class="fa-solid fa-chart-pie"></i> Dashboard</a>
-    <a href="#insights"><i class="fa-solid fa-lightbulb"></i> Insights</a>
-    <a href="#tools"><i class="fa-solid fa-screwdriver-wrench"></i> Tools</a>
-    <a href="#files"><i class="fa-solid fa-folder-open"></i> Files</a>
-    <a href="#conclusion"><i class="fa-solid fa-circle-check"></i> Conclusion</a>
+  <nav id="navbar">
+    <a href="#summary"><i class="fa-solid fa-user"></i> Summary</a>
+    <a href="#education"><i class="fa-solid fa-graduation-cap"></i> Education</a>
+    <a href="#experience"><i class="fa-solid fa-briefcase"></i> Experience</a>
+    <a href="#skills"><i class="fa-solid fa-gears"></i> Skills</a>
+    <a href="#certifications"><i class="fa-solid fa-award"></i> Certifications</a>
+    <a href="#achievements"><i class="fa-solid fa-trophy"></i> Achievements</a>
+    <a href="#projects"><i class="fa-solid fa-diagram-project"></i> Projects</a>
+    <a href="#contact"><i class="fa-solid fa-envelope"></i> Contact</a>
   </nav>
 
-  <!-- Title -->
-  <header class="section">
-    <h1><i class="fa-solid fa-box"></i> E-Commerce Data Analysis Project</h1>
-    <p>An end-to-end data pipeline project covering SQL, Python, and Power BI to transform raw data into actionable insights.</p>
-  </header>
+  <!-- Header / Hero -->
+  <div class="hero">
+    <img class="profile-pic" src="assets/Profile.png" alt="Profile Photo"/>
+    <div class="meta">
+      <h1>Vaibhav Jaiswal</h1>
+      <p class="tagline">Data Analyst · SQL · Python · Power BI</p>
+      <div class="quick-links">
+        <a href="mailto:Jaiswalvaibhav139@gmail.com"><i class="fa-solid fa-envelope"></i> Email</a>
+        <a href="https://www.linkedin.com/in/vaibhav-jaiswal-995a1119a/" target="_blank"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+      </div>
+    </div>
+  </div>
 
-  <!-- Overview -->
-  <section id="overview" class="section">
-    <h2><i class="fa-solid fa-chart-line"></i> Project Overview</h2>
-    <p>This project demonstrates the complete workflow for analyzing e-commerce sales data:</p>
+  <!-- Summary -->
+  <section id="summary" class="panel">
+    <h2><i class="fa-solid fa-user"></i> Professional Summary</h2>
+    <p>
+      Aspiring <strong>Data Analyst</strong> skilled in <strong>SQL, Python, and Power BI</strong> with hands-on experience
+      in <strong>data cleaning, wrangling, EDA, and visualization</strong>. Adept at transforming complex datasets into
+      actionable insights and building interactive dashboards to support data-driven decision-making.
+    </p>
+    <p>
+      Experienced with end-to-end analytics workflows including database management (MySQL), ETL pipelines in Python,
+      and business reporting. Strong problem-solving mindset, attention to detail, and a passion for converting raw data
+      into measurable business outcomes.
+    </p>
+  </section>
+
+  <!-- Education -->
+  <section id="education" class="panel">
+    <h2><i class="fa-solid fa-graduation-cap"></i> Education</h2>
+    <p><strong>B.Tech – Electrical Engineering</strong><br/>
+       Ajay Kumar Garg Engineering College, Ghaziabad (Graduated: 2023)
+    </p>
+  </section>
+
+  <!-- Experience -->
+  <section id="experience" class="panel">
+    <h2><i class="fa-solid fa-briefcase"></i> Experience</h2>
+    <p><strong>Data Analytics Intern</strong> — Dataman Computer Systems Pvt. Ltd. (2025)</p>
     <ul>
-      <li>Imported raw CSV files into MySQL database.</li>
-      <li>Cleaned & transformed data in Python (using Pandas & SQLAlchemy).</li>
-      <li>Stored cleaned dataset back into MySQL for structured access.</li>
-      <li>Built an interactive Power BI dashboard to generate insights.</li>
+      <li>Collected, cleaned, and organized data using Excel and SQL.</li>
+      <li>Performed EDA using Python (Pandas, Matplotlib) to uncover trends and patterns.</li>
+      <li>Created visuals and reports to present insights to stakeholders.</li>
+      <li>Supported decision-making by synthesizing actionable analytics.</li>
     </ul>
-    <div class="pipeline">
-      <div><i class="fa-solid fa-file-csv"></i> Raw CSV</div><span>→</span>
-      <div><i class="fa-solid fa-database"></i> MySQL Import</div><span>→</span>
-      <div><i class="fa-brands fa-python"></i> Python Cleaning</div><span>→</span>
-      <div><i class="fa-solid fa-database"></i> MySQL Cleaned</div><span>→</span>
-      <div><i class="fa-solid fa-chart-column"></i> Power BI Dashboard</div>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills" class="panel">
+    <h2><i class="fa-solid fa-gears"></i> Skills</h2>
+    <ul>
+      <li><strong>Technical:</strong> Python (Pandas, NumPy), VBA, Power BI, Matplotlib, Seaborn, MySQL, MongoDB, Excel (Pivot Tables, VLOOKUP, Macros)</li>
+      <li><strong>Analytical:</strong> Data Cleaning, Data Wrangling, EDA, KPI Tracking, Statistical Analysis, Business Insights</li>
+      <li><strong>Tools:</strong> Jupyter Notebook, VS Code, Git, Power Query</li>
+      <li><strong>Soft Skills:</strong> Problem-Solving, Attention to Detail, Team Collaboration, Communication, Time Management, Adaptability</li>
+    </ul>
+  </section>
+
+  <!-- Certifications -->
+  <section id="certifications" class="panel">
+    <h2><i class="fa-solid fa-award"></i> Certifications</h2>
+    <div class="cert-grid">
+      <div class="cert-card">
+        <i class="fa-solid fa-certificate"></i>
+        <div>
+          <h3>Python Programming</h3>
+          <p>Simplilearn</p>
+        </div>
+      </div>
+      <div class="cert-card">
+        <i class="fa-solid fa-certificate"></i>
+        <div>
+          <h3>Python Libraries for Data Science</h3>
+          <p>Simplilearn</p>
+        </div>
+      </div>
+      <div class="cert-card">
+        <i class="fa-solid fa-certificate"></i>
+        <div>
+          <h3>SQL</h3>
+          <p>Simplilearn</p>
+        </div>
+      </div>
+      <div class="cert-card">
+        <i class="fa-solid fa-certificate"></i>
+        <div>
+          <h3>Data Analytics Using Python</h3>
+          <p>Ducat (2025)</p>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- Schema -->
-  <section id="schema" class="section">
-    <h2><i class="fa-solid fa-database"></i> Database Schema</h2>
-    <p>The schema illustrates the relational structure of the e-commerce dataset:</p>
-    <img src="Schema_diagram.png" alt="Database Schema Diagram">
-  </section>
-
-  <!-- Dashboard -->
-  <section id="dashboard" class="section">
-    <h2><i class="fa-solid fa-chart-pie"></i> Power BI Dashboard</h2>
-    <p>Preview of dashboard pages highlighting sales trends, customer segmentation, and product performance:</p>
-    <img src="Page1.png" alt="Dashboard Page 1">
-    <img src="Page2.png" alt="Dashboard Page 2">
-    <img src="Page3.png" alt="Dashboard Page 3">
-  </section>
-
-  <!-- Insights -->
-  <section id="insights" class="section">
-    <h2><i class="fa-solid fa-lightbulb"></i> Key Insights</h2>
+  <!-- Achievements -->
+  <section id="achievements" class="panel">
+    <h2><i class="fa-solid fa-trophy"></i> Achievements</h2>
     <ul>
-      <li>Sales peak during holiday seasons with spikes in Q4.</li>
-      <li>Top 10 customers contribute significantly to revenue.</li>
-      <li>Credit card payments dominate overall transactions.</li>
-      <li>Delivery delays are mostly linked to specific regions.</li>
+      <li>Awarded <strong>Golden Certificate</strong> for academic excellence and leadership at Bishop Westcott School.</li>
     </ul>
   </section>
 
-  <!-- Tools -->
-  <section id="tools" class="section">
-    <h2><i class="fa-solid fa-screwdriver-wrench"></i> Tech Stack</h2>
-    <ul>
-      <li><strong>SQL (MySQL):</strong> Database design, storage & queries</li>
-      <li><strong>Python:</strong> Data cleaning, transformation, and EDA</li>
-      <li><strong>Pandas, SQLAlchemy:</strong> Data manipulation and integration</li>
-      <li><strong>Power BI:</strong> Dashboard creation & visualization</li>
-    </ul>
-  </section>
+  <!-- Projects -->
+  <section id="projects" class="panel">
+    <h2><i class="fa-solid fa-diagram-project"></i> Projects</h2>
+    <div class="project">
+      <h3>📦 E-Commerce Sales Analysis</h3>
+      <p>
+        End-to-end analytics project using <strong>MySQL</strong> (database), <strong>Python</strong> (cleaning & analysis),
+        and <strong>Power BI</strong> (interactive dashboards). Includes sales trends, customer segmentation, and payment insights.
+      </p>
 
-  <!-- Files -->
-  <section id="files" class="section">
-    <h2><i class="fa-solid fa-folder-open"></i> Project Files</h2>
-    <div class="buttons">
-      <a href="Table_Creation.sql" target="_blank" class="btn">SQL – Table Creation</a>
-      <a href="Table_Import.sql" target="_blank" class="btn">SQL – Table Import</a>
-      <a href="Data_Cleaning.ipynb" target="_blank" class="btn">Python – Data Cleaning</a>
+      <!-- Thumbnails from /assets, but open full images from the project folder -->
+      <div class="image-gallery">
+        <div class="image-gallery">
+    <a href="projects/ecommerce-analysis/Page1.png" target="_blank">
+        <img src="projects/ecommerce-analysis/Page1.png" alt="Dashboard Page 1">
+    </a>
+    <a href="projects/ecommerce-analysis/Page2.png" target="_blank">
+        <img src="projects/ecommerce-analysis/Page2.png" alt="Dashboard Page 2">
+    </a>
+    <a href="projects/ecommerce-analysis/Page3.png" target="_blank">
+        <img src="projects/ecommerce-analysis/Page3.png" alt="Dashboard Page 3">
+    </a>
+</div>
+
+      </div>
+
+      <div style="margin-top: 12px;">
+        <a href="projects/ecommerce-analysis/index.html" target="_blank"
+           style="display:inline-block; padding:10px 14px; background:#6a11cb; color:#fff; border-radius:10px; text-decoration:none;">
+          View Full Project <i class="fa-solid fa-arrow-up-right-from-square"></i>
+        </a>
+      </div>
     </div>
-  </section>
-
-  <!-- Conclusion -->
-  <section id="conclusion" class="section">
-    <h2><i class="fa-solid fa-circle-check"></i> Conclusion</h2>
-    <p>This project highlights how raw e-commerce data can be transformed into meaningful insights using SQL, Python, and Power BI.  
-       By integrating multiple tools, we built a scalable workflow suitable for real-world business analysis with a professional dashboard.</p>
   </section>
 
   <footer>
-    <p>© 2025 E-Commerce Data Analysis | Built with SQL · Python · Power BI</p>
+    © <span id="year"></span> Vaibhav Jaiswal — Built with care and data.
   </footer>
+
+  <script>
+    // Reveal on scroll
+    const panels = document.querySelectorAll('.panel');
+    const reveal = () => {
+      const trigger = window.innerHeight * 0.85;
+      panels.forEach(p => {
+        const top = p.getBoundingClientRect().top;
+        if (top < trigger) p.classList.add('visible');
+      });
+    };
+    window.addEventListener('scroll', reveal);
+    window.addEventListener('load', reveal);
+
+    // Navbar shrink + active link highlight
+    const navbar = document.getElementById('navbar');
+    const links = navbar.querySelectorAll('a');
+    const sections = [...links].map(a => document.querySelector(a.getAttribute('href')));
+
+    const onScroll = () => {
+      if (window.scrollY > 40) navbar.classList.add('shrink');
+      else navbar.classList.remove('shrink');
+
+      // Active section highlight
+      let idx = sections.findIndex(sec => sec.getBoundingClientRect().top - 120 > 0) - 1;
+      if (idx < 0) idx = sections.length - 1;
+      links.forEach(l => l.classList.remove('active'));
+      if (sections[idx]) {
+        const id = '#' + sections[idx].id;
+        const active = navbar.querySelector(`a[href="${id}"]`);
+        if (active) active.classList.add('active');
+      }
+    };
+    window.addEventListener('scroll', onScroll);
+    window.addEventListener('load', onScroll);
+
+    // Footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
