@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E-commerce Data Analysis Project</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #0f9b8e, #38ef7d);
+      color: #fff;
+      line-height: 1.6;
+    }
+    header {
+      background: rgba(0, 0, 0, 0.6);
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.8rem;
+      letter-spacing: 1px;
+    }
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 2rem;
+    }
+    h2 {
+      font-size: 2rem;
+      margin-top: 2rem;
+      border-bottom: 2px solid #fff;
+      display: inline-block;
+      padding-bottom: 0.3rem;
+    }
+    p {
+      font-size: 1.1rem;
+    }
+    .timeline {
+      display: flex;
+      justify-content: space-between;
+      margin: 2rem 0;
+      flex-wrap: wrap;
+    }
+    .timeline-step {
+      flex: 1;
+      background: rgba(255, 255, 255, 0.15);
+      margin: 0.5rem;
+      padding: 1rem;
+      border-radius: 12px;
+      text-align: center;
+      font-weight: bold;
+    }
+    .files-section {
+      margin-top: 2rem;
+    }
+    .file-link {
+      display: block;
+      margin: 0.5rem 0;
+      padding: 0.8rem;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 10px;
+      color: #fff;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+    .file-link:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      background: rgba(0, 0, 0, 0.6);
+      margin-top: 3rem;
+    }
+    .fade-in {
+      animation: fadeIn 1.5s ease-in;
+    }
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>E-commerce Data Analysis</h1>
+    <p>End-to-End Data Pipeline using MySQL, Python, SQL & Power BI</p>
+  </header>
+
+  <div class="container fade-in">
+    <h2>📊 Project Overview</h2>
+    <p>
+      The E-commerce Sales Analysis project aimed to convert raw transactional data into meaningful business insights. 
+      The project followed a structured end-to-end data pipeline, ensuring data quality, consistency, and usability 
+      for decision-making.
+    </p>
+    <p>
+      The process began with <strong>importing raw datasets into MySQL</strong>, where the database schema was designed 
+      to handle orders, payments, customers, and products efficiently. The imported data was then <strong>fetched into 
+      Python (Jupyter Notebook)</strong> for extensive cleaning and preprocessing. After removing duplicates, handling 
+      missing values, and ensuring type consistency, the <strong>cleaned data was reloaded into MySQL</strong> as a 
+      reliable single source of truth.
+    </p>
+    <p>
+      With the structured database in place, SQL queries were developed to calculate KPIs such as revenue trends, 
+      customer retention, delivery performance, and category-level insights. The <strong>clean dataset was then 
+      connected to Power BI</strong>, where interactive dashboards provided a clear view of patterns such as 
+      seasonal demand, top-selling products, and contributions from repeat customers.
+    </p>
+    <p>
+      This workflow highlights expertise across <strong>data engineering, analysis, and visualization</strong>: 
+      starting from raw data ingestion in MySQL, through Python-based data cleaning, to SQL-driven transformations, 
+      and finally <strong>insight-rich dashboards in Power BI</strong>. The project demonstrates how a well-designed 
+      pipeline can turn raw data into actionable strategies for E-commerce growth.
+    </p>
+  </div>
+
+  <!-- Project Flow Timeline -->
+  <div class="container">
+    <h2>🔄 Project Workflow</h2>
+    <div class="timeline">
+      <div class="timeline-step">📂 Raw Data Import (MySQL)</div>
+      <div class="timeline-step">🐍 Data Cleaning (Python)</div>
+      <div class="timeline-step">💾 Clean Data in MySQL</div>
+      <div class="timeline-step">📊 Power BI Dashboard</div>
+      <div class="timeline-step">💡 Insights</div>
+    </div>
+  </div>
+
+  <!-- Files Section -->
+  <div class="container files-section">
+    <h2>📂 Project Files</h2>
+    <a href="Table_Import.sql" class="file-link" target="_blank">📄 SQL Script – Table Import</a>
+    <a href="Data_Cleaning.ipynb" class="file-link" target="_blank">📓 Python Notebook – Data Cleaning</a>
+    <a href="Schema_diagram.png" class="file-link" target="_blank">🖼 Database Schema Diagram</a>
+    <a href="Dashboard.pbix" class="file-link" target="_blank">📊 Power BI Dashboard</a>
+  </div>
+
+  <footer>
+    <p>Designed with ❤️ for showcasing E-commerce Data Analysis | View Only</p>
+  </footer>
+</body>
+</html>
