@@ -56,15 +56,16 @@
     ul { padding-left: 20px; line-height: 1.8; }
 
     /* Navbar */
-   /* Navbar */
+  /* Navbar */
 nav {
   position: sticky;
   top: 0;
   z-index: 1000;
-  display: flex;
-  flex-wrap: wrap;            /* ✅ allows wrapping into rows */
-  justify-content: center;    /* ✅ centers horizontally */
-  gap: 12px 24px;             /* spacing between items */
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 columns */
+  gap: 12px;
+  justify-items: center;  /* centers items horizontally */
+  align-items: center;    /* centers items vertically */
   background: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
@@ -73,25 +74,20 @@ nav {
 }
 
 nav a {
-  display: inline-flex;        /* ✅ inline, not block */
-  align-items: center;
-  justify-content: center;
-  min-width: 100px;            /* ✅ keeps buttons neat */
-  max-width: 140px;
-  text-align: center;
   color: #fff;
   text-decoration: none;
   font-weight: 500;
   font-size: 0.9rem;
-  padding: 6px 12px;
+  padding: 6px 10px;
   border-radius: 6px;
   transition: background 0.3s ease, color 0.3s ease;
+  text-align: center;
+  width: 100%; /* makes links expand inside their grid cell */
 }
 
 nav a:hover {
   background: rgba(255, 255, 255, 0.25);
 }
-
 
     /* Header */
     .hero {
