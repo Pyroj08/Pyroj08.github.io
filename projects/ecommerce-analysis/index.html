@@ -4,11 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>E-Commerce Data Analysis</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    /* Smooth Sunset Glow gradient */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
-      margin: 0;
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      font-family: "Poppins", sans-serif;
       background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb, #a1c4fd, #c2e9fb);
       background-size: 400% 400%;
       animation: gradientShift 18s ease infinite;
@@ -23,44 +25,38 @@
     }
 
     h1, h2 {
-      font-weight: 700;
-      color: #111;
-      margin-bottom: 0.5em;
+      font-weight: 600;
       text-align: center;
+      margin-bottom: 1rem;
+      color: #111;
     }
+    h1 { font-size: 2.6rem; }
+    h2 { font-size: 1.8rem; margin-bottom: 1.5rem; }
 
-    h1 {
-      font-size: 2.5rem;
-    }
-
-    h2 {
-      font-size: 1.8rem;
-    }
-
-    /* Frosted glass panel */
     .section {
-      background: rgba(255, 255, 255, 0.85);
+      background: rgba(255, 255, 255, 0.82);
       border-radius: 16px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
       padding: 2rem;
       margin: 2rem auto;
       width: 90%;
       max-width: 1100px;
-      backdrop-filter: blur(12px);
+      backdrop-filter: blur(14px);
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .section.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
-    p {
-      margin: 0.5rem 0 1.5rem;
-      font-size: 1rem;
-      color: #333;
-      text-align: justify;
-    }
+    p { margin-bottom: 1rem; text-align: justify; color: #333; }
 
-    .buttons {
-      text-align: center;
-      margin-top: 1.5rem;
-    }
+    ul { margin: 1rem 0 1.5rem 1.2rem; }
+    ul li { margin-bottom: 0.6rem; }
 
+    .buttons { text-align: center; margin-top: 1.5rem; }
     .btn {
       display: inline-block;
       margin: 0.5rem;
@@ -73,26 +69,32 @@
       color: #fff;
       transition: all 0.3s ease;
     }
-
     .btn:hover {
       transform: translateY(-3px);
-      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
     }
 
     img {
       display: block;
-      margin: 1rem auto;
+      margin: 1.5rem auto;
       max-width: 100%;
       border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+      transition: transform 0.3s ease;
     }
+    img:hover { transform: scale(1.02); }
 
     footer {
       text-align: center;
-      padding: 1rem;
+      padding: 1.2rem;
       color: #fff;
       font-size: 0.9rem;
       margin-top: 2rem;
+    }
+    @media (max-width: 768px) {
+      h1 { font-size: 2rem; }
+      h2 { font-size: 1.4rem; }
+      .section { padding: 1.5rem; margin: 1rem; }
     }
   </style>
 </head>
@@ -100,41 +102,37 @@
 
   <!-- Project Title -->
   <header class="section">
-    <h1>E-Commerce Data Analysis Project</h1>
-    <p>An end-to-end data analysis project covering SQL, Python, and Power BI to derive actionable insights from raw e-commerce data.</p>
+    <h1><i class="fa-solid fa-box-open"></i> E-Commerce Data Analysis Project</h1>
+    <p>
+      An end-to-end case study using <b>SQL, Python, and Power BI</b> to transform raw e-commerce sales data into 
+      actionable insights and interactive dashboards.
+    </p>
   </header>
 
   <!-- Project Overview -->
   <section class="section">
-    <h2>Project Overview</h2>
-    <p>
-      This project demonstrates the complete data pipeline for analyzing e-commerce sales data. The workflow involved:
-    </p>
+    <h2><i class="fa-solid fa-clipboard-list"></i> Project Overview</h2>
+    <p>This project demonstrates the complete workflow of e-commerce data analysis:</p>
     <ul>
-      <li>Importing raw CSV files into MySQL database.</li>
-      <li>Cleaning and transforming data in Python (using Pandas & SQLAlchemy).</li>
-      <li>Storing the cleaned dataset back into MySQL for structured access.</li>
-      <li>Building an interactive Power BI dashboard to generate insights.</li>
+      <li>Imported raw CSV files into a MySQL database.</li>
+      <li>Cleaned and transformed data in Python (Pandas & SQLAlchemy).</li>
+      <li>Stored the refined dataset back into MySQL for structured access.</li>
+      <li>Built interactive dashboards in Power BI to highlight sales, customers, and product insights.</li>
     </ul>
-    <p>
-      The final dashboard showcases KPIs such as total sales, top products, customer behavior, and order fulfillment trends.
-    </p>
+    <p>The dashboard provides a clear picture of customer behavior, sales trends, product performance, and fulfillment metrics.</p>
   </section>
 
   <!-- Schema -->
   <section class="section">
-    <h2>Database Schema</h2>
-    <p>The schema below illustrates the relational structure of the e-commerce dataset:</p>
+    <h2><i class="fa-solid fa-database"></i> Database Schema</h2>
+    <p>The following schema diagram represents the structure of the e-commerce dataset:</p>
     <img src="Schema_diagram.png" alt="Database Schema Diagram">
   </section>
 
   <!-- Dashboard -->
   <section class="section">
-    <h2>Power BI Dashboard</h2>
-    <p>
-      The interactive dashboard provides insights on sales trends, customer segmentation, and product performance.  
-      Below are preview images from the Power BI dashboard:
-    </p>
+    <h2><i class="fa-solid fa-chart-line"></i> Power BI Dashboard</h2>
+    <p>The Power BI dashboard offers interactive insights on sales, customers, and products:</p>
     <img src="Page1.png" alt="Dashboard Page 1">
     <img src="Page2.png" alt="Dashboard Page 2">
     <img src="Page3.png" alt="Dashboard Page 3">
@@ -142,30 +140,41 @@
 
   <!-- Files -->
   <section class="section">
-    <h2>Project Files</h2>
-    <p>Explore the core project files used in this analysis:</p>
+    <h2><i class="fa-solid fa-file-code"></i> Project Files</h2>
+    <p>Core files used in this project:</p>
     <div class="buttons">
-      <a href="Table_Creation.sql" target="_blank" class="btn">SQL – Table Creation</a>
-      <a href="Table_Import.sql" target="_blank" class="btn">SQL – Table Import</a>
-      <a href="Data_Cleaning.ipynb" target="_blank" class="btn">Python – Data Cleaning</a>
-      <a href="orders_clean.csv" target="_blank" class="btn">Cleaned Orders Data (CSV)</a>
-      <a href="customers.csv" target="_blank" class="btn">Customers Data (CSV)</a>
+      <a href="Table_Creation.sql" target="_blank" class="btn"><i class="fa-solid fa-table"></i> SQL – Table Creation</a>
+      <a href="Table_Import.sql" target="_blank" class="btn"><i class="fa-solid fa-database"></i> SQL – Table Import</a>
+      <a href="Data_Cleaning.ipynb" target="_blank" class="btn"><i class="fa-brands fa-python"></i> Python – Data Cleaning</a>
     </div>
   </section>
 
   <!-- Conclusion -->
   <section class="section">
-    <h2>Conclusion</h2>
+    <h2><i class="fa-solid fa-lightbulb"></i> Conclusion</h2>
     <p>
-      This project highlights how raw e-commerce data can be transformed into meaningful insights using SQL, Python, and Power BI.  
-      By integrating multiple tools, we created a scalable workflow suitable for real-world business analysis.  
-      The structured approach ensured clean, reliable data and a professional interactive dashboard.
+      This project highlights the power of integrating SQL, Python, and Power BI in the data analytics workflow.  
+      From raw data ingestion and transformation to business intelligence visualization, the process ensures data quality, 
+      automation, and professional insights that can support real-world decision making.
     </p>
   </section>
 
   <footer>
-    <p>© 2025 E-Commerce Data Analysis | Built with SQL · Python · Power BI</p>
+    <p>© 2025 E-Commerce Data Analysis | Powered by SQL · Python · Power BI</p>
   </footer>
 
+  <script>
+    // Scroll reveal animation
+    const sections = document.querySelectorAll(".section");
+    const revealOnScroll = () => {
+      const trigger = window.innerHeight * 0.85;
+      sections.forEach(sec => {
+        const top = sec.getBoundingClientRect().top;
+        if (top < trigger) sec.classList.add("visible");
+      });
+    };
+    window.addEventListener("scroll", revealOnScroll);
+    window.addEventListener("load", revealOnScroll);
+  </script>
 </body>
 </html>
