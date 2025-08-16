@@ -111,6 +111,69 @@
       font-size: 0.9rem;
       margin-top: 2rem;
     }
+    /* ---------- Mobile Friendly Enhancements ---------- */
+@media (max-width: 768px) {
+  /* Navbar: stack links for mobile */
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+  }
+  nav a {
+    font-size: 0.9rem;
+    margin: 6px;
+    padding: 6px 10px;
+  }
+
+  /* Section panels */
+  .section {
+    width: 95%;
+    margin: 1rem auto;
+    padding: 1.2rem;
+  }
+  h1 { font-size: 1.8rem; }
+  h2 { font-size: 1.3rem; }
+
+  /* Pipeline flow */
+  .pipeline {
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+  }
+  .pipeline div {
+    width: 100%;
+    max-width: 280px;
+    text-align: center;
+  }
+
+  /* Images: make them scale full width */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Buttons stacked vertically */
+  .buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  .btn {
+    width: 100%;
+    max-width: 280px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  nav a { font-size: 0.8rem; margin: 4px; }
+  h1 { font-size: 1.5rem; }
+  h2 { font-size: 1.1rem; }
+  .section { padding: 1rem; }
+}
+
   </style>
 </head>
 <body>
