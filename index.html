@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vaibhav Jaiswal - Professional Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* Reset */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #fbc2eb, #a6c1ee); /* Dreamy gradient */
+      color: #333;
+    }
+
+    /* Header */
+    header {
+      text-align: center;
+      padding: 60px 20px 40px;
+    }
+    header img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid rgba(255,255,255,0.6);
+      backdrop-filter: blur(6px);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+    header img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+    }
+    header h1 {
+      margin-top: 15px;
+      font-size: 2.5rem;
+      font-weight: 600;
+      color: #222;
+    }
+    header p {
+      font-size: 1.1rem;
+      opacity: 0.8;
+    }
+
+    /* Navbar */
+    nav {
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: center;
+      padding: 12px 10px;
+      transition: all 0.3s ease;
+    }
+    nav.shrink { padding: 6px 10px; }
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.3s;
+    }
+    nav a:hover { color: #ffd700; }
+
+    /* Section Styling */
+    section {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 25px;
+      background: rgba(255,255,255,0.25);
+      border-radius: 15px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.8s ease;
+    }
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    h2 {
+      font-size: 1.6rem;
+      color: #4b0082;
+      margin-bottom: 12px;
+      position: relative;
+    }
+    h2::after {
+      content: "";
+      display: block;
+      width: 60px;
+      height: 3px;
+      background: #ff85b2;
+      margin-top: 6px;
+      border-radius: 3px;
+    }
+    ul { padding-left: 20px; line-height: 1.7; }
+
+    /* Projects */
+    .project {
+      margin-bottom: 20px;
+      padding: 15px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.35);
+      transition: all 0.3s ease;
+    }
+    .project:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    }
+    .image-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 12px;
+      margin-top: 10px;
+    }
+    .image-gallery img {
+      width: 100%;
+      border-radius: 8px;
+      transition: transform 0.3s;
+    }
+    .image-gallery img:hover { transform: scale(1.03); }
+
+    /* Contact */
+    .contact-links {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 15px;
+    }
+    .contact-card {
+      flex: 1;
+      min-width: 250px;
+      padding: 15px;
+      border-radius: 10px;
+      text-align: center;
+      background: rgba(255,255,255,0.3);
+      transition: all 0.3s ease;
+    }
+    .contact-card:hover {
+      background: rgba(255,255,255,0.45);
+      transform: translateY(-5px);
+      box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+    }
+    .contact-card a {
+      color: #222;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    .contact-card i {
+      font-size: 1.5rem;
+      margin-bottom: 6px;
+      transition: transform 0.3s ease;
+    }
+    .contact-card:hover i { transform: scale(1.2); }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 18px;
+      background: rgba(255,255,255,0.15);
+      color: #222;
+      margin-top: 30px;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      header h1 { font-size: 2rem; }
+      nav a { margin: 0 8px; font-size: 0.85rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <img src="projects/ecommerce-analysis/profile.jpg" alt="Profile Photo">
+    <h1>Vaibhav Jaiswal</h1>
+    <p>Data Analyst | SQL | Python | Power BI</p>
+  </header>
+
+  <!-- Navbar -->
+  <nav id="navbar">
+    <a href="#summary"><i class="fa-solid fa-user"></i> Summary</a>
+    <a href="#education"><i class="fa-solid fa-graduation-cap"></i> Education</a>
+    <a href="#experience"><i class="fa-solid fa-briefcase"></i> Experience</a>
+    <a href="#projects"><i class="fa-solid fa-diagram-project"></i> Projects</a>
+    <a href="#skills"><i class="fa-solid fa-gears"></i> Skills</a>
+    <a href="#certifications"><i class="fa-solid fa-certificate"></i> Certifications</a>
+    <a href="#achievements"><i class="fa-solid fa-trophy"></i> Achievements</a>
+    <a href="#contact"><i class="fa-solid fa-envelope"></i> Contact</a>
+  </nav>
+
+  <!-- Sections -->
+  <section id="summary">
+    <h2>Professional Summary</h2>
+    <p>
+      Aspiring Data Analyst skilled in <b>SQL, Python, and Power BI</b> with proven experience in 
+      <b>data cleaning, visualization, and business intelligence</b>. Adept at transforming complex 
+      datasets into actionable insights that drive strategic decisions. 
+      Demonstrated expertise through end-to-end projects involving database management, ETL pipelines, 
+      and dashboard creation. Highly motivated to leverage analytical skills in solving business 
+      problems and delivering measurable outcomes.
+    </p>
+  </section>
+
+  <section id="education">
+    <h2>Education</h2>
+    <ul>
+      <li><b>B.Tech, Electronics & Communication Engineering</b> – Institute of Engineering & Technology, Lucknow (2019–2023)</li>
+    </ul>
+  </section>
+
+  <section id="experience">
+    <h2>Experience</h2>
+    <ul>
+      <li>
+        <b>Data Analyst Intern</b> – Unified Mentor (Aug 2023 – Oct 2023)  
+        Conducted data cleaning, EDA, and visualization projects, delivering actionable business insights.
+      </li>
+    </ul>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="project">
+      <h3>📦 E-Commerce Sales Analysis</h3>
+      <p>
+        End-to-end project using <b>MySQL</b> for database management, <b>Python</b> for data cleaning & analytics, 
+        and <b>Power BI</b> for interactive dashboards.  
+        This project includes sales performance, customer segmentation, and payment insights dashboards.
+      </p>
+      <div class="image-gallery">
+        <a href="projects/ecommerce-analysis/Page1.png" target="_blank"><img src="projects/ecommerce-analysis/Page1.png" alt="Dashboard 1"></a>
+        <a href="projects/ecommerce-analysis/Page2.png" target="_blank"><img src="projects/ecommerce-analysis/Page2.png" alt="Dashboard 2"></a>
+        <a href="projects/ecommerce-analysis/Page3.png" target="_blank"><img src="projects/ecommerce-analysis/Page3.png" alt="Dashboard 3"></a>
+      </div>
+      <br>
+      <a href="projects/ecommerce-analysis/index.html" target="_blank" style="display:inline-block; padding:10px 15px; background:#6a11cb; color:white; border-radius:6px; text-decoration:none;">
+        View Full Project <i class="fa-solid fa-arrow-up-right-from-square"></i>
+      </a>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <ul>
+      <li>📊 Excel, SQL, Python (Pandas, NumPy, Matplotlib, Seaborn)</li>
+      <li>📈 Power BI</li>
+      <li>🧹 Data Cleaning & Wrangling</li>
+      <li>🔍 Exploratory Data Analysis (EDA)</li>
+      <li>📉 Data Visualization</li>
+    </ul>
+  </section>
+
+  <section id="certifications">
+    <h2>Certifications</h2>
+    <ul>
+      <li>Data Analytics Training – Unified Mentor (2023)</li>
+    </ul>
+  </section>
+
+  <section id="achievements">
+    <h2>Achievements</h2>
+    <ul>
+      <li>Completed end-to-end analytics projects integrating SQL, Python, and Power BI.</li>
+      <li>Developed scalable database pipelines and dashboards to uncover key insights.</li>
+    </ul>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <div class="contact-links">
+      <div class="contact-card">
+        <i class="fa-solid fa-envelope"></i>
+        <p>Email</p>
+        <a href="mailto:Jaiswalvaibhav139@gmail.com">Jaiswalvaibhav139@gmail.com</a>
+      </div>
+      <div class="contact-card">
+        <i class="fa-brands fa-linkedin"></i>
+        <p>LinkedIn</p>
+        <a href="https://www.linkedin.com/in/vaibhav-jaiswal-995a1119a/" target="_blank">View Profile</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© <span id="year"></span> Vaibhav Jaiswal. Built with ❤️ for data.</p>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const sections = document.querySelectorAll("section");
+    const revealOnScroll = () => {
+      const triggerBottom = window.innerHeight * 0.85;
+      sections.forEach(sec => {
+        const sectionTop = sec.getBoundingClientRect().top;
+        if (sectionTop < triggerBottom) sec.classList.add("visible");
+      });
+    };
+    window.addEventListener("scroll", revealOnScroll);
+    window.addEventListener("load", revealOnScroll);
+
+    // Navbar shrink
+    const navbar = document.getElementById("navbar");
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 50) navbar.classList.add("shrink");
+      else navbar.classList.remove("shrink");
+    });
+
+    // Footer year
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>
