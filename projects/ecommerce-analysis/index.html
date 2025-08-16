@@ -191,15 +191,53 @@
   </section>
 
   <!-- Files -->
-  <section id="files" class="section">
-    <h2><i class="fa-solid fa-folder-open"></i> Project Files</h2>
-    <div class="buttons">
-  <a href="Table_Creation.sql" target="_blank" class="btn">SQL – Table Creation</a>
-  <a href="Table_Import.sql" target="_blank" class="btn">SQL – Table Import</a>
-  <a href="E_commerce_project_sqlalchemy.ipynb" target="_blank" class="btn">Python – Data Cleaning</a>
+<section class="section">
+  <h2><i class="fa-solid fa-folder-open"></i> Project Files</h2>
+  <p>Explore the core project files used in this analysis (view-only, embedded below):</p>
 
-    </div>
-  </section>
+  <!-- SQL Table Creation -->
+  <h3><i class="fa-solid fa-database"></i> SQL – Table Creation</h3>
+  <pre><code>
+-- Example from Table_Creation.sql
+CREATE TABLE customers (
+    customer_id INT PRIMARY KEY,
+    customer_name VARCHAR(100),
+    customer_email VARCHAR(100)
+);
+  </code></pre>
+
+  <!-- SQL Table Import -->
+  <h3><i class="fa-solid fa-database"></i> SQL – Table Import</h3>
+  <pre><code>
+-- Example from Table_Import.sql
+LOAD DATA INFILE 'customers.csv'
+INTO TABLE customers
+FIELDS TERMINATED BY ',' ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
+  </code></pre>
+
+  <!-- Python Notebook -->
+  <h3><i class="fa-brands fa-python"></i> Python – Data Cleaning</h3>
+  <pre><code>
+# Example from Data_Cleaning.ipynb
+import pandas as pd
+from sqlalchemy import create_engine
+
+# Load raw data
+orders = pd.read_csv("orders.csv")
+customers = pd.read_csv("customers.csv")
+
+# Cleaning steps
+orders.dropna(inplace=True)
+customers.drop_duplicates(inplace=True)
+
+# Store cleaned data back to SQL
+engine = create_engine("mysql+pymysql://root:password@localhost/ecommerce")
+orders.to_sql("orders_clean", engine, index=False, if_exists="replace")
+  </code></pre>
+</section>
+
 
   <!-- Conclusion -->
   <section id="conclusion" class="section">
