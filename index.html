@@ -1,279 +1,279 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vaibhav Jaiswal - Data Analyst Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        /* General Reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        html {
-            scroll-behavior: smooth;
-        }
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #f0f4ff, #e8f0ff);
-            color: #333;
-        }
-        /* Header / Hero Section */
-        header {
-            background: linear-gradient(135deg, #004080, #0066cc);
-            color: white;
-            padding: 60px 20px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        header::before {
-            content: "";
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.08) 10%, transparent 10.5%);
-            background-size: 50px 50px;
-            animation: moveBg 10s linear infinite;
-            z-index: 0;
-        }
-        @keyframes moveBg {
-            0% { transform: translate(0,0); }
-            100% { transform: translate(50px, 50px); }
-        }
-        header h1 {
-            font-size: 2.8rem;
-            z-index: 1;
-            position: relative;
-            animation: fadeInDown 1s ease-in-out;
-        }
-        header p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            z-index: 1;
-            position: relative;
-            animation: fadeInUp 1s ease-in-out;
-        }
-        /* Navigation */
-        nav {
-            background: #003366;
-            padding: 12px;
-            text-align: center;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        nav a {
-            color: white;
-            margin: 0 15px;
-            text-decoration: none;
-            font-weight: 500;
-            position: relative;
-            padding-bottom: 4px;
-        }
-        nav a::after {
-            content: "";
-            position: absolute;
-            width: 0%;
-            height: 2px;
-            background: #ffcc00;
-            left: 0;
-            bottom: 0;
-            transition: width 0.3s;
-        }
-        nav a:hover::after {
-            width: 100%;
-        }
-        /* Section Styling */
-        section {
-            padding: 30px;
-            max-width: 1100px;
-            margin: auto;
-            background: white;
-            margin-top: 20px;
-            border-radius: 12px;
-            box-shadow: 0 6px 16px rgba(0,0,0,0.08);
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-        section.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        h2 {
-            color: #004080;
-            margin-bottom: 15px;
-            border-bottom: 2px solid #eee;
-            padding-bottom: 5px;
-        }
-        ul {
-            padding-left: 20px;
-        }
-        /* Project Styling */
-        .project {
-            background: #fafafa;
-            padding: 15px;
-            border-radius: 8px;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        .project:hover {
-            transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 8px 22px rgba(0,0,0,0.15);
-        }
-        .image-gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 10px;
-        }
-        .image-gallery img {
-            width: 100%;
-            border-radius: 6px;
-            transition: transform 0.3s;
-        }
-        .image-gallery img:hover {
-            transform: scale(1.03);
-        }
-        /* Contact Section */
-        .contact-links {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-            margin-top: 15px;
-        }
-        .contact-card {
-            flex: 1;
-            min-width: 250px;
-            padding: 15px;
-            border-radius: 8px;
-            background: #f8faff;
-            text-align: center;
-            transition: all 0.3s;
-            border: 1px solid #ddd;
-        }
-        .contact-card:hover {
-            transform: translateY(-5px);
-            background: #eef4ff;
-            box-shadow: 0 4px 14px rgba(0,0,0,0.08);
-        }
-        .contact-card a {
-            color: #004080;
-            font-weight: bold;
-            text-decoration: none;
-        }
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 20px;
-            margin-top: 20px;
-            background: #003366;
-            color: white;
-        }
-        /* Animations */
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @media (max-width: 768px) {
-            header h1 { font-size: 2.2rem; }
-            nav a { display: inline-block; margin: 10px 5px; }
-            section { margin: 10px; padding: 20px; }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vaibhav Jaiswal - Professional Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #d9afd9, #97d9e1);
+      color: #333;
+    }
+
+    /* Header */
+    header {
+      position: relative;
+      height: 40vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: linear-gradient(135deg, #c9a4c9, #7fb8cf);
+      color: white;
+      overflow: hidden;
+    }
+    header .overlay {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.25);
+    }
+    header h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      text-shadow: 1px 2px 6px rgba(0,0,0,0.3);
+      position: relative;
+      z-index: 1;
+      animation: fadeInDown 1.2s ease-in-out;
+    }
+    header p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+      margin-top: 10px;
+      position: relative;
+      z-index: 1;
+      animation: fadeInUp 1.4s ease-in-out;
+    }
+
+    /* Nav */
+    nav {
+      background: rgba(255,255,255,0.2);
+      backdrop-filter: blur(10px);
+      padding: 12px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid rgba(255,255,255,0.3);
+    }
+    nav a {
+      color: #fff;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: 500;
+      position: relative;
+      padding-bottom: 4px;
+      transition: color 0.3s;
+    }
+    nav a:hover { color: #ffcc00; }
+
+    /* Sections */
+    section {
+      padding: 30px;
+      max-width: 1100px;
+      margin: 20px auto;
+      background: rgba(255,255,255,0.7);
+      border-radius: 15px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    h2 {
+      color: #333;
+      margin-bottom: 15px;
+      border-bottom: 2px solid rgba(0,0,0,0.1);
+      padding-bottom: 5px;
+    }
+    ul { padding-left: 20px; }
+
+    /* Projects */
+    .project {
+      background: rgba(255,255,255,0.6);
+      border-radius: 12px;
+      padding: 15px;
+      margin-bottom: 20px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .project:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 22px rgba(0,0,0,0.15);
+    }
+    .project a {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px 15px;
+      border-radius: 6px;
+      background: linear-gradient(135deg, #ff758c, #ff7eb3);
+      color: white;
+      text-decoration: none;
+      transition: opacity 0.3s;
+    }
+    .project a:hover { opacity: 0.9; }
+
+    /* Contact */
+    .contact-links {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 15px;
+    }
+    .contact-card {
+      flex: 1;
+      min-width: 250px;
+      padding: 15px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.6);
+      backdrop-filter: blur(10px);
+      text-align: center;
+      transition: transform 0.3s;
+    }
+    .contact-card:hover { transform: translateY(-5px); }
+    .contact-card a { color: #333; font-weight: bold; text-decoration: none; }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 20px;
+      margin-top: 20px;
+      background: rgba(0,0,0,0.6);
+      color: white;
+    }
+
+    /* Animations */
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @media (max-width: 768px) {
+      header h1 { font-size: 2.2rem; }
+      nav a { display: inline-block; margin: 10px 5px; }
+      section { margin: 10px; padding: 20px; }
+    }
+  </style>
 </head>
 <body>
 
 <header>
-    <h1>Vaibhav Jaiswal - Data Analyst Portfolio</h1>
-    <p><i class="fa-solid fa-chart-line"></i> Transforming raw data into actionable business insights</p>
+  <div class="overlay"></div>
+  <h1>Vaibhav Jaiswal</h1>
+  <p>Professional Portfolio – Turning data into insights & solutions</p>
 </header>
 
 <nav>
-    <a href="#skills"><i class="fa-solid fa-gears"></i> Skills</a>
-    <a href="#projects"><i class="fa-solid fa-diagram-project"></i> Projects</a>
-    <a href="#contact"><i class="fa-solid fa-envelope"></i> Contact</a>
+  <a href="#summary"><i class="fa-solid fa-user"></i> Summary</a>
+  <a href="#education"><i class="fa-solid fa-graduation-cap"></i> Education</a>
+  <a href="#experience"><i class="fa-solid fa-briefcase"></i> Experience</a>
+  <a href="#projects"><i class="fa-solid fa-diagram-project"></i> Projects</a>
+  <a href="#skills"><i class="fa-solid fa-gears"></i> Skills</a>
+  <a href="#certifications"><i class="fa-solid fa-certificate"></i> Certifications</a>
+  <a href="#achievements"><i class="fa-solid fa-trophy"></i> Achievements</a>
+  <a href="#contact"><i class="fa-solid fa-envelope"></i> Contact</a>
 </nav>
 
-<section id="skills">
-    <h2>Skills</h2>
-    <ul>
-        <li>📊 Excel, SQL, Python (Pandas, NumPy, Matplotlib, Seaborn)</li>
-        <li>📈 Power BI</li>
-        <li>🧹 Data Cleaning & Wrangling</li>
-        <li>🔍 Exploratory Data Analysis (EDA)</li>
-        <li>📉 Data Visualization</li>
-    </ul>
+<section id="summary">
+  <h2>Professional Summary</h2>
+  <p>Data Analyst with strong expertise in SQL, Python, and Power BI. Experienced in handling large datasets, 
+     performing data cleaning, analysis, and visualization to uncover meaningful business insights. Passionate 
+     about transforming raw data into actionable strategies that support decision-making.</p>
+</section>
+
+<section id="education">
+  <h2>Education</h2>
+  <ul>
+    <li><b>Bachelor of Technology (B.Tech) - Computer Science</b><br>
+        United College of Engineering & Research, 2019 – 2023</li>
+  </ul>
+</section>
+
+<section id="experience">
+  <h2>Experience</h2>
+  <ul>
+    <li><b>Data Analyst Intern</b> – Dataman Computer Systems (June 2022 – Aug 2022)<br>
+    - Worked on SQL database queries and Python scripts to analyze structured datasets.<br>
+    - Built dashboards and reports to track KPIs and business performance.</li>
+  </ul>
 </section>
 
 <section id="projects">
-    <h2>Projects</h2>
-    <div class="project">
-        <div class="image-gallery">
-            <a href="projects/ecommerce-analysis/Page1.png" target="_blank">
-                <img src="projects/ecommerce-analysis/Page1.png" alt="Dashboard Page 1">
-            </a>
-            <a href="projects/ecommerce-analysis/Page2.png" target="_blank">
-                <img src="projects/ecommerce-analysis/Page2.png" alt="Dashboard Page 2">
-            </a>
-            <a href="projects/ecommerce-analysis/Page3.png" target="_blank">
-                <img src="projects/ecommerce-analysis/Page3.png" alt="Dashboard Page 3">
-            </a>
-        </div>
-        <h3 style="margin-top: 15px;">📦 E-Commerce Sales Analysis</h3>
-        <p>
-            End-to-end project using MySQL for database, Python for analytics, and Power BI for interactive dashboards.
-            This project includes three main dashboard views — sales trends, customer analysis, and payment insights.
-        </p>
-        <a href="projects/ecommerce-analysis/index.html" target="_blank" style="display: inline-block; background: #004080; color: white; padding: 10px 15px; border-radius: 6px; text-decoration: none; margin-top: 10px;">
-            View Project <i class="fa-solid fa-arrow-up-right-from-square"></i>
-        </a>
-    </div>
+  <h2>Projects</h2>
+  <div class="project">
+    <h3>📦 E-Commerce Sales Analysis</h3>
+    <p>End-to-end analytics project involving MySQL, Python, and Power BI to uncover customer, sales, and 
+       payment insights. Includes interactive dashboards and detailed SQL scripts.</p>
+    <a href="projects/ecommerce-analysis/index.html" target="_blank">
+      View Project <i class="fa-solid fa-arrow-up-right-from-square"></i>
+    </a>
+  </div>
+  <div class="project">
+    <h3>🌍 Global Sales Dashboard</h3>
+    <p>Designed a Power BI dashboard showcasing worldwide sales trends, regional performance, and top-selling 
+       products. Enabled drill-down analytics for business strategy.</p>
+  </div>
+</section>
+
+<section id="skills">
+  <h2>Skills</h2>
+  <ul>
+    <li>📊 Excel, SQL, Python (Pandas, NumPy, Matplotlib, Seaborn)</li>
+    <li>📈 Power BI for Dashboarding</li>
+    <li>🧹 Data Cleaning & Wrangling</li>
+    <li>🔍 Exploratory Data Analysis (EDA)</li>
+    <li>📉 Data Visualization</li>
+  </ul>
+</section>
+
+<section id="certifications">
+  <h2>Certifications</h2>
+  <ul>
+    <li>SQL for Data Science – Coursera</li>
+    <li>Data Visualization with Python – IBM</li>
+    <li>Power BI Fundamentals – Microsoft</li>
+  </ul>
+</section>
+
+<section id="achievements">
+  <h2>Achievements</h2>
+  <ul>
+    <li>Ranked top 5 in college data analytics competition (2022)</li>
+    <li>Created a fully functional analytics dashboard for an academic project used by faculty</li>
+  </ul>
 </section>
 
 <section id="contact">
-    <h2>Contact</h2>
-    <div class="contact-links">
-        <div class="contact-card">
-            <i class="fa-solid fa-envelope"></i>
-            <p>Email</p>
-            <a href="mailto:Jaiswalvaibhav139@gmail.com">Jaiswalvaibhav139@gmail.com</a>
-        </div>
-        <div class="contact-card">
-            <i class="fa-brands fa-linkedin"></i>
-            <p>LinkedIn</p>
-            <a href="https://www.linkedin.com/in/vaibhav-jaiswal-995a1119a/" target="_blank">View Profile</a>
-        </div>
+  <h2>Contact</h2>
+  <div class="contact-links">
+    <div class="contact-card">
+      <i class="fa-solid fa-envelope"></i>
+      <p>Email</p>
+      <a href="mailto:Jaiswalvaibhav139@gmail.com">Jaiswalvaibhav139@gmail.com</a>
     </div>
+    <div class="contact-card">
+      <i class="fa-brands fa-linkedin"></i>
+      <p>LinkedIn</p>
+      <a href="https://www.linkedin.com/in/vaibhav-jaiswal-995a1119a/" target="_blank">View Profile</a>
+    </div>
+  </div>
 </section>
 
 <footer>
-    <p>© 2025 Vaibhav Jaiswal. Built with ❤️ for data.</p>
+  <p>© 2025 Vaibhav Jaiswal. Built with ❤️ for data & design.</p>
 </footer>
 
 <script>
-    // Scroll reveal effect
-    const sections = document.querySelectorAll("section");
-    const revealOnScroll = () => {
-        const triggerBottom = window.innerHeight * 0.85;
-        sections.forEach(sec => {
-            const sectionTop = sec.getBoundingClientRect().top;
-            if (sectionTop < triggerBottom) {
-                sec.classList.add("visible");
-            }
-        });
-    };
-    window.addEventListener("scroll", revealOnScroll);
-    window.addEventListener("load", revealOnScroll);
-</script>
-
-</body>
-</html>
+  // Scroll reveal effect
+  const
