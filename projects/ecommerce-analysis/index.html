@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E-Commerce Data Analysis</title>
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      background: linear-gradient(135deg, #0f9b0f, #38ef7d); /* Teal green gradient */
+      color: #222;
+      overflow-x: hidden;
+    }
+
+    header {
+      background: rgba(0, 0, 0, 0.6);
+      color: #fff;
+      padding: 1.5rem;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      letter-spacing: 1px;
+    }
+
+    nav {
+      margin-top: 0.5rem;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #ffdf6c;
+    }
+
+    section {
+      padding: 3rem 8%;
+      background: rgba(255, 255, 255, 0.9);
+      margin: 2rem auto;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    section h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #0f5132;
+      border-bottom: 3px solid #20c997;
+      display: inline-block;
+      padding-bottom: 0.3rem;
+    }
+
+    section p {
+      margin-bottom: 1rem;
+      font-size: 1.05rem;
+      color: #333;
+    }
+
+    img {
+      max-width: 100%;
+      border-radius: 12px;
+      margin-top: 1rem;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease;
+    }
+
+    img:hover {
+      transform: scale(1.03);
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 10px 18px;
+      background: #20c997;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+      background: #198754;
+      transform: translateY(-2px);
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: rgba(0, 0, 0, 0.75);
+      color: #eee;
+      margin-top: 2rem;
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: #38ef7d;
+      text-decoration: none;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>E-Commerce Data Analysis</h1>
+    <nav>
+      <a href="#overview">Overview</a>
+      <a href="#schema">Schema</a>
+      <a href="#dashboard">Dashboard</a>
+      <a href="#insights">Insights</a>
+      <a href="#files">Files</a>
+    </nav>
+  </header>
+
+  <section id="overview">
+    <h2>Project Overview</h2>
+    <p>
+      This project analyzes raw e-commerce transaction data, transforming it into meaningful insights through a structured ETL process:
+    </p>
+    <ul>
+      <li>Raw data was first imported into a MySQL database.</li>
+      <li>Data cleaning and preprocessing were performed in Python (Pandas & SQLAlchemy).</li>
+      <li>Cleaned datasets were stored back in MySQL as structured tables.</li>
+      <li>Power BI was connected to the processed database for interactive dashboards and insights.</li>
+    </ul>
+    <p>
+      This pipeline ensures reliability, scalability, and clarity in extracting actionable business insights.
+    </p>
+  </section>
+
+  <section id="schema">
+    <h2>Database Schema</h2>
+    <p>The schema diagram illustrates relationships between tables in the cleaned database.</p>
+    <img src="Schema_diagram.png" alt="Database Schema Diagram">
+  </section>
+
+  <section id="dashboard">
+    <h2>Power BI Dashboard</h2>
+    <p>
+      The dashboard provides interactive visualizations of sales trends, customer behavior, and product performance.
+    </p>
+    <img src="Page1.png" alt="Dashboard Page 1">
+    <img src="Page2.png" alt="Dashboard Page 2">
+    <img src="Page3.png" alt="Dashboard Page 3">
+  </section>
+
+  <section id="insights">
+    <h2>Key Insights</h2>
+    <ul>
+      <li>Top-performing product categories and sellers identified.</li>
+      <li>Seasonal and regional purchase trends tracked.</li>
+      <li>Customer segmentation done using RFM analysis.</li>
+      <li>Delivery performance metrics highlighted for business optimization.</li>
+    </ul>
+  </section>
+
+  <section id="files">
+    <h2>Files Used in Project</h2>
+    <p>Click below to view the raw files (opens in a new tab):</p>
+
+    <a class="btn" href="https://github.com/pyroj08/ecommerce-analysis/blob/main/Table_Creation.sql" target="_blank">View Table_Creation.sql</a><br>
+    <a class="btn" href="https://github.com/pyroj08/ecommerce-analysis/blob/main/Table_Import.sql" target="_blank">View Table_Import.sql</a><br>
+    <a class="btn" href="https://github.com/pyroj08/ecommerce-analysis/blob/main/ecommerce_cleaning.ipynb" target="_blank">View ecommerce_cleaning.ipynb</a>
+
+  </section>
+
+  <footer>
+    <p>Designed by Vaibhav | <a href="https://github.com/pyroj08" target="_blank">GitHub</a></p>
+  </footer>
+
+</body>
+</html>
