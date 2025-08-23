@@ -30,8 +30,8 @@
     /* Container Panels (Glass) */
     .panel {
       max-width: 1100px;
-      margin: 40px auto; /* Increased spacing */
-      padding: 30px; /* Increased padding */
+      margin: 40px auto;
+      padding: 30px;
       background: rgba(255, 248, 240, 0.85); /* Light cream tint */
       border: 1px solid rgba(252, 182, 159, 0.6); /* Soft peach border */
       border-radius: 16px;
@@ -56,7 +56,7 @@
       background: #FCB69F; /* Soft peach accent */
       margin: 8px auto 0; border-radius: 3px;
     }
-    /* UPGRADED: Typography */
+    /* Typography */
     p, ul { 
       font-family: 'Lora', serif;
       font-size: 1.05rem;
@@ -97,13 +97,11 @@
     }
     .btn-peach:hover { transform: translateY(-3px); box-shadow: 0 6px 15px rgba(0,0,0,0.2); }
 
-    /* --- ADDED: New UI/UX Styles --- */
+    /* --- New UI/UX Styles --- */
     .kpi-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 20px;
-        text-align: center;
-        margin-top: 20px;
+        gap: 20px; text-align: center; margin-top: 20px;
     }
     .kpi-item .kpi-number {
         font-size: 2.5rem;
@@ -113,40 +111,23 @@
     .kpi-item .kpi-label {
         font-family: 'Poppins', sans-serif;
         font-size: 0.9rem;
-        color: #5D4037;
-        text-align: center;
-        margin: 0;
+        color: #5D4037; text-align: center; margin: 0;
     }
     .insights-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 20px;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;
     }
     .insight-card {
-        background: rgba(255, 255, 255, 0.5);
-        padding: 20px;
-        border-radius: 12px;
-        text-align: center;
+        background: rgba(255, 255, 255, 0.5); padding: 20px; border-radius: 12px; text-align: center;
     }
-    .insight-card i {
-        font-size: 2rem;
-        color: #BF360C;
-        margin-bottom: 10px;
-    }
-    .insight-card h3 {
-        font-size: 1.1rem;
-        color: #5D4037;
-        margin-bottom: 5px;
-    }
+    .insight-card i { font-size: 2rem; color: #BF360C; margin-bottom: 10px; }
+    .insight-card h3 { font-size: 1.1rem; color: #5D4037; margin-bottom: 5px; }
     .insight-card p { text-align: center; }
     
     footer { text-align: center; padding: 2rem; font-size: 0.9rem; margin-top: 2rem; }
     footer p { color: #5D4037; text-align: center; }
     .project-nav {
-        display: flex;
-        justify-content: center;
-        gap: 15px;
-        margin-top: 1rem;
+        display: flex; justify-content: center; gap: 15px; margin-top: 1rem;
     }
     /* --- End of New Styles --- */
 
@@ -157,7 +138,7 @@
 
   <nav id="navbar">
     <a href="../../index.html"><i class="fa-solid fa-arrow-left"></i> Back to Portfolio</a>
-    <a href="#overview">Overview</a>
+    <a href="#questions">Questions</a>
     <a href="#dashboard">Dashboard</a>
     <a href="#insights">Insights</a>
     <a href="#tools">Tools</a>
@@ -168,6 +149,29 @@
     <p style="text-align: center; max-width: 700px; margin: auto;">An in-depth analysis of a global supply chain dataset, using Python for data processing and Tableau for creating interactive visualizations.</p>
   </header>
   
+  <section id="questions" class="panel">
+      <h2><i class="fa-solid fa-briefcase"></i> Key Business Questions</h2>
+      <p style="text-align: center;">This analysis was designed to answer crucial operational and strategic questions for the business:</p>
+      <div class="insights-grid">
+          <div class="insight-card">
+              <i class="fa-solid fa-truck-ramp-box"></i>
+              <h3>Which shipping methods are least efficient?</h3>
+          </div>
+          <div class="insight-card">
+              <i class="fa-solid fa-dollar-sign"></i>
+              <h3>What are our most profitable product lines?</h3>
+          </div>
+          <div class="insight-card">
+              <i class="fa-solid fa-users"></i>
+              <h3>Which customer segments drive the most sales?</h3>
+          </div>
+          <div class="insight-card">
+              <i class="fa-solid fa-map-location-dot"></i>
+              <h3>Where are our key geographic markets?</h3>
+          </div>
+      </div>
+  </section>
+
   <section class="panel">
       <h2><i class="fa-solid fa-bullseye"></i> At a Glance: Key Results</h2>
       <div class="kpi-grid">
@@ -186,16 +190,25 @@
       </div>
   </section>
 
-  <section id="overview" class="panel">
-    <h2><i class="fa-solid fa-chart-line"></i> Project Overview</h2>
-    <p>This project analyzes a real-world supply chain dataset to identify key trends and inefficiencies. The workflow includes data loading and cleaning, in-depth Exploratory Data Analysis (EDA) using Python to uncover patterns, and the development of a comprehensive Tableau dashboard for interactive data visualization.</p>
-  </section>
-
   <section id="dashboard" class="panel">
     <h2><i class="fa-solid fa-chart-pie"></i> Tableau Dashboard</h2>
     <p>The interactive dashboard provides multiple views into the supply chain data, focusing on delivery status, sales performance, and profitability across different product categories and regions.</p>
     <img src="Page1_supplychain.png" alt="Dashboard Page 1: Supply Chain Operations">
     <img src="Page2_supplychain.png" alt="Dashboard Page 2: Sales and Profit Performance">
+  </section>
+
+  <section id="challenges" class="panel">
+      <h2><i class="fa-solid fa-wrench"></i> Challenges & Solutions</h2>
+      <ul>
+          <li>
+              <strong>Challenge:</strong> The dataset contained over 180,000 records with inconsistent data types and missing values.
+              <br><strong>Solution:</strong> I implemented a data cleaning pipeline in Python to standardize data formats, handle null values, and create new features like 'shipping_variance' for deeper analysis.
+          </li>
+          <li>
+              <strong>Challenge:</strong> Identifying the root cause of delivery delays required analyzing multiple variables simultaneously.
+              <br><strong>Solution:</strong> I used Tableau to create an interactive dashboard with cross-filtering, allowing stakeholders to dynamically explore the relationship between shipping mode, region, and delivery status.
+          </li>
+      </ul>
   </section>
 
   <section id="insights" class="panel">
@@ -232,15 +245,6 @@
       <li><strong>Tableau:</strong> The primary tool for building the final, interactive dashboards and performing deep-dive visual analysis.</li>
       <li><strong>Jupyter Notebook:</strong> The environment used for coding, documenting the analysis process, and presenting findings.</li>
     </ul>
-  </section>
-
-  <section id="files" class="panel">
-    <h2><i class="fa-solid fa-folder-open"></i> Project Files</h2>
-    <p>Explore the project's source code and interactive workbook by following the links below.</p>
-    <div class="buttons">
-      <a href="https://nbviewer.org/github/Pyroj08/SupplyChain_analysis/blob/main/Supply_Chain.ipynb" target="_blank" class="btn-peach"><i class="fa-brands fa-python"></i> View Python Code</a>
-      <a href="Supply_Chain.twbx" target="_blank" class="btn-peach" download><i class="fa-solid fa-download"></i> Download Tableau File</a>
-    </div>
   </section>
 
   <footer>
