@@ -132,7 +132,9 @@
     }
     .insights-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;
+        /* UPDATED: Changed to 4 columns for wide screens */
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
     }
     .insight-card {
         background: rgba(255, 255, 255, 0.5); padding: 20px; border-radius: 12px; text-align: center;
@@ -147,7 +149,17 @@
         display: flex; justify-content: center; gap: 15px; margin-top: 1rem;
     }
     
-    @media (max-width: 768px) { /* media query updates */ }
+    /* UPDATED: Added media queries for the insights grid */
+    @media (max-width: 900px) {
+        .insights-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+    @media (max-width: 500px) {
+        .insights-grid {
+            grid-template-columns: 1fr;
+        }
+    }
   </style>
 </head>
 <body>
@@ -155,8 +167,6 @@
   <nav id="navbar">
     <a href="../../index.html"><i class="fa-solid fa-arrow-left"></i> Back to Portfolio</a>
     <a href="#questions">Questions</a>
-    <a href="#overview">Overview</a>
-    <a href="#schema">Schema</a>
     <a href="#dashboard">Dashboard</a>
     <a href="#insights">Insights</a>
     <a href="#tools">Tools</a>
