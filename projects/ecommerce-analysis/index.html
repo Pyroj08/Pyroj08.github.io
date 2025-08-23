@@ -96,9 +96,8 @@
     }
     .btn-sunrise:hover { transform: translateY(-3px); box-shadow: 0 6px 15px rgba(0,0,0,0.2); }
 
-    /* --- ADDED: High-Contrast Panel Style with Pattern --- */
+    /* High-Contrast Panel Style with Pattern */
     .panel-dark {
-      /* ADDED: Subtle pattern layer on top of the gradient */
       background: 
         repeating-linear-gradient(
           45deg,
@@ -156,6 +155,8 @@
   <nav id="navbar">
     <a href="../../index.html"><i class="fa-solid fa-arrow-left"></i> Back to Portfolio</a>
     <a href="#questions">Questions</a>
+    <a href="#overview">Overview</a>
+    <a href="#schema">Schema</a>
     <a href="#dashboard">Dashboard</a>
     <a href="#insights">Insights</a>
     <a href="#tools">Tools</a>
@@ -207,6 +208,23 @@
       </div>
   </section>
 
+  <section id="overview" class="panel">
+    <h2><i class="fa-solid fa-chart-line"></i> Project Overview</h2>
+    <p>This project demonstrates the complete workflow for analyzing e-commerce sales data:</p>
+    <ul>
+      <li>Imported raw CSV files into MySQL database.</li>
+      <li>Cleaned & transformed data in Python (using Pandas & SQLAlchemy).</li>
+      <li>Stored cleaned dataset back into MySQL for structured access.</li>
+      <li>Built an interactive Power BI dashboard to generate insights.</li>
+    </ul>
+  </section>
+  
+  <section id="schema" class="panel">
+    <h2><i class="fa-solid fa-database"></i> Database Schema</h2>
+    <p>The schema illustrates the relational structure of the e-commerce dataset, detailing tables for orders, products, customers, and payments to ensure data integrity and efficient querying.</p>
+    <img src="Schema_diagram.png" alt="Database Schema Diagram">
+  </section>
+
   <section id="dashboard" class="panel">
     <h2><i class="fa-solid fa-chart-pie"></i> Power BI Dashboard</h2>
     <p>A preview of the interactive dashboard pages, which highlight KPIs, sales trends over time, customer segmentation, and product performance.</p>
@@ -215,20 +233,6 @@
     <img src="Page3.png" alt="Dashboard Page 3: Product and Payment Insights">
   </section>
   
-  <section id="challenges" class="panel">
-      <h2><i class="fa-solid fa-wrench"></i> Challenges & Solutions</h2>
-      <ul>
-          <li>
-              <strong>Challenge:</strong> The raw dataset contained inconsistent country codes and missing postal codes.
-              <br><strong>Solution:</strong> I developed a Python script to standardize the country names and used an external API to impute the missing postal codes, ensuring data accuracy.
-          </li>
-          <li>
-              <strong>Challenge:</strong> Initial dashboard load times were slow due to the large dataset.
-              <br><strong>Solution:</strong> I optimized the data model in Power BI by creating summary tables and using more efficient DAX measures, which improved performance by 40%.
-          </li>
-      </ul>
-  </section>
-
   <section id="insights" class="panel">
     <h2><i class="fa-solid fa-lightbulb"></i> Key Insights</h2>
     <div class="insights-grid">
@@ -263,6 +267,21 @@
       <li><strong>Key Libraries (Pandas, SQLAlchemy):</strong> Pandas for data manipulation and analysis; SQLAlchemy for seamless integration between Python and the MySQL database.</li>
       <li><strong>Power BI:</strong> Employed for creating a dynamic and interactive multi-page dashboard to visualize findings and generate business insights.</li>
     </ul>
+  </section>
+
+  <section id="files" class="panel">
+    <h2><i class="fa-solid fa-folder-open"></i> Project Files</h2>
+    <p>Access the core project files, including the SQL scripts for database setup and the Jupyter Notebook for the data cleaning process.</p>
+    <div class="buttons">
+      <a href="table_creation.html" target="_blank" class="btn-sunrise"><i class="fa-solid fa-database"></i> SQL – Table Creation</a>
+      <a href="table_import.html" target="_blank" class="btn-sunrise"><i class="fa-solid fa-upload"></i> SQL – Table Import</a>
+      <a href="https://nbviewer.org/github/Pyroj08/Pyroj08.github.io/blob/main/projects/ecommerce-analysis/E_commerce_project_sqlalchemy.ipynb" target="_blank" class="btn-sunrise"><i class="fa-brands fa-python"></i> Python Cleaning Notebook</a>
+    </div>
+  </section>
+
+  <section id="conclusion" class="panel">
+    <h2><i class="fa-solid fa-circle-check"></i> Conclusion</h2>
+    <p>This project successfully demonstrates how a combination of standard industry tools—SQL, Python, and Power BI—can create a robust and scalable workflow. By transforming raw, unstructured e-commerce data into a clean, relational format and visualizing the results, we can uncover actionable business insights that drive strategic decision-making and identify areas for operational improvement.</p>
   </section>
 
   <footer>
