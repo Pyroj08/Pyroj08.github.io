@@ -14,7 +14,6 @@
     body {
       font-family: 'Poppins', sans-serif;
       color: #5D4037; /* Dark warm brown */
-      /* Soft Peach Gradient */
       background: linear-gradient(270deg, #FFECD2, #FCB69F);
       background-size: 400% 400%;
       animation: gradientAnimation 18s ease infinite;
@@ -32,8 +31,8 @@
       max-width: 1100px;
       margin: 40px auto;
       padding: 30px;
-      background: rgba(255, 248, 240, 0.85); /* Light cream tint */
-      border: 1px solid rgba(252, 182, 159, 0.6); /* Soft peach border */
+      background: rgba(255, 248, 240, 0.85);
+      border: 1px solid rgba(252, 182, 159, 0.6);
       border-radius: 16px;
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
@@ -48,12 +47,12 @@
       font-family: 'Poppins', sans-serif;
       letter-spacing: 0.2px; text-align: center; 
     }
-    h1 { font-size: 2.3rem; color: #BF360C; } /* Deep terracotta */
+    h1 { font-size: 2.3rem; color: #BF360C; }
     h2 { font-size: 1.6rem; margin-bottom: 12px; color: #BF360C; position: relative; }
     h2 i { margin-right: 8px; }
     h2::after {
       content: ""; display: block; width: 64px; height: 3px;
-      background: #FCB69F; /* Soft peach accent */
+      background: #FCB69F;
       margin: 8px auto 0; border-radius: 3px;
     }
     /* Typography */
@@ -69,7 +68,7 @@
     nav {
       position: sticky; top: 0; z-index: 1000; display: flex;
       flex-wrap: wrap; justify-content: center; gap: 12px 18px;
-      background: rgba(191, 54, 12, 0.88); /* Deep orange/terracotta */
+      background: rgba(191, 54, 12, 0.88);
       backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
       padding: 12px 10px; border-bottom: 1px solid rgba(252, 182, 159, 0.4);
       transition: padding .2s ease, background .2s ease, box-shadow .2s ease;
@@ -89,7 +88,7 @@
       border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }
     .buttons { text-align: center; margin-top: 1.2rem; }
-    .btn-peach { /* Button style */
+    .btn-peach {
       display: inline-block; margin: 0.4rem; padding: 0.7rem 1.5rem;
       font-size: 0.95rem; font-weight: 600; text-decoration: none; border-radius: 30px;
       background: linear-gradient(90deg, #FCB69F, #FF8A80);
@@ -97,22 +96,50 @@
     }
     .btn-peach:hover { transform: translateY(-3px); box-shadow: 0 6px 15px rgba(0,0,0,0.2); }
 
-    /* --- New UI/UX Styles --- */
+    /* --- ADDED: High-Contrast Panel Style --- */
+    .panel-dark {
+      background: 
+        repeating-linear-gradient(
+          45deg,
+          rgba(255, 255, 255, 0.03),
+          rgba(255, 255, 255, 0.03) 1px,
+          transparent 1px,
+          transparent 15px
+        ),
+        linear-gradient(120deg, #BF360C, #79220A);
+      color: #FFFAF0;
+    }
+    .panel-dark h2 { color: #FFFAF0; }
+    .panel-dark h2::after { background: rgba(255, 248, 240, 0.5); }
+    .panel-dark p { color: #FFFAF0; }
+    .panel-dark .kpi-item .kpi-number { color: #FCB69F; }
+    .panel-dark .kpi-item .kpi-label { color: #FFFAF0; }
+    .panel-dark .insight-card { background: rgba(0,0,0,0.2); }
+    .panel-dark .insight-card i { color: #FCB69F; }
+    .panel-dark .insight-card h3 { color: #FFFAF0; }
+
     .kpi-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
         gap: 20px; text-align: center; margin-top: 20px;
     }
     .kpi-item .kpi-number {
-        font-size: 2.5rem;
-        font-weight: 600;
-        color: #BF360C;
+        font-size: 2.5rem; font-weight: 600;
     }
     .kpi-item .kpi-label {
-        font-family: 'Poppins', sans-serif;
-        font-size: 0.9rem;
-        color: #5D4037; text-align: center; margin: 0;
+        font-family: 'Poppins', sans-serif; font-size: 0.9rem;
+        text-align: center; margin: 0;
     }
+    .data-cleaning-demo {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px; margin-top: 20px;
+    }
+    .data-cleaning-demo pre {
+        background: rgba(0,0,0,0.05); padding: 15px; border-radius: 8px;
+        font-size: 0.85rem; white-space: pre-wrap; word-wrap: break-word;
+    }
+    .data-cleaning-demo h3 { font-size: 1rem; margin-bottom: 10px; color: #5D4037; }
     .insights-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;
@@ -120,8 +147,8 @@
     .insight-card {
         background: rgba(255, 255, 255, 0.5); padding: 20px; border-radius: 12px; text-align: center;
     }
-    .insight-card i { font-size: 2rem; color: #BF360C; margin-bottom: 10px; }
-    .insight-card h3 { font-size: 1.1rem; color: #5D4037; margin-bottom: 5px; }
+    .insight-card i { font-size: 2rem; margin-bottom: 10px; }
+    .insight-card h3 { font-size: 1.1rem; margin-bottom: 5px; }
     .insight-card p { text-align: center; }
     
     footer { text-align: center; padding: 2rem; font-size: 0.9rem; margin-top: 2rem; }
@@ -129,8 +156,7 @@
     .project-nav {
         display: flex; justify-content: center; gap: 15px; margin-top: 1rem;
     }
-    /* --- End of New Styles --- */
-
+    
     @media (max-width: 768px) { /* media query updates */ }
   </style>
 </head>
@@ -139,6 +165,7 @@
   <nav id="navbar">
     <a href="../../index.html"><i class="fa-solid fa-arrow-left"></i> Back to Portfolio</a>
     <a href="#questions">Questions</a>
+    <a href="#overview">Overview</a>
     <a href="#dashboard">Dashboard</a>
     <a href="#insights">Insights</a>
     <a href="#tools">Tools</a>
@@ -149,7 +176,7 @@
     <p style="text-align: center; max-width: 700px; margin: auto;">An in-depth analysis of a global supply chain dataset, using Python for data processing and Tableau for creating interactive visualizations.</p>
   </header>
   
-  <section id="questions" class="panel">
+  <section id="questions" class="panel panel-dark">
       <h2><i class="fa-solid fa-briefcase"></i> Key Business Questions</h2>
       <p style="text-align: center;">This analysis was designed to answer crucial operational and strategic questions for the business:</p>
       <div class="insights-grid">
@@ -172,7 +199,7 @@
       </div>
   </section>
 
-  <section class="panel">
+  <section class="panel panel-dark">
       <h2><i class="fa-solid fa-bullseye"></i> At a Glance: Key Results</h2>
       <div class="kpi-grid">
           <div class="kpi-item">
@@ -188,6 +215,29 @@
               <p class="kpi-label">Highest Sales Region</p>
           </div>
       </div>
+  </section>
+
+  <section id="overview" class="panel">
+    <h2><i class="fa-solid fa-chart-line"></i> Project Overview</h2>
+    <p>This project analyzes a real-world supply chain dataset to identify key trends and inefficiencies. The workflow includes data loading, in-depth cleaning and EDA using Python to uncover patterns, and the development of a Tableau dashboard for visualization.</p>
+    
+    <h3>Data Cleaning in Action</h3>
+    <div class="data-cleaning-demo">
+        <div>
+            <h3>Before</h3>
+            <pre><code>id,shipping_mode,order_city,late_delivery
+1,Standard Class,New York,1
+2,first class,los_angeles,0
+3,,Miami,1</code></pre>
+        </div>
+        <div>
+            <h3>After</h3>
+            <pre><code>id,shipping_mode,order_city,late_delivery
+1,Standard Class,New York,1
+2,First Class,Los Angeles,0
+3,Not Specified,Miami,1</code></pre>
+        </div>
+    </div>
   </section>
 
   <section id="dashboard" class="panel">
@@ -245,6 +295,15 @@
       <li><strong>Tableau:</strong> The primary tool for building the final, interactive dashboards and performing deep-dive visual analysis.</li>
       <li><strong>Jupyter Notebook:</strong> The environment used for coding, documenting the analysis process, and presenting findings.</li>
     </ul>
+  </section>
+
+  <section id="files" class="panel">
+    <h2><i class="fa-solid fa-folder-open"></i> Project Files</h2>
+    <p>Explore the project's source code and interactive workbook by following the links below.</p>
+    <div class="buttons">
+      <a href="https://nbviewer.org/github/Pyroj08/SupplyChain_analysis/blob/main/Supply_Chain.ipynb" target="_blank" class="btn-peach"><i class="fa-brands fa-python"></i> View Python Code</a>
+      <a href="Supply_Chain.twbx" target="_blank" class="btn-peach" download><i class="fa-solid fa-download"></i> Download Tableau File</a>
+    </div>
   </section>
 
   <footer>
