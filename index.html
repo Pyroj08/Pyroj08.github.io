@@ -4,6 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Vaibhav Jaiswal - Professional Portfolio</title>
+  
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <meta name="description" content="Vaibhav Jaiswal's professional portfolio. A Data Analyst skilled in SQL, Python, and Power BI." />
+  <meta property="og:title" content="Vaibhav Jaiswal - Data Analyst Portfolio" />
+  <meta property="og:description" content="Showcasing projects in data analysis, visualization, and business intelligence." />
+  <meta property="og:image" content="assets/Profile.png" />
+  <meta property="og:url" content="https://your-username.github.io" />
+
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
@@ -12,25 +20,26 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
-    font-family: 'Poppins', sans-serif;
-    color: #2b1d1d;
-    background: linear-gradient(270deg, #ff7e5f, #feb47b, #86a8e7, #91eae4);
-    background-size: 800% 800%;
-    animation: gradientAnimation 18s ease infinite;
-    min-height: 100vh;
-  }
+      font-family: 'Poppins', sans-serif;
+      color: #3D1B20; /* UPDATED: Dark warm text color */
+      /* UPDATED: Sunset Flare Gradient */
+      background: linear-gradient(270deg, #ff4e50, #f9d423);
+      background-size: 400% 400%;
+      animation: gradientAnimation 18s ease infinite;
+      min-height: 100vh;
+    }
 
-  @keyframes gradientAnimation {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-  }
+    @keyframes gradientAnimation {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
 
-    /* Reusable button (for project CTAs) */
+    /* UPDATED: Reusable button */
     .btn-sunrise {
       display: inline-block;
       padding: 10px 14px;
-      background: linear-gradient(90deg, #ff7e5f, #feb47b);
+      background: linear-gradient(90deg, #ff4e50, #f09819); /* Fiery orange gradient */
       color: #fff;
       border-radius: 10px;
       text-decoration: none;
@@ -41,13 +50,13 @@
       transform: translateY(-1px);
     }
 
-    /* Container Panels (Glass) */
+    /* UPDATED: Container Panels (Glass) */
     .panel {
       max-width: 1100px;
       margin: 28px auto;
       padding: 26px;
-      background: rgba(255, 248, 240, 0.72);
-      border: 1px solid rgba(255, 220, 190, 0.55);
+      background: rgba(255, 250, 245, 0.75); /* Warmer tint */
+      border: 1px solid rgba(255, 225, 200, 0.6); /* Warmer border */
       border-radius: 16px;
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
@@ -55,7 +64,7 @@
       opacity: 0;
       transform: translateY(18px);
       transition: opacity .8s ease, transform .8s ease;
-      color: #2c1a1a;
+      color: #3D1B20; /* Main text color */
     }
     .panel.visible { opacity: 1; transform: translateY(0); }
 
@@ -63,7 +72,7 @@
     h2 {
       font-size: 1.6rem;
       margin-bottom: 12px;
-      color: #8b1a42; /* deep sunrise red */
+      color: #c0392b; /* UPDATED: Deep fiery red */
       position: relative;
     }
     h2 i { margin-right: 8px; }
@@ -72,14 +81,18 @@
       display: block;
       width: 64px;
       height: 3px;
-      background: #ffcc70; /* golden accent line */
+      background: #f9d423; /* UPDATED: Bright yellow accent */
       margin-top: 8px;
       border-radius: 3px;
     }
-    p { line-height: 1.7; color: #3a2b2b; }
-    ul { padding-left: 20px; line-height: 1.8; color: #3a2b2b; }
+    p, ul { 
+        line-height: 1.7; 
+        color: #4a2a2a; /* UPDATED: Softer warm text */
+    }
+    ul { padding-left: 20px; }
 
-    /* Navbar */
+
+    /* UPDATED: Navbar */
     nav {
       position: sticky;
       top: 0;
@@ -88,16 +101,16 @@
       flex-wrap: nowrap;
       justify-content: center;
       gap: 12px 18px;
-      background: rgba(139, 26, 66, 0.85); /* warm plum */
+      background: rgba(61, 27, 32, 0.88); /* Dark warm purple/red */
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
       padding: 12px 10px;
-      border-bottom: 1px solid rgba(255, 230, 200, 0.4);
+      border-bottom: 1px solid rgba(249, 212, 35, 0.4); /* Yellow accent border */
       transition: padding .2s ease, background .2s ease, box-shadow .2s ease;
     }
     nav.shrink {
       padding: 8px 8px;
-      background: rgba(139, 26, 66, 0.92);
+      background: rgba(61, 27, 32, 0.95); /* More opaque on scroll */
       box-shadow: 0 6px 18px rgba(0,0,0,0.18);
     }
     nav a {
@@ -111,24 +124,8 @@
       text-align: center;
     }
     nav a:hover, nav a.active {
-      background: rgba(255, 180, 130, 0.35);
+      background: rgba(249, 212, 35, 0.25); /* Yellow highlight */
       color: #fff;
-    }
-
-    /* Mobile Navbar: 2 rows × 4 columns */
-    @media (max-width: 768px) {
-      nav {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 10px;
-        justify-items: center;
-        align-items: center;
-      }
-      nav a {
-        width: 100%;
-        font-size: 0.85rem;
-        padding: 8px 6px;
-      }
     }
 
     /* Header */
@@ -143,7 +140,7 @@
     }
     .profile-pic {
       width: 140px; height: 140px; border-radius: 50%;
-      object-fit: cover; border: 4px solid rgba(255,235,220,0.9);
+      object-fit: cover; border: 4px solid rgba(255,250,245,0.9);
       background: rgba(255,255,255,0.3);
       box-shadow: 0 8px 24px rgba(0,0,0,0.2);
       transition: transform .35s ease, box-shadow .35s ease;
@@ -152,44 +149,44 @@
     .profile-pic:hover { transform: scale(1.03); box-shadow: 0 12px 28px rgba(0,0,0,0.25); }
     .hero .meta h1 { font-size: 2.2rem; font-weight: 600; color: #fffaf6; }
     .hero .meta p.tagline { margin-top: 4px; opacity: 0.9; color: #fff6f0; }
-    .quick-links { margin-top: 10px; display: flex; gap: 12px; }
+    .quick-links { margin-top: 10px; display: flex; gap: 12px; flex-wrap: wrap; }
     .quick-links a {
       display: inline-flex; align-items: center; gap: 8px;
-      text-decoration: none; color: #4a1a1a; font-weight: 500;
-      background: rgba(255,240,220,0.65);
-      border: 1px solid rgba(255,220,200,0.55);
+      text-decoration: none; color: #4c1a22; font-weight: 500; /* UPDATED */
+      background: rgba(255, 250, 245, 0.7); /* UPDATED */
+      border: 1px solid rgba(255, 225, 200, 0.6); /* UPDATED */
       padding: 8px 12px; border-radius: 10px;
       transition: transform .2s ease, box-shadow .2s ease, background .3s ease;
       backdrop-filter: blur(6px);
     }
     .quick-links a:hover {
       transform: translateY(-2px);
-      background: rgba(255,240,220,0.9);
+      background: rgba(255, 250, 245, 0.9); /* UPDATED */
       box-shadow: 0 8px 20px rgba(0,0,0,0.12);
     }
 
-    /* Certifications Grid */
+    /* UPDATED: Certifications Grid */
     .cert-grid {
       display: grid; gap: 14px;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     }
     .cert-card {
       display: flex; align-items: center; gap: 12px;
-      background: rgba(255,240,220,0.7);
-      border: 1px solid rgba(255,200,180,0.6);
+      background: rgba(255, 248, 240, 0.7); /* Warmer tint */
+      border: 1px solid rgba(255, 220, 190, 0.6); /* Warmer border */
       border-radius: 12px; padding: 12px 14px;
       backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
       transition: transform .2s ease, box-shadow .2s ease;
     }
     .cert-link { text-decoration: none; color: inherit; display: block; }
     .cert-link .cert-card:hover {
-      background: rgba(255,245,230,0.9);
+      background: rgba(255, 250, 245, 0.9); /* Warmer tint */
       transform: translateY(-4px);
       box-shadow: 0 10px 25px rgba(0,0,0,0.15);
     }
-    .cert-card i { font-size: 1.2rem; color: #ff7e5f; }
-    .cert-card h3 { margin: 0; font-size: 1rem; font-weight: 600; color: #6a1a00; }
-    .cert-card p { margin: 2px 0 0 0; font-size: .9rem; opacity: .85; color: #5a2a2a; }
+    .cert-card i { font-size: 1.2rem; color: #ff4e50; } /* Fiery red icon */
+    .cert-card h3 { margin: 0; font-size: 1rem; font-weight: 600; color: #D35400; } /* Dark orange */
+    .cert-card p { margin: 2px 0 0 0; font-size: .9rem; opacity: .85; color: #4a2a2a; } /* Softer warm text */
 
     /* Project gallery */
     .image-gallery {
@@ -210,11 +207,33 @@
       text-align: center; padding: 18px; margin: 32px 0;
       color: #fffdf9; opacity: 0.95;
     }
+
+    /* Mobile Responsiveness */
+    @media (max-width: 768px) {
+      nav {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+        justify-items: center;
+        align-items: center;
+      }
+      nav a {
+        width: 100%;
+        font-size: 0.85rem;
+        padding: 8px 6px;
+      }
+      .hero {
+        grid-template-columns: 1fr;
+        justify-items: center;
+        text-align: center;
+      }
+      .hero .meta { margin-top: 10px; }
+      .quick-links { justify-content: center; }
+    }
   </style>
 </head>
 <body>
 
-  <!-- Navbar -->
   <nav id="navbar">
     <a href="#summary"><i class="fa-solid fa-user"></i> Summary</a>
     <a href="#education"><i class="fa-solid fa-graduation-cap"></i> Education</a>
@@ -225,22 +244,23 @@
     <a href="#projects"><i class="fa-solid fa-diagram-project"></i> Projects</a>
   </nav>
 
-  <!-- Header / Hero -->
   <div class="hero">
-    <img class="profile-pic" src="assets/Profile.png" alt="Profile Photo"/>
+    <img class="profile-pic" src="assets/Profile.png" alt="Profile Photo of Vaibhav Jaiswal"/>
     <div class="meta">
       <h1>Vaibhav Jaiswal</h1>
       <p class="tagline">Data Analyst · SQL · Python · Power BI</p>
       <div class="quick-links">
-        <a href="javascript:void(0)" onclick="alert('📧 Vaibhavjaiswal139@gmail.com')">
+        <a href="mailto:Vaibhavjaiswal139@gmail.com">
           <i class="fa-solid fa-envelope"></i> Email
         </a>
         <a href="https://www.linkedin.com/in/vaibhav-jaiswal-995a1119a/" target="_blank"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+        <a href="assets/Vaibhav-Jaiswal-Resume.pdf" target="_blank">
+          <i class="fa-solid fa-file-pdf"></i> Download Resume
+        </a>
       </div>
     </div>
   </div>
 
-  <!-- Summary -->
   <section id="summary" class="panel">
     <h2><i class="fa-solid fa-user"></i> Professional Summary</h2>
     <p>
@@ -255,7 +275,6 @@
     </p>
   </section>
 
-  <!-- Education -->
   <section id="education" class="panel">
     <h2><i class="fa-solid fa-graduation-cap"></i> Education</h2>
     <p><strong>B.Tech – Electrical Engineering</strong><br/>
@@ -263,7 +282,6 @@
     </p>
   </section>
 
-  <!-- Experience -->
   <section id="experience" class="panel">
     <h2><i class="fa-solid fa-briefcase"></i> Experience</h2>
     <p><strong>Data Analytics Intern</strong> — Dataman Computer Systems Pvt. Ltd. (2025)</p>
@@ -275,7 +293,6 @@
     </ul>
   </section>
 
-  <!-- Skills -->
   <section id="skills" class="panel">
     <h2><i class="fa-solid fa-gears"></i> Skills</h2>
     <ul>
@@ -286,56 +303,34 @@
     </ul>
   </section>
 
-  <!-- Certifications -->
   <section id="certifications" class="panel">
     <h2><i class="fa-solid fa-award"></i> Certifications</h2>
     <div class="cert-grid">
-      <!-- Python Programming -->
       <a href="https://simpli-web.app.link/e/T11JZwzKSVb" target="_blank" class="cert-link">
         <div class="cert-card">
           <i class="fa-solid fa-certificate"></i>
-          <div>
-            <h3>Python Programming</h3>
-            <p>Simplilearn</p>
-          </div>
+          <div><h3>Python Programming</h3><p>Simplilearn</p></div>
         </div>
       </a>
-
-      <!-- Python Libraries -->
       <a href="https://simpli-web.app.link/e/UegfvDBKSVb" target="_blank" class="cert-link">
         <div class="cert-card">
           <i class="fa-solid fa-certificate"></i>
-          <div>
-            <h3>Python Libraries for Data Science</h3>
-            <p>Simplilearn</p>
-          </div>
+          <div><h3>Python Libraries for Data Science</h3><p>Simplilearn</p></div>
         </div>
       </a>
-
-      <!-- SQL -->
       <a href="https://simpli-web.app.link/e/6qwSpTGKSVb" target="_blank" class="cert-link">
         <div class="cert-card">
           <i class="fa-solid fa-certificate"></i>
-          <div>
-            <h3>SQL</h3>
-            <p>Simplilearn</p>
-          </div>
+          <div><h3>SQL</h3><p>Simplilearn</p></div>
         </div>
       </a>
-
-      <!-- Ducat (normal card) -->
       <div class="cert-card">
         <i class="fa-solid fa-certificate"></i>
-        <div>
-          <h3>Data Analytics Using Python</h3>
-          <p>Ducat (2025)</p>
-        </div>
+        <div><h3>Data Analytics Using Python</h3><p>Ducat (2025)</p></div>
       </div>
-
     </div>
   </section>
 
-  <!-- Achievements -->
   <section id="achievements" class="panel">
     <h2><i class="fa-solid fa-trophy"></i> Achievements</h2>
     <ul>
@@ -343,38 +338,34 @@
     </ul>
   </section>
 
-  <!-- Projects -->
   <section id="projects" class="panel">
     <h2><i class="fa-solid fa-diagram-project"></i> Projects</h2>
-
-    <div class="project">
+    <div class="project" style="margin-bottom: 30px;">
       <h3>📦 E-Commerce Sales Analysis</h3>
       <p>
         End-to-end analytics project using <strong>MySQL</strong> (database), <strong>Python</strong> (cleaning & analysis),
         and <strong>Power BI</strong> (interactive dashboards). Includes sales trends, customer segmentation, and payment insights.
       </p>
-
-      <!-- Thumbnails from /assets, open full images from the project folder -->
       <div class="image-gallery">
         <a href="projects/ecommerce-analysis/Page1.png" target="_blank">
-            <img src="projects/ecommerce-analysis/Page1.png" alt="Dashboard Page 1">
+          <img src="projects/ecommerce-analysis/Page1.png" alt="E-Commerce sales overview dashboard">
         </a>
         <a href="projects/ecommerce-analysis/Page2.png" target="_blank">
-            <img src="projects/ecommerce-analysis/Page2.png" alt="Dashboard Page 2">
+          <img src="projects/ecommerce-analysis/Page2.png" alt="Customer segmentation dashboard for E-Commerce">
         </a>
         <a href="projects/ecommerce-analysis/Page3.png" target="_blank">
-            <img src="projects/ecommerce-analysis/Page3.png" alt="Dashboard Page 3">
+          <img src="projects/ecommerce-analysis/Page3.png" alt="Payment methods analysis dashboard">
         </a>
       </div>
-
-      <div style="margin-top: 12px;">
+      <div style="margin-top: 12px; display: flex; gap: 10px;">
         <a class="btn-sunrise" href="projects/ecommerce-analysis/index.html">
           View Full Project <i class="fa-solid fa-arrow-up-right-from-square"></i>
         </a>
+        <a class="btn-sunrise" href="[YOUR GITHUB REPO LINK]" target="_blank">
+          View Code <i class="fa-brands fa-github"></i>
+        </a>
       </div>
     </div>
-
-    <!-- Supply Chain Analytics Project -->
     <div class="project">
       <h3>🚚 Supply Chain Analytics</h3>
       <p>
@@ -382,25 +373,23 @@
         <strong>Tableau</strong> (dashboards), and a real-world dataset. 
         Includes insights on delivery delays, customer segmentation, and profitability.
       </p>
-
-      <!-- Thumbnails -->
       <div class="image-gallery">
         <a href="projects/SupplyChain_analysis/Page1_supplychain.png" target="_blank">
-            <img src="projects/SupplyChain_analysis/Page1_supplychain.png" alt="Supply Chain Dashboard Page 1">
+          <img src="projects/SupplyChain_analysis/Page1_supplychain.png" alt="Supply Chain logistics and delivery time dashboard">
         </a>
         <a href="projects/SupplyChain_analysis/Page2_supplychain.png" target="_blank">
-            <img src="projects/SupplyChain_analysis/Page2_supplychain.png" alt="Supply Chain Dashboard Page 2">
+          <img src="projects/SupplyChain_analysis/Page2_supplychain.png" alt="Customer and product profitability dashboard for Supply Chain">
         </a>
       </div>
-
-      <!-- Button -->
-      <div style="margin-top: 12px;">
+      <div style="margin-top: 12px; display: flex; gap: 10px;">
         <a class="btn-sunrise" href="projects/SupplyChain_analysis/index.html">
           View Full Project <i class="fa-solid fa-arrow-up-right-from-square"></i>
         </a>
+        <a class="btn-sunrise" href="[YOUR GITHUB REPO LINK]" target="_blank">
+          View Code <i class="fa-brands fa-github"></i>
+        </a>
       </div>
     </div>
-
   </section>
 
   <footer>
@@ -408,7 +397,7 @@
   </footer>
 
   <script>
-    // Reveal on scroll
+    // The JavaScript remains exactly the same
     const panels = document.querySelectorAll('.panel');
     const reveal = () => {
       const trigger = window.innerHeight * 0.85;
@@ -420,7 +409,6 @@
     window.addEventListener('scroll', reveal);
     window.addEventListener('load', reveal);
 
-    // Navbar shrink + active link highlight
     const navbar = document.getElementById('navbar');
     const links = navbar.querySelectorAll('a');
     const sections = [...links].map(a => document.querySelector(a.getAttribute('href')));
@@ -429,23 +417,21 @@
       if (window.scrollY > 40) navbar.classList.add('shrink');
       else navbar.classList.remove('shrink');
 
-      // Active section highlight
-      let idx = sections.findIndex(sec => sec.getBoundingClientRect().top - 120 > 0) - 1;
-      if (idx < 0) idx = sections.length - 1;
-      links.forEach(l => l.classList.remove('active'));
-      if (sections[idx]) {
-        const id = '#' + sections[idx].id;
-        const active = navbar.querySelector(`a[href="${id}"]`);
-        if (active) active.classList.add('active');
+      let currentSection = sections[sections.length - 1];
+      for (let i = sections.length - 1; i >= 0; i--) {
+        if (sections[i].getBoundingClientRect().top - 120 <= 0) {
+          currentSection = sections[i];
+          break;
+        }
       }
+      links.forEach(l => l.classList.remove('active'));
+      const activeLink = navbar.querySelector(`a[href="#${currentSection.id}"]`);
+      if (activeLink) activeLink.classList.add('active');
     };
     window.addEventListener('scroll', onScroll);
     window.addEventListener('load', onScroll);
 
-    // Footer year
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
-
-
