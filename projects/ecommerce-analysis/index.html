@@ -12,9 +12,9 @@
     html { scroll-behavior: smooth; }
     body {
       font-family: 'Poppins', sans-serif;
-      color: #1D4A4D; /* UPDATED: Dark teal text */
-      /* UPDATED: Minty Ocean Gradient */
-      background: linear-gradient(270deg, #5EEB9C, #43A4B0);
+      color: #4A3F3F; /* UPDATED: Dark warm gray */
+      /* UPDATED: Sunset Flare Gradient */
+      background: linear-gradient(270deg, #ff4e50, #f9d423);
       background-size: 400% 400%;
       animation: gradientAnimation 18s ease infinite;
       min-height: 100vh;
@@ -31,8 +31,8 @@
       max-width: 1100px;
       margin: 28px auto;
       padding: 26px;
-      background: rgba(240, 255, 255, 0.8); /* Cyan tint */
-      border: 1px solid rgba(180, 220, 220, 0.6); /* Cyan border */
+      background: rgba(255, 248, 245, 0.8); /* Light cream tint */
+      border: 1px solid rgba(249, 212, 35, 0.5); /* Soft orange border */
       border-radius: 16px;
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
@@ -44,35 +44,35 @@
     .panel.visible { opacity: 1; transform: translateY(0); }
 
     h1, h2 { letter-spacing: 0.2px; text-align: center; }
-    h1 { font-size: 2.3rem; color: #004D40; } /* Deep teal */
-    h2 { font-size: 1.6rem; margin-bottom: 12px; color: #00796B; position: relative; } /* Saturated teal */
+    h1 { font-size: 2.3rem; color: #D32F2F; } /* Deep red */
+    h2 { font-size: 1.6rem; margin-bottom: 12px; color: #D32F2F; position: relative; }
     h2 i { margin-right: 8px; }
     h2::after {
       content: ""; display: block; width: 64px; height: 3px;
-      background: #5EEB9C; /* UPDATED: Bright mint accent */
+      background: #f9d423; /* Bright yellow accent */
       margin: 8px auto 0; border-radius: 3px;
     }
-    p { margin: 0.5rem 0 1.5rem; text-align: justify; color: #376F74; } /* Soft dark teal */
-    ul { margin: 0.5rem 0 1.5rem 1.2rem; color: #376F74; }
+    p { margin: 0.5rem 0 1.5rem; text-align: justify; color: #4A3F3F; }
+    ul { margin: 0.5rem 0 1.5rem 1.2rem; color: #4A3F3F; }
     
     /* UPDATED: Navbar */
     nav {
       position: sticky; top: 0; z-index: 1000; display: flex;
       flex-wrap: wrap; justify-content: center; gap: 12px 18px;
-      background: rgba(0, 77, 64, 0.88); /* Dark teal */
+      background: rgba(136, 47, 86, 0.88); /* Dark translucent maroon */
       backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
-      padding: 12px 10px; border-bottom: 1px solid rgba(94, 235, 156, 0.4);
+      padding: 12px 10px; border-bottom: 1px solid rgba(249, 212, 35, 0.4);
       transition: padding .2s ease, background .2s ease, box-shadow .2s ease;
     }
     nav.shrink {
-      padding: 8px 8px; background: rgba(0, 77, 64, 0.95);
+      padding: 8px 8px; background: rgba(136, 47, 86, 0.95);
       box-shadow: 0 6px 18px rgba(0,0,0,0.18);
     }
     nav a {
-      color: #E0F2F1; text-decoration: none; font-weight: 500; font-size: 0.9rem;
+      color: #FFFAF0; text-decoration: none; font-weight: 500; font-size: 0.9rem;
       padding: 6px 10px; border-radius: 6px; transition: background 0.3s ease;
     }
-    nav a:hover, nav a.active { background: rgba(94, 235, 156, 0.2); }
+    nav a:hover, nav a.active { background: rgba(249, 212, 35, 0.2); }
 
     /* Project-specific styles adapted to the new theme */
     .pipeline {
@@ -81,22 +81,22 @@
     }
     .pipeline div {
       background: rgba(255,255,255,0.9); padding: 10px 16px; border-radius: 30px;
-      box-shadow: 0 3px 8px rgba(0,0,0,0.15); color: #1D4A4D;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.15); color: #4A3F3F;
     }
-    .pipeline i { margin-right: 6px; color: #00796B; }
-    .pipeline span { font-size: 1.2rem; color: #00796B; }
+    .pipeline i { margin-right: 6px; color: #D32F2F; }
+    .pipeline span { font-size: 1.2rem; color: #D32F2F; }
     img {
       display: block; margin: 1.2rem auto; max-width: 90%;
       border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }
     .buttons { text-align: center; margin-top: 1.2rem; }
-    .btn-mint { /* UPDATED: Button style */
+    .btn-flare { /* UPDATED: Button style */
       display: inline-block; margin: 0.4rem; padding: 0.7rem 1.5rem;
       font-size: 0.95rem; font-weight: 600; text-decoration: none; border-radius: 30px;
-      background: linear-gradient(90deg, #5EEB9C, #3891A2);
+      background: linear-gradient(90deg, #ff4e50, #f09819);
       color: #fff; transition: all 0.3s ease;
     }
-    .btn-mint:hover { transform: translateY(-3px); box-shadow: 0 6px 15px rgba(0,0,0,0.2); }
+    .btn-flare:hover { transform: translateY(-3px); box-shadow: 0 6px 15px rgba(0,0,0,0.2); }
     
     footer { text-align: center; padding: 1rem; color: #fff; font-size: 0.9rem; margin-top: 2rem; }
     footer p { color: #fff; text-align: center; }
@@ -111,7 +111,7 @@
       .pipeline div { width: 100%; max-width: 280px; text-align: center; }
       img { max-width: 100%; height: auto; }
       .buttons { display: flex; flex-direction: column; align-items: center; gap: 10px; }
-      .btn-mint { width: 100%; max-width: 280px; text-align: center; }
+      .btn-flare { width: 100%; max-width: 280px; text-align: center; }
     }
     @media (max-width: 480px) {
       nav a { font-size: 0.8rem; margin: 4px; }
@@ -194,9 +194,9 @@
     <h2><i class="fa-solid fa-folder-open"></i> Project Files</h2>
     <p>Access the core project files, including the SQL scripts for database setup and the Jupyter Notebook for the data cleaning process.</p>
     <div class="buttons">
-      <a href="table_creation.html" target="_blank" class="btn-mint"><i class="fa-solid fa-database"></i> SQL – Table Creation</a>
-      <a href="table_import.html" target="_blank" class="btn-mint"><i class="fa-solid fa-upload"></i> SQL – Table Import</a>
-      <a href="https://nbviewer.org/github/Pyroj08/Pyroj08.github.io/blob/main/projects/ecommerce-analysis/E_commerce_project_sqlalchemy.ipynb" target="_blank" class="btn-mint"><i class="fa-brands fa-python"></i> Python Cleaning Notebook</a>
+      <a href="table_creation.html" target="_blank" class="btn-flare"><i class="fa-solid fa-database"></i> SQL – Table Creation</a>
+      <a href="table_import.html" target="_blank" class="btn-flare"><i class="fa-solid fa-upload"></i> SQL – Table Import</a>
+      <a href="https://nbviewer.org/github/Pyroj08/Pyroj08.github.io/blob/main/projects/ecommerce-analysis/E_commerce_project_sqlalchemy.ipynb" target="_blank" class="btn-flare"><i class="fa-brands fa-python"></i> Python Cleaning Notebook</a>
     </div>
   </section>
 
