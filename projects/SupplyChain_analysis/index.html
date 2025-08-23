@@ -13,8 +13,9 @@
     html { scroll-behavior: smooth; }
     body {
       font-family: 'Poppins', sans-serif;
-      color: #5D4037; /* Dark warm brown */
-      background: linear-gradient(270deg, #FFECD2, #FCB69F);
+      color: #2c3e50; /* UPDATED: Dark cool navy */
+      /* UPDATED: Gentle Dusk Gradient */
+      background: linear-gradient(270deg, #a1c4fd, #c2e9fb);
       background-size: 400% 400%;
       animation: gradientAnimation 18s ease infinite;
       min-height: 100vh;
@@ -31,8 +32,8 @@
       max-width: 1100px;
       margin: 40px auto;
       padding: 30px;
-      background: rgba(255, 248, 240, 0.85);
-      border: 1px solid rgba(252, 182, 159, 0.6);
+      background: rgba(240, 245, 255, 0.85); /* Light blue tint */
+      border: 1px solid rgba(161, 196, 253, 0.6); /* Soft blue border */
       border-radius: 16px;
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
@@ -47,12 +48,12 @@
       font-family: 'Poppins', sans-serif;
       letter-spacing: 0.2px; text-align: center; 
     }
-    h1 { font-size: 2.3rem; color: #BF360C; }
-    h2 { font-size: 1.6rem; margin-bottom: 12px; color: #BF360C; position: relative; }
+    h1 { font-size: 2.3rem; color: #2980b9; } /* Deeper blue */
+    h2 { font-size: 1.6rem; margin-bottom: 12px; color: #2980b9; position: relative; }
     h2 i { margin-right: 8px; }
     h2::after {
       content: ""; display: block; width: 64px; height: 3px;
-      background: #FCB69F;
+      background: #a1c4fd; /* Lilac accent */
       margin: 8px auto 0; border-radius: 3px;
     }
     /* Typography */
@@ -60,7 +61,7 @@
       font-family: 'Lora', serif;
       font-size: 1.05rem;
       line-height: 1.8;
-      margin: 0.5rem 0 1.5rem; text-align: justify; color: #5D4037; 
+      margin: 0.5rem 0 1.5rem; text-align: justify; color: #34495e; 
     }
     ul { margin: 0.5rem 0 1.5rem 1.2rem; }
     
@@ -68,33 +69,33 @@
     nav {
       position: sticky; top: 0; z-index: 1000; display: flex;
       flex-wrap: wrap; justify-content: center; gap: 12px 18px;
-      background: rgba(191, 54, 12, 0.88);
+      background: rgba(44, 62, 80, 0.88); /* Dark navy */
       backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
-      padding: 12px 10px; border-bottom: 1px solid rgba(252, 182, 159, 0.4);
+      padding: 12px 10px; border-bottom: 1px solid rgba(161, 196, 253, 0.4);
       transition: padding .2s ease, background .2s ease, box-shadow .2s ease;
     }
     nav.shrink {
-      padding: 8px 8px; background: rgba(191, 54, 12, 0.95);
+      padding: 8px 8px; background: rgba(44, 62, 80, 0.95);
       box-shadow: 0 6px 18px rgba(0,0,0,0.18);
     }
     nav a {
-      color: #FFFAF0; text-decoration: none; font-weight: 500; font-size: 0.9rem;
+      color: #ecf0f1; text-decoration: none; font-weight: 500; font-size: 0.9rem;
       padding: 6px 10px; border-radius: 6px; transition: background 0.3s ease;
     }
-    nav a:hover, nav a.active { background: rgba(252, 182, 159, 0.25); }
+    nav a:hover, nav a.active { background: rgba(161, 196, 253, 0.25); }
     
     img {
       display: block; margin: 1.2rem auto; max-width: 90%;
       border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }
     .buttons { text-align: center; margin-top: 1.2rem; }
-    .btn-peach {
+    .btn-dusk { /* Button style */
       display: inline-block; margin: 0.4rem; padding: 0.7rem 1.5rem;
       font-size: 0.95rem; font-weight: 600; text-decoration: none; border-radius: 30px;
-      background: linear-gradient(90deg, #FCB69F, #FF8A80);
+      background: linear-gradient(90deg, #a1c4fd, #6a82fb);
       color: #fff; transition: all 0.3s ease;
     }
-    .btn-peach:hover { transform: translateY(-3px); box-shadow: 0 6px 15px rgba(0,0,0,0.2); }
+    .btn-dusk:hover { transform: translateY(-3px); box-shadow: 0 6px 15px rgba(0,0,0,0.2); }
 
     /* High-Contrast Panel Style */
     .panel-dark {
@@ -106,17 +107,17 @@
           transparent 1px,
           transparent 15px
         ),
-        linear-gradient(120deg, #BF360C, #79220A);
-      color: #FFFAF0;
+        linear-gradient(120deg, #2c3e50, #34495e);
+      color: #ecf0f1;
     }
-    .panel-dark h2 { color: #FFFAF0; }
-    .panel-dark h2::after { background: rgba(255, 248, 240, 0.5); }
-    .panel-dark p { color: #FFFAF0; }
-    .panel-dark .kpi-item .kpi-number { color: #FCB69F; }
-    .panel-dark .kpi-item .kpi-label { color: #FFFAF0; }
+    .panel-dark h2 { color: #ecf0f1; }
+    .panel-dark h2::after { background: rgba(161, 196, 253, 0.5); }
+    .panel-dark p { color: #ecf0f1; }
+    .panel-dark .kpi-item .kpi-number { color: #a1c4fd; }
+    .panel-dark .kpi-item .kpi-label { color: #ecf0f1; }
     .panel-dark .insight-card { background: rgba(0,0,0,0.2); }
-    .panel-dark .insight-card i { color: #FCB69F; }
-    .panel-dark .insight-card h3 { color: #FFFAF0; }
+    .panel-dark .insight-card i { color: #a1c4fd; }
+    .panel-dark .insight-card h3 { color: #ecf0f1; }
 
     .kpi-grid {
         display: grid;
@@ -139,10 +140,9 @@
         background: rgba(0,0,0,0.05); padding: 15px; border-radius: 8px;
         font-size: 0.85rem; white-space: pre-wrap; word-wrap: break-word;
     }
-    .data-cleaning-demo h3 { font-size: 1rem; margin-bottom: 10px; color: #5D4037; }
+    .data-cleaning-demo h3 { font-size: 1rem; margin-bottom: 10px; color: #2c3e50; }
     .insights-grid {
         display: grid;
-        /* UPDATED: Layout changed for consistency */
         grid-template-columns: repeat(4, 1fr);
         gap: 20px;
     }
@@ -154,12 +154,11 @@
     .insight-card p { text-align: center; }
     
     footer { text-align: center; padding: 2rem; font-size: 0.9rem; margin-top: 2rem; }
-    footer p { color: #5D4037; text-align: center; }
+    footer p { color: #2c3e50; text-align: center; }
     .project-nav {
         display: flex; justify-content: center; gap: 15px; margin-top: 1rem;
     }
     
-    /* UPDATED: Added media queries for the insights grid */
     @media (max-width: 900px) {
         .insights-grid {
             grid-template-columns: repeat(2, 1fr);
@@ -313,16 +312,16 @@
     <h2><i class="fa-solid fa-folder-open"></i> Project Files</h2>
     <p>Explore the project's source code and interactive workbook by following the links below.</p>
     <div class="buttons">
-      <a href="https://nbviewer.org/github/Pyroj08/SupplyChain_analysis/blob/main/Supply_Chain.ipynb" target="_blank" class="btn-peach"><i class="fa-brands fa-python"></i> View Python Code</a>
-      <a href="Supply_Chain.twbx" target="_blank" class="btn-peach" download><i class="fa-solid fa-download"></i> Download Tableau File</a>
+      <a href="https://nbviewer.org/github/Pyroj08/SupplyChain_analysis/blob/main/Supply_Chain.ipynb" target="_blank" class="btn-dusk"><i class="fa-brands fa-python"></i> View Python Code</a>
+      <a href="Supply_Chain.twbx" target="_blank" class="btn-dusk" download><i class="fa-solid fa-download"></i> Download Tableau File</a>
     </div>
   </section>
 
   <footer>
     <p>© 2025 Supply Chain Analytics | Built with Python & Tableau</p>
     <div class="project-nav">
-        <a href="../ecommerce-analysis/index.html" class="btn-peach"><i class="fa-solid fa-arrow-left"></i> Previous Project</a>
-        <a href="../../index.html" class="btn-peach"><i class="fa-solid fa-house"></i> Back to Portfolio</a>
+        <a href="../ecommerce-analysis/index.html" class="btn-dusk"><i class="fa-solid fa-arrow-left"></i> Previous Project</a>
+        <a href="../../index.html" class="btn-dusk"><i class="fa-solid fa-house"></i> Back to Portfolio</a>
     </div>
   </footer>
 
