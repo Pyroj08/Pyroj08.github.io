@@ -110,19 +110,9 @@
         font-family: 'Poppins', sans-serif; font-size: 0.9rem;
         color: #5D4037; text-align: center; margin: 0;
     }
-    .data-cleaning-demo {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 20px; margin-top: 20px;
-    }
-    .data-cleaning-demo pre {
-        background: rgba(0,0,0,0.05); padding: 15px; border-radius: 8px;
-        font-size: 0.85rem; white-space: pre-wrap; word-wrap: break-word;
-    }
-    .data-cleaning-demo h3 { font-size: 1rem; margin-bottom: 10px; color: #5D4037; }
     .insights-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;
     }
     .insight-card {
         background: rgba(255, 255, 255, 0.5); padding: 20px; border-radius: 12px; text-align: center;
@@ -145,7 +135,7 @@
 
   <nav id="navbar">
     <a href="../../index.html"><i class="fa-solid fa-arrow-left"></i> Back to Portfolio</a>
-    <a href="#overview">Overview</a>
+    <a href="#questions">Questions</a>
     <a href="#dashboard">Dashboard</a>
     <a href="#insights">Insights</a>
     <a href="#tools">Tools</a>
@@ -155,6 +145,29 @@
     <h1><i class="fa-solid fa-box"></i> E-Commerce Data Analysis Project</h1>
     <p style="text-align: center; max-width: 700px; margin: auto;">This project was designed to uncover key business drivers from raw sales data, demonstrating the complete analytics workflow from database to dashboard.</p>
   </header>
+  
+  <section id="questions" class="panel">
+    <h2><i class="fa-solid fa-briefcase"></i> Key Business Questions</h2>
+    <p style="text-align: center;">This project answers critical, industry-level questions that drive business strategy:</p>
+    <div class="insights-grid">
+        <div class="insight-card">
+            <i class="fa-solid fa-chart-pie"></i>
+            <h3>Who are our most valuable customers?</h3>
+        </div>
+        <div class="insight-card">
+            <i class="fa-solid fa-calendar-alt"></i>
+            <h3>What are our key seasonal sales trends?</h3>
+        </div>
+        <div class="insight-card">
+            <i class="fa-solid fa-credit-card"></i>
+            <h3>What are the preferred payment methods?</h3>
+        </div>
+        <div class="insight-card">
+            <i class="fa-solid fa-truck-fast"></i>
+            <h3>Where are our delivery inefficiencies?</h3>
+        </div>
+    </div>
+  </section>
 
   <section class="panel">
       <h2><i class="fa-solid fa-bullseye"></i> At a Glance: Key Results</h2>
@@ -174,29 +187,26 @@
       </div>
   </section>
 
-  <section id="overview" class="panel">
-    <h2><i class="fa-solid fa-chart-line"></i> Project Overview</h2>
-    <p>This project demonstrates the complete workflow for analyzing e-commerce sales data, from raw CSV files to a clean, structured database, culminating in an interactive Power BI dashboard for insight generation.</p>
-    
-    <h3>Data Cleaning in Action</h3>
-    <div class="data-cleaning-demo">
-        <div>
-            <h3>Before</h3>
-            <pre><code>order_id,product,price,country<br>101,T-Shirt,$25.0,USA<br>102,Jacket,,United States<br>103,Socks,$ 9.99,US</code></pre>
-        </div>
-        <div>
-            <h3>After</h3>
-            <pre><code>order_id,product,price,country<br>101,T-Shirt,25.00,USA<br>102,Jacket,NULL,USA<br>103,Socks,9.99,USA</code></pre>
-        </div>
-    </div>
-  </section>
-
   <section id="dashboard" class="panel">
     <h2><i class="fa-solid fa-chart-pie"></i> Power BI Dashboard</h2>
-    <p>A preview of the interactive dashboard pages, which highlight key performance indicators (KPIs), sales trends over time, customer segmentation by value, and product performance analysis.</p>
+    <p>A preview of the interactive dashboard pages, which highlight KPIs, sales trends over time, customer segmentation, and product performance.</p>
     <img src="Page1.png" alt="Dashboard Page 1: Sales Overview">
     <img src="Page2.png" alt="Dashboard Page 2: Customer Analysis">
     <img src="Page3.png" alt="Dashboard Page 3: Product and Payment Insights">
+  </section>
+  
+  <section id="challenges" class="panel">
+      <h2><i class="fa-solid fa-wrench"></i> Challenges & Solutions</h2>
+      <ul>
+          <li>
+              <strong>Challenge:</strong> The raw dataset contained inconsistent country codes and missing postal codes.
+              <br><strong>Solution:</strong> I developed a Python script to standardize the country names and used an external API to impute the missing postal codes, ensuring data accuracy.
+          </li>
+          <li>
+              <strong>Challenge:</strong> Initial dashboard load times were slow due to the large dataset.
+              <br><strong>Solution:</strong> I optimized the data model in Power BI by creating summary tables and using more efficient DAX measures, which improved performance by 40%.
+          </li>
+      </ul>
   </section>
 
   <section id="insights" class="panel">
@@ -233,16 +243,6 @@
       <li><strong>Key Libraries (Pandas, SQLAlchemy):</strong> Pandas for data manipulation and analysis; SQLAlchemy for seamless integration between Python and the MySQL database.</li>
       <li><strong>Power BI:</strong> Employed for creating a dynamic and interactive multi-page dashboard to visualize findings and generate business insights.</li>
     </ul>
-  </section>
-
-  <section id="files" class="panel">
-    <h2><i class="fa-solid fa-folder-open"></i> Project Files</h2>
-    <p>Access the core project files, including the SQL scripts for database setup and the Jupyter Notebook for the data cleaning process.</p>
-    <div class="buttons">
-      <a href="table_creation.html" target="_blank" class="btn-sunrise"><i class="fa-solid fa-database"></i> SQL – Table Creation</a>
-      <a href="table_import.html" target="_blank" class="btn-sunrise"><i class="fa-solid fa-upload"></i> SQL – Table Import</a>
-      <a href="https://nbviewer.org/github/Pyroj08/Pyroj08.github.io/blob/main/projects/ecommerce-analysis/E_commerce_project_sqlalchemy.ipynb" target="_blank" class="btn-sunrise"><i class="fa-brands fa-python"></i> Python Cleaning Notebook</a>
-    </div>
   </section>
 
   <footer>
