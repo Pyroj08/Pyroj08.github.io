@@ -12,23 +12,32 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
-      font-family: 'Poppins', sans-serif;
-      color: #2b1d1d;
-      background: linear-gradient(135deg, #ff7e5f, #feb47b); /* Sunset 🌇 */
-      min-height: 100vh;
-    }
+  font-family: 'Poppins', sans-serif;
+  color: #fffdf9;
+  min-height: 100vh;
+
+  background: linear-gradient(-45deg, #ff512f, #f09819, #ff9966, #ff5f6d);
+  background-size: 400% 400%;
+  animation: sunriseHorizon 15s ease infinite;
+}
+
+@keyframes sunriseHorizon {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
 
     /* Container Panels (Glass) */
     .panel {
       max-width: 1100px;
       margin: 28px auto;
       padding: 26px;
-      background: rgba(255, 255, 255, 0.25);
-      border: 1px solid rgba(255, 255, 255, 0.4);
+      background: rgba(255,255,255,0.28);
+      border: 1px solid rgba(255,255,255,0.35);
       border-radius: 16px;
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
       opacity: 0;
       transform: translateY(18px);
       transition: opacity .8s ease, transform .8s ease;
@@ -39,7 +48,7 @@
     h2 {
       font-size: 1.6rem;
       margin-bottom: 12px;
-      color: #a83232; /* Sunset red */
+      color: #4b0082;
       position: relative;
     }
     h2 i { margin-right: 8px; }
@@ -48,7 +57,7 @@
       display: block;
       width: 64px;
       height: 3px;
-      background: #ffb347; /* Warm highlight */
+      background: #ff85b2;
       margin-top: 8px;
       border-radius: 3px;
     }
@@ -56,51 +65,53 @@
     ul { padding-left: 20px; line-height: 1.8; }
 
     /* Navbar */
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      display: flex;
-      flex-wrap: nowrap;
-      justify-content: center;
-      gap: 12px 18px;
-      background: rgba(0, 0, 0, 0.65);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      padding: 12px 10px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-    }
+/* Navbar - Default (Desktop) */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;               /* ✅ flex on desktop */
+  flex-wrap: nowrap;           /* keep in one row */
+  justify-content: center;     /* center items */
+  gap: 12px 18px;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 12px 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
 
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: 500;
-      font-size: 0.9rem;
-      padding: 6px 10px;
-      border-radius: 6px;
-      transition: background 0.3s ease, color 0.3s ease;
-      text-align: center;
-    }
+nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.9rem;
+  padding: 6px 10px;
+  border-radius: 6px;
+  transition: background 0.3s ease, color 0.3s ease;
+  text-align: center;
+}
 
-    nav a:hover {
-      background: rgba(255, 140, 105, 0.4); /* Sunset glow */
-    }
+nav a:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
 
-    /* Mobile Navbar */
-    @media (max-width: 768px) {
-      nav {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 10px;
-        justify-items: center;
-        align-items: center;
-      }
-      nav a {
-        width: 100%;
-        font-size: 0.85rem;
-        padding: 8px 6px;
-      }
-    }
+/* ✅ Mobile Navbar: 2 rows × 4 columns */
+@media (max-width: 768px) {
+  nav {
+    display: grid;                          /* switch to grid only on mobile */
+    grid-template-columns: repeat(4, 1fr);  /* 4 columns */
+    gap: 10px;
+    justify-items: center;
+    align-items: center;
+  }
+
+  nav a {
+    width: 100%;          /* stretch inside each cell */
+    font-size: 0.85rem;
+    padding: 8px 6px;
+  }
+}
 
     /* Header */
     .hero {
@@ -114,59 +125,339 @@
     }
     .profile-pic {
       width: 140px; height: 140px; border-radius: 50%;
-      object-fit: cover; border: 4px solid rgba(255,255,255,0.75);
+      object-fit: cover; border: 4px solid rgba(255,255,255,0.65);
       background: rgba(255,255,255,0.25);
       box-shadow: 0 8px 24px rgba(0,0,0,0.15);
       transition: transform .35s ease, box-shadow .35s ease;
+      backdrop-filter: blur(6px);
     }
-    .profile-pic:hover { transform: scale(1.03); box-shadow: 0 12px 28px rgba(0,0,0,0.25); }
-    .hero .meta h1 { font-size: 2.2rem; font-weight: 600; color: #2c1810; }
-    .hero .meta p.tagline { margin-top: 4px; opacity: 0.85; color: #5a2c2c; }
+    .profile-pic:hover { transform: scale(1.03); box-shadow: 0 12px 28px rgba(0,0,0,0.20); }
+    .hero .meta h1 { font-size: 2.2rem; font-weight: 600; color: #1f1f1f; }
+    .hero .meta p.tagline { margin-top: 4px; opacity: 0.9; }
     .quick-links { margin-top: 10px; display: flex; gap: 12px; }
     .quick-links a {
       display: inline-flex; align-items: center; gap: 8px;
-      text-decoration: none; color: #fff; font-weight: 500;
-      background: linear-gradient(90deg, #ff7e5f, #feb47b);
-      border: none;
-      padding: 8px 14px; border-radius: 10px;
+      text-decoration: none; color: #1f1f1f; font-weight: 500;
+      background: rgba(255,255,255,0.55); border: 1px solid rgba(255,255,255,0.35);
+      padding: 8px 12px; border-radius: 10px; transition: transform .2s ease, box-shadow .2s ease;
+      backdrop-filter: blur(6px);
+    }
+    .quick-links a:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+
+    /* Certifications Grid */
+    .cert-grid {
+      display: grid; gap: 14px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
+    .cert-card {
+      display: flex; align-items: center; gap: 12px;
+      background: rgba(255,255,255,0.55);
+      border: 1px solid rgba(255,255,255,0.35);
+      border-radius: 12px; padding: 12px 14px;
+      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
       transition: transform .2s ease, box-shadow .2s ease;
     }
-    .quick-links a:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,0.2); }
+    .cert-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
 
-    /* Certifications */
-    .cert-card {
-      background: rgba(255,255,255,0.6);
-      border: 1px solid rgba(255,255,255,0.4);
-    }
-    .cert-card i { color: #ff7043; }
+.cert-link .cert-card {
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s ease;
+}
+
+.cert-link .cert-card:hover {
+  background: rgba(255, 255, 255, 0.75);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+}
+
+    .cert-card:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0,0,0,.08); }
+    .cert-card i { font-size: 1.2rem; color: #8a5fd2; }
+    .cert-card h3 { margin: 0; font-size: 1rem; font-weight: 600; }
+    .cert-card p { margin: 2px 0 0 0; font-size: .9rem; opacity: .85; }
 
     /* Project gallery */
+    .image-gallery {
+      display: grid; gap: 12px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      margin-top: 10px;
+    }
     .image-gallery img {
+      width: 100%; border-radius: 10px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.10);
+      transition: transform .25s ease, box-shadow .25s ease;
       background: #fff;
-      border: 2px solid rgba(255, 200, 170, 0.7);
     }
-
-    /* Buttons inside project panels */
-    .project a {
-      background: linear-gradient(90deg, #ff7043, #ffb347);
-      color: #fff !important;
-      font-weight: 500;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    }
-    .project a:hover {
-      opacity: 0.9;
-      transform: translateY(-2px);
-    }
+    .image-gallery img:hover { transform: translateY(-3px); box-shadow: 0 12px 26px rgba(0,0,0,0.15); }
 
     /* Footer */
     footer {
-      text-align: center;
-      padding: 18px;
-      margin: 32px 0;
-      color: #2c1810;
-      opacity: 0.85;
+      text-align: center; padding: 18px; margin: 32px 0;
+      color: #1f1f1f; opacity: 0.9;
     }
+
+   /* Mobile Navbar: 2 rows × 4 columns */
+@media (max-width: 768px) {
+  nav {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columns */
+    gap: 10px;
+    justify-items: center;
+    align-items: center;
+  }
+
+  nav a {
+    width: 100%;   /* expand to fit cell */
+    font-size: 0.85rem;
+    padding: 8px 6px;
+  }
+}
   </style>
 </head>
 <body>
+
+  <!-- Navbar -->
+  <nav id="navbar">
+    <a href="#summary"><i class="fa-solid fa-user"></i> Summary</a>
+    <a href="#education"><i class="fa-solid fa-graduation-cap"></i> Education</a>
+    <a href="#experience"><i class="fa-solid fa-briefcase"></i> Experience</a>
+    <a href="#skills"><i class="fa-solid fa-gears"></i> Skills</a>
+    <a href="#certifications"><i class="fa-solid fa-award"></i> Certifications</a>
+    <a href="#achievements"><i class="fa-solid fa-trophy"></i> Achievements</a>
+    <a href="#projects"><i class="fa-solid fa-diagram-project"></i> Projects</a>
+  </nav>
+
+  <!-- Header / Hero -->
+  <div class="hero">
+    <img class="profile-pic" src="assets/Profile.png" alt="Profile Photo"/>
+    <div class="meta">
+      <h1>Vaibhav Jaiswal</h1>
+      <p class="tagline">Data Analyst · SQL · Python · Power BI</p>
+      <div class="quick-links">
+        <a href="javascript:void(0)" onclick="alert('📧 Vaibhavjaiswal139@gmail.com')">
+  <i class="fa-solid fa-envelope"></i> Email
+</a>
+
+        <a href="https://www.linkedin.com/in/vaibhav-jaiswal-995a1119a/" target="_blank"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Summary -->
+  <section id="summary" class="panel">
+    <h2><i class="fa-solid fa-user"></i> Professional Summary</h2>
+    <p>
+      Aspiring <strong>Data Analyst</strong> skilled in <strong>SQL, Python, and Power BI</strong> with hands-on experience
+      in <strong>data cleaning, wrangling, EDA, and visualization</strong>. Adept at transforming complex datasets into
+      actionable insights and building interactive dashboards to support data-driven decision-making.
+    </p>
+    <p>
+      Experienced with end-to-end analytics workflows including database management (MySQL), ETL pipelines in Python,
+      and business reporting. Strong problem-solving mindset, attention to detail, and a passion for converting raw data
+      into measurable business outcomes.
+    </p>
+  </section>
+
+  <!-- Education -->
+  <section id="education" class="panel">
+    <h2><i class="fa-solid fa-graduation-cap"></i> Education</h2>
+    <p><strong>B.Tech – Electrical Engineering</strong><br/>
+       Ajay Kumar Garg Engineering College, Ghaziabad (Graduated: 2023)
+    </p>
+  </section>
+
+  <!-- Experience -->
+  <section id="experience" class="panel">
+    <h2><i class="fa-solid fa-briefcase"></i> Experience</h2>
+    <p><strong>Data Analytics Intern</strong> — Dataman Computer Systems Pvt. Ltd. (2025)</p>
+    <ul>
+      <li>Collected, cleaned, and organized data using Excel and SQL.</li>
+      <li>Performed EDA using Python (Pandas, Matplotlib) to uncover trends and patterns.</li>
+      <li>Created visuals and reports to present insights to stakeholders.</li>
+      <li>Supported decision-making by synthesizing actionable analytics.</li>
+    </ul>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills" class="panel">
+    <h2><i class="fa-solid fa-gears"></i> Skills</h2>
+    <ul>
+      <li><strong>Technical:</strong> Python (Pandas, NumPy), VBA, Power BI, Matplotlib, Seaborn, MySQL, MongoDB, Excel (Pivot Tables, VLOOKUP, Macros)</li>
+      <li><strong>Analytical:</strong> Data Cleaning, Data Wrangling, EDA, KPI Tracking, Statistical Analysis, Business Insights</li>
+      <li><strong>Tools:</strong> Jupyter Notebook, VS Code, Git, Power Query</li>
+      <li><strong>Soft Skills:</strong> Problem-Solving, Attention to Detail, Team Collaboration, Communication, Time Management, Adaptability</li>
+    </ul>
+  </section>
+
+ <!-- Certifications -->
+<section id="certifications" class="panel">
+  <h2><i class="fa-solid fa-award"></i> Certifications</h2>
+  <div class="cert-grid">
+    
+    <!-- Python Programming -->
+    <a href="https://simpli-web.app.link/e/T11JZwzKSVb" target="_blank" class="cert-link">
+      <div class="cert-card">
+        <i class="fa-solid fa-certificate"></i>
+        <div>
+          <h3>Python Programming</h3>
+          <p>Simplilearn</p>
+        </div>
+      </div>
+    </a>
+
+    <!-- Python Libraries -->
+    <a href="https://simpli-web.app.link/e/UegfvDBKSVb" target="_blank" class="cert-link">
+      <div class="cert-card">
+        <i class="fa-solid fa-certificate"></i>
+        <div>
+          <h3>Python Libraries for Data Science</h3>
+          <p>Simplilearn</p>
+        </div>
+      </div>
+    </a>
+
+    <!-- SQL -->
+    <a href="https://simpli-web.app.link/e/6qwSpTGKSVb" target="_blank" class="cert-link">
+      <div class="cert-card">
+        <i class="fa-solid fa-certificate"></i>
+        <div>
+          <h3>SQL</h3>
+          <p>Simplilearn</p>
+        </div>
+      </div>
+    </a>
+
+    <!-- Ducat (leave as normal card) -->
+    <div class="cert-card">
+      <i class="fa-solid fa-certificate"></i>
+      <div>
+        <h3>Data Analytics Using Python</h3>
+        <p>Ducat (2025)</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+  <!-- Achievements -->
+  <section id="achievements" class="panel">
+    <h2><i class="fa-solid fa-trophy"></i> Achievements</h2>
+    <ul>
+      <li>Awarded <strong>Golden Certificate</strong> for academic excellence and leadership at Bishop Westcott School.</li>
+    </ul>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects" class="panel">
+    <h2><i class="fa-solid fa-diagram-project"></i> Projects</h2>
+    <div class="project">
+      <h3>📦 E-Commerce Sales Analysis</h3>
+      <p>
+        End-to-end analytics project using <strong>MySQL</strong> (database), <strong>Python</strong> (cleaning & analysis),
+        and <strong>Power BI</strong> (interactive dashboards). Includes sales trends, customer segmentation, and payment insights.
+      </p>
+
+      <!-- Thumbnails from /assets, but open full images from the project folder -->
+      <div class="image-gallery">
+        <div class="image-gallery">
+    <a href="projects/ecommerce-analysis/Page1.png" target="_blank">
+        <img src="projects/ecommerce-analysis/Page1.png" alt="Dashboard Page 1">
+    </a>
+    <a href="projects/ecommerce-analysis/Page2.png" target="_blank">
+        <img src="projects/ecommerce-analysis/Page2.png" alt="Dashboard Page 2">
+    </a>
+    <a href="projects/ecommerce-analysis/Page3.png" target="_blank">
+        <img src="projects/ecommerce-analysis/Page3.png" alt="Dashboard Page 3">
+    </a>
+</div>
+
+      </div>
+
+      <div style="margin-top: 12px;">
+        <a href="projects/ecommerce-analysis/index.html"
+           style="display:inline-block; padding:10px 14px; background:#6a11cb; color:#fff; border-radius:10px; text-decoration:none;">
+          View Full Project <i class="fa-solid fa-arrow-up-right-from-square"></i>
+        </a>
+      </div>
+    </div>
+    <!-- Supply Chain Analytics Project -->
+<div class="project">
+  <h3>🚚 Supply Chain Analytics</h3>
+  <p>
+    An end-to-end analytics project using <strong>Python</strong> (EDA & analysis), 
+    <strong>Tableau</strong> (dashboards), and a real-world dataset. 
+    Includes insights on delivery delays, customer segmentation, and profitability.
+  </p>
+
+  <!-- Thumbnails -->
+  <div class="image-gallery">
+    <a href="projects/SupplyChain_analysis/Page1_supplychain.png" target="_blank">
+        <img src="projects/SupplyChain_analysis/Page1_supplychain.png" alt="Supply Chain Dashboard Page 1">
+    </a>
+    <a href="projects/SupplyChain_analysis/Page2_supplychain.png" target="_blank">
+        <img src="projects/SupplyChain_analysis/Page2_supplychain.png" alt="Supply Chain Dashboard Page 2">
+    </a>
+  </div>
+
+  <!-- Button -->
+  <div style="margin-top: 12px;">
+    <a href="projects/SupplyChain_analysis/index.html"
+       style="display:inline-block; padding:10px 14px; background:#6a11cb; color:#fff; border-radius:10px; text-decoration:none;">
+      View Full Project <i class="fa-solid fa-arrow-up-right-from-square"></i>
+    </a>
+  </div>
+</div>
+
+
+
+  </section>
+  
+
+  <footer>
+    © <span id="year"></span> Vaibhav Jaiswal — Built with care and data.
+  </footer>
+
+  <script>
+    // Reveal on scroll
+    const panels = document.querySelectorAll('.panel');
+    const reveal = () => {
+      const trigger = window.innerHeight * 0.85;
+      panels.forEach(p => {
+        const top = p.getBoundingClientRect().top;
+        if (top < trigger) p.classList.add('visible');
+      });
+    };
+    window.addEventListener('scroll', reveal);
+    window.addEventListener('load', reveal);
+
+    // Navbar shrink + active link highlight
+    const navbar = document.getElementById('navbar');
+    const links = navbar.querySelectorAll('a');
+    const sections = [...links].map(a => document.querySelector(a.getAttribute('href')));
+
+    const onScroll = () => {
+      if (window.scrollY > 40) navbar.classList.add('shrink');
+      else navbar.classList.remove('shrink');
+
+      // Active section highlight
+      let idx = sections.findIndex(sec => sec.getBoundingClientRect().top - 120 > 0) - 1;
+      if (idx < 0) idx = sections.length - 1;
+      links.forEach(l => l.classList.remove('active'));
+      if (sections[idx]) {
+        const id = '#' + sections[idx].id;
+        const active = navbar.querySelector(`a[href="${id}"]`);
+        if (active) active.classList.add('active');
+      }
+    };
+    window.addEventListener('scroll', onScroll);
+    window.addEventListener('load', onScroll);
+
+    // Footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
 
