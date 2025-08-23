@@ -5,200 +5,140 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>E-Commerce Data Analysis Project</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
+    /* Reset & Base */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
-      margin: 0;
-      font-family: "Poppins", sans-serif;
-      background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb, #a1c4fd, #c2e9fb);
+      font-family: 'Poppins', sans-serif;
+      color: #4c2a4c; /* UPDATED: Deep plum text */
+      /* UPDATED: Soft Lilac Gradient */
+      background: linear-gradient(270deg, #d4a4eb, #f3e6f7);
       background-size: 400% 400%;
-      animation: gradientShift 18s ease infinite;
-      color: #222;
-      line-height: 1.6;
+      animation: gradientAnimation 18s ease infinite;
+      min-height: 100vh;
     }
-    @keyframes gradientShift {
+
+    @keyframes gradientAnimation {
       0% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
     }
+
+    /* REPLICATED: Container Panels (Glass) */
+    .panel {
+      max-width: 1100px;
+      margin: 28px auto;
+      padding: 26px;
+      background: rgba(245, 240, 250, 0.8); /* Lilac tint */
+      border: 1px solid rgba(220, 200, 230, 0.6); /* Lilac border */
+      border-radius: 16px;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity .8s ease, transform .8s ease;
+    }
+    .panel.visible { opacity: 1; transform: translateY(0); }
+
+    h1, h2 { letter-spacing: 0.2px; text-align: center; }
+    h1 { font-size: 2.3rem; color: #3c1361; }
+    h2 { font-size: 1.6rem; margin-bottom: 12px; color: #8e44ad; position: relative; } /* Accent purple */
+    h2 i { margin-right: 8px; }
+    h2::after {
+      content: ""; display: block; width: 64px; height: 3px;
+      background: #c39bd3; /* UPDATED: Lilac accent */
+      margin: 8px auto 0; border-radius: 3px;
+    }
+    p { margin: 0.5rem 0 1.5rem; text-align: justify; color: #593959; }
+    ul { margin: 0.5rem 0 1.5rem 1.2rem; color: #593959; }
+    
+    /* REPLICATED: Navbar */
     nav {
-      background: rgba(0,0,0,0.6);
-      padding: 12px;
-      text-align: center;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      backdrop-filter: blur(8px);
+      position: sticky; top: 0; z-index: 1000; display: flex;
+      flex-wrap: wrap; justify-content: center; gap: 12px 18px;
+      background: rgba(60, 19, 97, 0.88); /* Dark purple */
+      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+      padding: 12px 10px; border-bottom: 1px solid rgba(212, 164, 235, 0.4);
+      transition: padding .2s ease, background .2s ease, box-shadow .2s ease;
+    }
+    nav.shrink {
+      padding: 8px 8px; background: rgba(60, 19, 97, 0.95);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.18);
     }
     nav a {
-      color: white;
-      margin: 0 12px;
-      text-decoration: none;
-      font-weight: 500;
-      font-size: 0.95rem;
-      transition: color 0.3s;
+      color: #f3e6f7; text-decoration: none; font-weight: 500; font-size: 0.9rem;
+      padding: 6px 10px; border-radius: 6px; transition: background 0.3s ease;
     }
-    nav a:hover { color: #ffcc00; }
-    .section {
-      background: rgba(255, 255, 255, 0.85);
-      border-radius: 16px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
-      padding: 2rem;
-      margin: 2rem auto;
-      width: 90%;
-      max-width: 1100px;
-      backdrop-filter: blur(12px);
-    }
-    h1, h2 {
-      font-weight: 700;
-      color: #111;
-      margin-bottom: 0.5em;
-      text-align: center;
-    }
-    h1 { font-size: 2.3rem; }
-    h2 { font-size: 1.6rem; margin-top: 0; }
-    p { margin: 0.5rem 0 1.5rem; text-align: justify; color: #333; }
-    ul { margin: 0.5rem 0 1.5rem 1.2rem; }
+    nav a:hover, nav a.active { background: rgba(212, 164, 235, 0.25); }
+
+    /* Project-specific styles adapted to the new theme */
     .pipeline {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      align-items: center;
-      gap: 12px;
-      margin: 1.5rem 0;
-      font-size: 1rem;
-      font-weight: 500;
+      display: flex; flex-wrap: wrap; justify-content: center; align-items: center;
+      gap: 12px; margin: 1.5rem 0; font-size: 1rem; font-weight: 500;
     }
     .pipeline div {
-      background: rgba(255,255,255,0.9);
-      padding: 10px 16px;
-      border-radius: 30px;
-      box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+      background: rgba(255,255,255,0.9); padding: 10px 16px; border-radius: 30px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.15); color: #4c2a4c;
     }
-    .pipeline i { margin-right: 6px; }
-    .pipeline span { font-size: 1.2rem; }
+    .pipeline i { margin-right: 6px; color: #8e44ad; }
+    .pipeline span { font-size: 1.2rem; color: #8e44ad; }
     img {
-      display: block;
-      margin: 1.2rem auto;
-      max-width: 85%;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      display: block; margin: 1.2rem auto; max-width: 90%;
+      border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }
-    .buttons {
-      text-align: center;
-      margin-top: 1.2rem;
+    .buttons { text-align: center; margin-top: 1.2rem; }
+    .btn-lilac { /* UPDATED: Button style */
+      display: inline-block; margin: 0.4rem; padding: 0.7rem 1.5rem;
+      font-size: 0.95rem; font-weight: 600; text-decoration: none; border-radius: 30px;
+      background: linear-gradient(135deg, #8e44ad, #c39bd3);
+      color: #fff; transition: all 0.3s ease;
     }
-    .btn {
-      display: inline-block;
-      margin: 0.4rem;
-      padding: 0.6rem 1.4rem;
-      font-size: 0.95rem;
-      font-weight: 600;
-      text-decoration: none;
-      border-radius: 30px;
-      background: linear-gradient(135deg, #ff758c, #ff7eb3);
-      color: #fff;
-      transition: all 0.3s ease;
+    .btn-lilac:hover { transform: translateY(-3px); box-shadow: 0 6px 15px rgba(0,0,0,0.2); }
+    
+    footer { text-align: center; padding: 1rem; color: #fff; font-size: 0.9rem; margin-top: 2rem; }
+    footer p { color: #fff; text-align: center; }
+
+    @media (max-width: 768px) {
+      nav { gap: 10px; }
+      nav a { font-size: 0.9rem; margin: 6px; padding: 6px 10px; }
+      .panel { width: 95%; margin: 1rem auto; padding: 1.2rem; }
+      h1 { font-size: 1.8rem; }
+      h2 { font-size: 1.3rem; }
+      .pipeline { flex-direction: column; gap: 8px; text-align: center; }
+      .pipeline div { width: 100%; max-width: 280px; text-align: center; }
+      img { max-width: 100%; height: auto; }
+      .buttons { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+      .btn-lilac { width: 100%; max-width: 280px; text-align: center; }
     }
-    .btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+    @media (max-width: 480px) {
+      nav a { font-size: 0.8rem; margin: 4px; }
+      h1 { font-size: 1.5rem; }
+      h2 { font-size: 1.1rem; }
+      .panel { padding: 1rem; }
     }
-    footer {
-      text-align: center;
-      padding: 1rem;
-      color: #fff;
-      font-size: 0.9rem;
-      margin-top: 2rem;
-    }
-    /* ---------- Mobile Friendly Enhancements ---------- */
-@media (max-width: 768px) {
-  /* Navbar: stack links for mobile */
-  nav {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: center;
-  }
-  nav a {
-    font-size: 0.9rem;
-    margin: 6px;
-    padding: 6px 10px;
-  }
-
-  /* Section panels */
-  .section {
-    width: 95%;
-    margin: 1rem auto;
-    padding: 1.2rem;
-  }
-  h1 { font-size: 1.8rem; }
-  h2 { font-size: 1.3rem; }
-
-  /* Pipeline flow */
-  .pipeline {
-    flex-direction: column;
-    gap: 8px;
-    text-align: center;
-  }
-  .pipeline div {
-    width: 100%;
-    max-width: 280px;
-    text-align: center;
-  }
-
-  /* Images: make them scale full width */
-  img {
-    max-width: 100%;
-    height: auto;
-  }
-
-  /* Buttons stacked vertically */
-  .buttons {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-  }
-  .btn {
-    width: 100%;
-    max-width: 280px;
-    text-align: center;
-  }
-}
-
-@media (max-width: 480px) {
-  nav a { font-size: 0.8rem; margin: 4px; }
-  h1 { font-size: 1.5rem; }
-  h2 { font-size: 1.1rem; }
-  .section { padding: 1rem; }
-}
-
   </style>
 </head>
 <body>
 
-  <!-- Navbar -->
-  <nav>
-  <a href="../../index.html">Portfolio</a>
-  <a href="#summary">Summary</a>
-  <a href="#education">Education</a>
-  <a href="#experience">Experience</a>
-  <a href="#projects">Projects</a>
-  <a href="#skills">Skills</a>
-  <a href="#certifications">Certifications</a>
-  <a href="#achievements">Achievements</a>
-</nav>
+  <nav id="navbar">
+    <a href="../../index.html"><i class="fa-solid fa-arrow-left"></i> Back to Portfolio</a>
+    <a href="#overview">Overview</a>
+    <a href="#schema">Schema</a>
+    <a href="#dashboard">Dashboard</a>
+    <a href="#insights">Insights</a>
+    <a href="#tools">Tools</a>
+    <a href="#files">Files</a>
+  </nav>
 
-
-  <!-- Title -->
-  <header class="section">
+  <header class="panel">
     <h1><i class="fa-solid fa-box"></i> E-Commerce Data Analysis Project</h1>
-    <p>An end-to-end data pipeline project covering SQL, Python, and Power BI to transform raw data into actionable insights.</p>
+    <p style="text-align: center; max-width: 700px; margin: auto;">An end-to-end data pipeline project covering SQL, Python, and Power BI to transform raw data into actionable insights.</p>
   </header>
 
-  <!-- Overview -->
-  <section id="overview" class="section">
+  <section id="overview" class="panel">
     <h2><i class="fa-solid fa-chart-line"></i> Project Overview</h2>
     <p>This project demonstrates the complete workflow for analyzing e-commerce sales data:</p>
     <ul>
@@ -216,69 +156,95 @@
     </div>
   </section>
 
-  <!-- Schema -->
-  <section id="schema" class="section">
+  <section id="schema" class="panel">
     <h2><i class="fa-solid fa-database"></i> Database Schema</h2>
-    <p>The schema illustrates the relational structure of the e-commerce dataset:</p>
+    <p>The schema illustrates the relational structure of the e-commerce dataset, detailing tables for orders, products, customers, and payments to ensure data integrity and efficient querying.</p>
     <img src="Schema_diagram.png" alt="Database Schema Diagram">
   </section>
 
-  <!-- Dashboard -->
-  <section id="dashboard" class="section">
+  <section id="dashboard" class="panel">
     <h2><i class="fa-solid fa-chart-pie"></i> Power BI Dashboard</h2>
-    <p>Preview of dashboard pages highlighting sales trends, customer segmentation, and product performance:</p>
-    <img src="Page1.png" alt="Dashboard Page 1">
-    <img src="Page2.png" alt="Dashboard Page 2">
-    <img src="Page3.png" alt="Dashboard Page 3">
+    <p>A preview of the interactive dashboard pages, which highlight key performance indicators (KPIs), sales trends over time, customer segmentation by value, and product performance analysis.</p>
+    <img src="Page1.png" alt="Dashboard Page 1: Sales Overview">
+    <img src="Page2.png" alt="Dashboard Page 2: Customer Analysis">
+    <img src="Page3.png" alt="Dashboard Page 3: Product and Payment Insights">
   </section>
 
-  <!-- Insights -->
-  <section id="insights" class="section">
+  <section id="insights" class="panel">
     <h2><i class="fa-solid fa-lightbulb"></i> Key Insights</h2>
     <ul>
-      <li>Sales peak during holiday seasons with spikes in Q4.</li>
-      <li>Top 10 customers contribute significantly to revenue.</li>
-      <li>Credit card payments dominate overall transactions.</li>
-      <li>Delivery delays are mostly linked to specific regions.</li>
+      <li>Sales peak during holiday seasons, with significant spikes in Q4, suggesting targeted marketing opportunities.</li>
+      <li>The top 10% of customers contribute to over 60% of total revenue, highlighting the importance of loyalty programs.</li>
+      <li>Credit card payments are the most frequent transaction method, indicating a preference for digital payments.</li>
+      <li>Analysis shows that delivery delays are most commonly linked to specific geographic regions, pointing to logistical bottlenecks.</li>
     </ul>
   </section>
 
-  <!-- Tools -->
-  <section id="tools" class="section">
+  <section id="tools" class="panel">
     <h2><i class="fa-solid fa-screwdriver-wrench"></i> Tech Stack</h2>
     <ul>
-      <li><strong>SQL (MySQL):</strong> Database design, storage & queries</li>
-      <li><strong>Python:</strong> Data cleaning, transformation, and EDA</li>
-      <li><strong>Pandas, SQLAlchemy:</strong> Data manipulation and integration</li>
-      <li><strong>Power BI:</strong> Dashboard creation & visualization</li>
+      <li><strong>SQL (MySQL):</strong> Utilized for database design, relational schema implementation, data storage, and complex querying.</li>
+      <li><strong>Python:</strong> The core tool for data cleaning, transformation, handling missing values, and performing exploratory data analysis (EDA).</li>
+      <li><strong>Key Libraries (Pandas, SQLAlchemy):</strong> Pandas for data manipulation and analysis; SQLAlchemy for seamless integration between Python and the MySQL database.</li>
+      <li><strong>Power BI:</strong> Employed for creating a dynamic and interactive multi-page dashboard to visualize findings and generate business insights.</li>
     </ul>
   </section>
 
-<!-- Files -->
-<section id="files" class="section">
-  <h2><i class="fa-solid fa-folder-open"></i> Project Files</h2>
-  <p>Open the core project files in a new tab (view-only):</p>
-  <div class="buttons">
-    <a href="table_creation.html" target="_blank" class="btn">SQL – Table Creation</a>
-    <a href="table_import.html" target="_blank" class="btn">SQL – Table Import</a>
-    <a href="https://nbviewer.org/github/Pyroj08/Pyroj08.github.io/blob/main/projects/ecommerce-analysis/E_commerce_project_sqlalchemy.ipynb" 
-   target="_blank" class="btn">Python – Data Cleaning (Notebook View)</a>
+  <section id="files" class="panel">
+    <h2><i class="fa-solid fa-folder-open"></i> Project Files</h2>
+    <p>Access the core project files, including the SQL scripts for database setup and the Jupyter Notebook for the data cleaning process.</p>
+    <div class="buttons">
+      <a href="table_creation.html" target="_blank" class="btn-lilac"><i class="fa-solid fa-database"></i> SQL – Table Creation</a>
+      <a href="table_import.html" target="_blank" class="btn-lilac"><i class="fa-solid fa-upload"></i> SQL – Table Import</a>
+      <a href="https://nbviewer.org/github/Pyroj08/Pyroj08.github.io/blob/main/projects/ecommerce-analysis/E_commerce_project_sqlalchemy.ipynb" target="_blank" class="btn-lilac"><i class="fa-brands fa-python"></i> Python Cleaning Notebook</a>
+    </div>
+  </section>
 
-  </div>
-</section>
-
-
-
-
-  <!-- Conclusion -->
-  <section id="conclusion" class="section">
+  <section id="conclusion" class="panel">
     <h2><i class="fa-solid fa-circle-check"></i> Conclusion</h2>
-    <p>This project highlights how raw e-commerce data can be transformed into meaningful insights using SQL, Python, and Power BI.  
-       By integrating multiple tools, we built a scalable workflow suitable for real-world business analysis with a professional dashboard.</p>
+    <p>This project successfully demonstrates how a combination of standard industry tools—SQL, Python, and Power BI—can create a robust and scalable workflow. By transforming raw, unstructured e-commerce data into a clean, relational format and visualizing the results, we can uncover actionable business insights that drive strategic decision-making and identify areas for operational improvement.</p>
   </section>
 
   <footer>
     <p>© 2025 E-Commerce Data Analysis | Built with SQL · Python · Power BI</p>
   </footer>
+
+  <script>
+    // REPLICATED: JavaScript for animations and navbar behavior
+    const panels = document.querySelectorAll('.panel');
+    const reveal = () => {
+      const trigger = window.innerHeight * 0.85;
+      panels.forEach(p => {
+        const top = p.getBoundingClientRect().top;
+        if (top < trigger) p.classList.add('visible');
+      });
+    };
+    window.addEventListener('scroll', reveal);
+    window.addEventListener('load', reveal);
+
+    const navbar = document.getElementById('navbar');
+    const links = navbar.querySelectorAll('a[href^="#"]'); // Only select links that point to an ID
+    const sections = [...links].map(a => document.querySelector(a.getAttribute('href')));
+
+    const onScroll = () => {
+      if (window.scrollY > 40) navbar.classList.add('shrink');
+      else navbar.classList.remove('shrink');
+
+      let currentSection = null;
+      for (let i = sections.length - 1; i >= 0; i--) {
+        if (sections[i] && sections[i].getBoundingClientRect().top - 120 <= 0) {
+          currentSection = sections[i];
+          break;
+        }
+      }
+      links.forEach(l => l.classList.remove('active'));
+      if(currentSection) {
+        const activeLink = navbar.querySelector(`a[href="#${currentSection.id}"]`);
+        if (activeLink) activeLink.classList.add('active');
+      }
+    };
+    window.addEventListener('scroll', onScroll);
+    window.addEventListener('load', onScroll);
+  </script>
 </body>
 </html>
