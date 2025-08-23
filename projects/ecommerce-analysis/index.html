@@ -12,9 +12,9 @@
     html { scroll-behavior: smooth; }
     body {
       font-family: 'Poppins', sans-serif;
-      color: #4c2a4c; /* UPDATED: Deep plum text */
-      /* UPDATED: Soft Lilac Gradient */
-      background: linear-gradient(270deg, #d4a4eb, #f3e6f7);
+      color: #4c2a4c;
+      /* UPDATED: More vibrant Lilac Gradient to make animation visible */
+      background: linear-gradient(270deg, #e1bee7, #b39ddb);
       background-size: 400% 400%;
       animation: gradientAnimation 18s ease infinite;
       min-height: 100vh;
@@ -210,7 +210,6 @@
   </footer>
 
   <script>
-    // REPLICATED: JavaScript for animations and navbar behavior
     const panels = document.querySelectorAll('.panel');
     const reveal = () => {
       const trigger = window.innerHeight * 0.85;
@@ -223,7 +222,7 @@
     window.addEventListener('load', reveal);
 
     const navbar = document.getElementById('navbar');
-    const links = navbar.querySelectorAll('a[href^="#"]'); // Only select links that point to an ID
+    const links = navbar.querySelectorAll('a[href^="#"]');
     const sections = [...links].map(a => document.querySelector(a.getAttribute('href')));
 
     const onScroll = () => {
