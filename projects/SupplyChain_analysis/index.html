@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Supply Chain Analytics Project - Vaibhav Jaiswal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    /* Base */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #c2e9fb 0%, #a1c4fd 100%);
+      color: #222;
+    }
+    .panel {
+      max-width: 1100px; margin: 28px auto; padding: 26px;
+      background: rgba(255,255,255,0.28);
+      border: 1px solid rgba(255,255,255,0.35);
+      border-radius: 16px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      opacity: 0; transform: translateY(18px);
+      transition: opacity .8s ease, transform .8s ease;
+    }
+    .panel.visible { opacity: 1; transform: translateY(0); }
+    h1,h2,h3 { letter-spacing: .3px; }
+    h2 {
+      font-size: 1.6rem; margin-bottom: 12px; color: #00416A;
+      position: relative;
+    }
+    h2 i { margin-right: 8px; }
+    h2::after {
+      content: ""; display: block; width: 64px; height: 3px;
+      background: #00c6ff; margin-top: 8px; border-radius: 3px;
+    }
+    p { line-height: 1.7; }
+    ul { padding-left: 20px; line-height: 1.8; }
+
+    /* Image gallery */
+    .image-gallery {
+      display: grid; gap: 12px;
+      grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
+      margin-top: 10px;
+    }
+    .image-gallery img {
+      width: 100%; border-radius: 10px; background:#fff;
+      box-shadow: 0 6px 16px rgba(0,0,0,.10);
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+    .image-gallery img:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 26px rgba(0,0,0,.15);
+    }
+    .btn {
+      display:inline-block; margin-top:14px;
+      padding:10px 14px; background:#00416A; color:#fff;
+      border-radius:10px; text-decoration:none;
+      transition: background .3s ease;
+    }
+    .btn:hover { background:#0077b6; }
+
+    footer { text-align:center; padding:18px; margin:32px 0; opacity:0.9; }
+  </style>
+</head>
+<body>
+
+  <section class="panel">
+    <h2><i class="fa-solid fa-diagram-project"></i> Supply Chain Analytics Project</h2>
+    <p>
+      This project analyzes <strong>Supply Chain Operations</strong> using the <em>DataCo Supply Chain dataset</em>.  
+      The goal was to explore <strong>delivery performance, profitability, and sales distribution</strong> to optimize
+      decision-making. The workflow included:
+    </p>
+    <ul>
+      <li>Data Cleaning & Preparation in <strong>Python (Jupyter Notebook)</strong></li>
+      <li>Exploratory Data Analysis (EDA) of delays, sales patterns, and profitability</li>
+      <li>Interactive dashboards built with <strong>Tableau</strong></li>
+      <li>Insights on <strong>customer segments, shipping modes, and delivery status</strong></li>
+    </ul>
+
+    <!-- Dashboard Images -->
+    <div class="image-gallery">
+      <a href="projects/supplychain/Page1_supplychain.png" target="_blank">
+        <img src="projects/supplychain/Page1_supplychain.png" alt="Supply Chain Dashboard Page 1">
+      </a>
+      <a href="projects/supplychain/Page2_supplychain.png" target="_blank">
+        <img src="projects/supplychain/Page2_supplychain.png" alt="Supply Chain Dashboard Page 2">
+      </a>
+    </div>
+
+    <!-- Links -->
+    <div>
+      <a href="projects/supplychain/Supply Chain.ipynb" class="btn" target="_blank">
+        📓 View Jupyter Notebook
+      </a>
+      <a href="projects/supplychain/Supply Chain.twb" class="btn" target="_blank">
+        📊 Tableau Workbook
+      </a>
+      <a href="projects/supplychain/DataCoSupplyChainDataset.csv" class="btn" target="_blank">
+        📂 Dataset
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    © <span id="year"></span> Vaibhav Jaiswal — Supply Chain Analytics Project
+  </footer>
+
+  <script>
+    // reveal on scroll
+    const panels=document.querySelectorAll('.panel');
+    const reveal=()=>{const t=window.innerHeight*0.85;
+      panels.forEach(p=>{if(p.getBoundingClientRect().top<t) p.classList.add('visible');});
+    };
+    window.addEventListener('scroll',reveal);
+    window.addEventListener('load',reveal);
+    document.getElementById('year').textContent=new Date().getFullYear();
+  </script>
+</body>
+</html>
