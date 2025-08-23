@@ -12,17 +12,18 @@
   <meta property="og:image" content="assets/Profile.png" />
   <meta property="og:url" content="https://your-username.github.io" />
 
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
+
 
   <style>
     /* Reset & Base */
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
-      font-family: 'Poppins', sans-serif;
-      color: #1D4A4D; /* UPDATED: Dark teal text */
-      /* UPDATED: Minty Ocean Gradient */
+      font-family: 'Poppins', sans-serif; /* Headings will use this */
+      color: #1D4A4D;
       background: linear-gradient(270deg, #5EEB9C, #43A4B0);
       background-size: 400% 400%;
       animation: gradientAnimation 18s ease infinite;
@@ -35,7 +36,7 @@
       100% { background-position: 0% 50%; }
     }
 
-    /* UPDATED: Reusable button */
+    /* Reusable button */
     .btn-mint {
       display: inline-block;
       padding: 10px 14px;
@@ -43,6 +44,7 @@
       color: #fff;
       border-radius: 10px;
       text-decoration: none;
+      font-family: 'Poppins', sans-serif; /* Ensure buttons use Poppins */
       transition: box-shadow 0.3s ease, transform .15s ease;
     }
     .btn-mint:hover {
@@ -50,13 +52,13 @@
       transform: translateY(-1px);
     }
 
-    /* UPDATED: Container Panels (Glass) */
+    /* Container Panels (Glass) */
     .panel {
       max-width: 1100px;
-      margin: 28px auto;
-      padding: 26px;
-      background: rgba(240, 255, 255, 0.8); /* Cyan tint */
-      border: 1px solid rgba(180, 220, 220, 0.6); /* Cyan border */
+      margin: 40px auto; /* UPGRADED: Increased spacing */
+      padding: 30px; /* UPGRADED: Increased padding */
+      background: rgba(240, 255, 255, 0.8);
+      border: 1px solid rgba(180, 220, 220, 0.6);
       border-radius: 16px;
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
@@ -68,49 +70,44 @@
     }
     .panel.visible { opacity: 1; transform: translateY(0); }
 
-    h1, h2, h3 { letter-spacing: 0.2px; }
+    h1, h2, h3 { 
+      font-family: 'Poppins', sans-serif;
+      letter-spacing: 0.2px; 
+    }
     h2 {
-      font-size: 1.6rem;
-      margin-bottom: 12px;
-      color: #00796B; /* Saturated teal */
-      position: relative;
+      font-size: 1.6rem; margin-bottom: 12px;
+      color: #00796B; position: relative;
     }
     h2 i { margin-right: 8px; }
     h2::after {
-      content: "";
-      display: block;
-      width: 64px;
-      height: 3px;
-      background: #5EEB9C; /* Bright mint accent */
-      margin-top: 8px;
-      border-radius: 3px;
+      content: ""; display: block; width: 64px; height: 3px;
+      background: #5EEB9C; margin-top: 8px; border-radius: 3px;
     }
+    /* UPGRADED: Typography for paragraphs and lists */
     p, ul { 
-      line-height: 1.7; 
-      color: #376F74; /* Soft dark teal */
+      font-family: 'Lora', serif;
+      line-height: 1.8; 
+      font-size: 1.05rem;
+      color: #376F74;
     }
     ul { padding-left: 20px; }
 
-
-    /* UPDATED: Navbar */
+    /* Navbar */
     nav {
       position: sticky; top: 0; z-index: 1000;
       display: flex; flex-wrap: nowrap; justify-content: center;
       gap: 12px 18px;
-      background: rgba(0, 77, 64, 0.88); /* Dark teal */
+      background: rgba(0, 77, 64, 0.88);
       backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
-      padding: 12px 10px;
-      border-bottom: 1px solid rgba(94, 235, 156, 0.4);
+      padding: 12px 10px; border-bottom: 1px solid rgba(94, 235, 156, 0.4);
       transition: padding .2s ease, background .2s ease, box-shadow .2s ease;
     }
     nav.shrink {
-      padding: 8px 8px;
-      background: rgba(0, 77, 64, 0.95);
+      padding: 8px 8px; background: rgba(0, 77, 64, 0.95);
       box-shadow: 0 6px 18px rgba(0,0,0,0.18);
     }
     nav a {
-      color: #E0F2F1;
-      text-decoration: none; font-weight: 500; font-size: 0.9rem;
+      color: #E0F2F1; text-decoration: none; font-weight: 500; font-size: 0.9rem;
       padding: 6px 10px; border-radius: 6px;
       transition: background 0.3s ease, color 0.3s ease;
       text-align: center;
@@ -136,8 +133,8 @@
     }
     .profile-pic:hover { transform: scale(1.03); box-shadow: 0 12px 28px rgba(0,0,0,0.25); }
     .hero .meta h1 { font-size: 2.2rem; font-weight: 600; color: #fff; text-shadow: 0 1px 3px rgba(0,0,0,0.2); }
-    .hero .meta p.tagline { margin-top: 4px; opacity: 0.9; color: #E0F2F1; }
-    .quick-links { margin-top: 10px; display: flex; gap: 12px; flex-wrap: wrap; }
+    .hero .meta p.tagline { margin-top: 4px; opacity: 0.9; color: #E0F2F1; font-size: 1.1rem; }
+    .quick-links { margin-top: 15px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
     .quick-links a {
       display: inline-flex; align-items: center; gap: 8px;
       text-decoration: none; color: #004D40; font-weight: 500;
@@ -152,34 +149,67 @@
       background: rgba(255, 255, 255, 0.9);
       box-shadow: 0 8px 20px rgba(0,0,0,0.1);
     }
+    /* UPGRADED: Primary CTA Button Style */
+    .primary-cta {
+        padding: 12px 20px;
+        font-size: 1rem;
+        font-weight: 600;
+    }
+    /* UPGRADED: Microinteraction on quick link icons */
+    .quick-links a i {
+      transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    }
+    .quick-links a:hover i {
+      transform: scale(1.2) rotate(5deg);
+    }
+    
+    /* UPGRADED: New Visual Skills Section */
+    .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        gap: 25px;
+        text-align: center;
+        margin-top: 20px;
+    }
+    .skill-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 500;
+        font-size: 0.9rem;
+        color: #376F74;
+    }
+    .skill-item i {
+        font-size: 3rem;
+        color: #00796B;
+    }
 
-    /* UPDATED: Certifications Grid */
+    /* Certifications Grid */
     .cert-grid {
       display: grid; gap: 14px;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     }
     .cert-card {
       display: flex; align-items: center; gap: 12px;
-      background: rgba(255, 255, 255, 0.4);
-      border: 1px solid rgba(255, 255, 255, 0.6);
+      background: rgba(255, 255, 255, 0.4); border: 1px solid rgba(255, 255, 255, 0.6);
       border-radius: 12px; padding: 12px 14px;
       backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
       transition: transform .2s ease, box-shadow .2s ease;
     }
     .cert-link { text-decoration: none; color: inherit; display: block; }
     .cert-link .cert-card:hover {
-      background: rgba(255, 255, 255, 0.6);
-      transform: translateY(-4px);
+      background: rgba(255, 255, 255, 0.6); transform: translateY(-4px);
       box-shadow: 0 10px 25px rgba(0,0,0,0.1);
     }
     .cert-card i { font-size: 1.2rem; color: #00796B; }
     .cert-card h3 { margin: 0; font-size: 1rem; font-weight: 600; color: #004D40; }
-    .cert-card p { margin: 2px 0 0 0; font-size: .9rem; opacity: .85; color: #376F74; }
+    .cert-card p { margin: 2px 0 0 0; font-size: .9rem; opacity: .85; }
 
     /* Project gallery */
     .image-gallery {
-      display: grid; gap: 12px;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       margin-top: 10px;
     }
     .image-gallery img {
@@ -190,17 +220,10 @@
     }
     .image-gallery img:hover { transform: translateY(-3px); box-shadow: 0 12px 26px rgba(0,0,0,0.2); }
 
-    /* Footer */
-    footer {
-      text-align: center; padding: 18px; margin: 32px 0;
-      color: #E0F2F1; opacity: 0.95;
-    }
-    
-    /* UPDATED: Contact Section Panel */
+    /* Contact Section Panel */
     .panel-contact {
       background: linear-gradient(120deg, #004D40, #00796B);
-      color: #f0f0f0;
-      text-align: center;
+      color: #f0f0f0; text-align: center;
     }
     .panel-contact h2 { color: #fff; }
     .panel-contact h2::after { background: rgba(255, 255, 255, 0.5); margin-left: auto; margin-right: auto; }
@@ -208,6 +231,9 @@
     .contact-links { margin-top: 20px; display: flex; justify-content: center; gap: 20px; }
     .contact-links a { color: #fff; font-size: 1.8rem; transition: transform 0.3s ease, color 0.3s ease; }
     .contact-links a:hover { transform: scale(1.1); color: #5EEB9C; }
+    
+    /* Footer */
+    footer { text-align: center; padding: 18px; margin: 32px 0; color: #E0F2F1; opacity: 0.95; }
 
     /* Mobile Responsiveness */
     @media (max-width: 768px) {
@@ -237,14 +263,17 @@
     <img class="profile-pic" src="assets/Profile.png" alt="Profile Photo of Vaibhav Jaiswal"/>
     <div class="meta">
       <h1>Vaibhav Jaiswal</h1>
-      <p class="tagline">Data Analyst · SQL · Python · Power BI</p>
+      <p class="tagline">A Data Analyst passionate about transforming complex data into clear, actionable insights.</p>
       <div class="quick-links">
-        <a href="mailto:Vaibhavjaiswal139@gmail.com">
-          <i class="fa-solid fa-envelope"></i> Email
+        <a href="#projects" class="btn-mint primary-cta">View My Work</a>
+        <a href="mailto:Vaibhavjaiswal139@gmail.com" aria-label="Email Me">
+          <i class="fa-solid fa-envelope"></i>
         </a>
-        <a href="https://www.linkedin.com/in/vaibhav-jaiswal-995a1119a/" target="_blank"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
-        <a href="assets/Vaibhav_Jaiswal_Resume_.pdf" target="_blank">
-          <i class="fa-solid fa-file-pdf"></i> Download Resume
+        <a href="https://www.linkedin.com/in/vaibhav-jaiswal-995a1119a/" target="_blank" aria-label="LinkedIn">
+            <i class="fa-brands fa-linkedin"></i>
+        </a>
+        <a href="assets/Vaibhav_Jaiswal_Resume_.pdf" target="_blank" aria-label="Download Resume">
+          <i class="fa-solid fa-file-pdf"></i>
         </a>
       </div>
     </div>
@@ -253,14 +282,10 @@
   <section id="summary" class="panel">
     <h2><i class="fa-solid fa-user"></i> Professional Summary</h2>
     <p>
-      Aspiring <strong>Data Analyst</strong> skilled in <strong>SQL, Python, and Power BI</strong> with hands-on experience
-      in <strong>data cleaning, wrangling, EDA, and visualization</strong>. Adept at transforming complex datasets into
-      actionable insights and building interactive dashboards to support data-driven decision-making.
+        My journey from Electrical Engineering to Data Analytics was driven by a passion for finding patterns and solving puzzles. I enjoy the process of digging into raw data and emerging with a clear story that can drive business decisions.
     </p>
     <p>
-      Experienced with end-to-end analytics workflows including database management (MySQL), ETL pipelines in Python,
-      and business reporting. Strong problem-solving mindset, attention to detail, and a passion for converting raw data
-      into measurable business outcomes.
+      Aspiring <strong>Data Analyst</strong> skilled in <strong>SQL, Python, and Power BI</strong> with hands-on experience in the complete analytics workflow, from data cleaning and wrangling to building interactive dashboards. I have a strong problem-solving mindset and a passion for converting raw data into measurable business outcomes.
     </p>
   </section>
 
@@ -275,21 +300,28 @@
     <h2><i class="fa-solid fa-briefcase"></i> Experience</h2>
     <p><strong>Data Analytics Intern</strong> — Dataman Computer Systems Pvt. Ltd. (2025)</p>
     <ul>
-      <li>Collected, cleaned, and organized data using Excel and SQL.</li>
-      <li>Performed EDA using Python (Pandas, Matplotlib) to uncover trends and patterns.</li>
-      <li>Created visuals and reports to present insights to stakeholders.</li>
-      <li>Supported decision-making by synthesizing actionable analytics.</li>
+      <li>Collected, cleaned, and organized large datasets using advanced Excel functions and SQL queries.</li>
+      <li>Performed Exploratory Data Analysis (EDA) using Python (Pandas, Matplotlib) to uncover key trends and patterns.</li>
+      <li>Developed and presented comprehensive reports and data visualizations to stakeholders, supporting data-driven decision-making.</li>
     </ul>
   </section>
 
   <section id="skills" class="panel">
     <h2><i class="fa-solid fa-gears"></i> Skills</h2>
-    <ul>
-      <li><strong>Technical:</strong> Python (Pandas, NumPy), VBA, Power BI, Matplotlib, Seaborn, MySQL, MongoDB, Excel (Pivot Tables, VLOOKUP, Macros)</li>
-      <li><strong>Analytical:</strong> Data Cleaning, Data Wrangling, EDA, KPI Tracking, Statistical Analysis, Business Insights</li>
-      <li><strong>Tools:</strong> Jupyter Notebook, VS Code, Git, Power Query</li>
-      <li><strong>Soft Skills:</strong> Problem-Solving, Attention to Detail, Team Collaboration, Communication, Time Management, Adaptability</li>
-    </ul>
+    <div class="skills-grid">
+        <div class="skill-item"><i class="devicon-python-plain"></i><span>Python</span></div>
+        <div class="skill-item"><i class="devicon-mysql-plain"></i><span>MySQL</span></div>
+        <div class="skill-item"><i class="devicon-microsoftsqlserver-plain"></i><span>SQL</span></div>
+        <div class="skill-item"><i class="fa-solid fa-file-excel"></i><span>Excel</span></div>
+        <div class="skill-item"><i class="fa-solid fa-chart-simple"></i><span>Power BI</span></div>
+        <div class="skill-item"><i class="devicon-pandas-original"></i><span>Pandas</span></div>
+        <div class="skill-item"><i class="devicon-numpy-original"></i><span>NumPy</span></div>
+        <div class="skill-item"><i class="devicon-matplotlib-plain"></i><span>Matplotlib</span></div>
+        <div class="skill-item"><i class="devicon-seaborn-plain"></i><span>Seaborn</span></div>
+        <div class="skill-item"><i class="devicon-jupyter-plain"></i><span>Jupyter</span></div>
+        <div class="skill-item"><i class="devicon-git-plain"></i><span>Git</span></div>
+        <div class="skill-item"><i class="devicon-vscode-plain"></i><span>VS Code</span></div>
+    </div>
   </section>
 
   <section id="certifications" class="panel">
@@ -315,7 +347,7 @@
       </a>
       <div class="cert-card">
         <i class="fa-solid fa-certificate"></i>
-        <div><h3>Data Analytics Using Python</h3><p>Ducat (2025)</p></div>
+        <div><h3>Data Analytics Using Python</h3><p>Ducat</p></div>
       </div>
     </div>
   </section>
@@ -332,8 +364,7 @@
     <div class="project" style="margin-bottom: 30px;">
       <h3>📦 E-Commerce Sales Analysis</h3>
       <p>
-        End-to-end analytics project using <strong>MySQL</strong> (database), <strong>Python</strong> (cleaning & analysis),
-        and <strong>Power BI</strong> (interactive dashboards). Includes sales trends, customer segmentation, and payment insights.
+        <strong>Problem:</strong> Raw e-commerce data was difficult to analyze. <strong>Action:</strong> I built an automated pipeline using Python and SQL to clean the data and designed a Power BI dashboard. <strong>Result:</strong> This provided actionable insights that identified the top 10% of customers contribute to 60% of revenue.
       </p>
       <div class="image-gallery">
         <a href="projects/ecommerce-analysis/Page1.png" target="_blank">
@@ -355,9 +386,7 @@
     <div class="project">
       <h3>🚚 Supply Chain Analytics</h3>
       <p>
-        An end-to-end analytics project using <strong>Python</strong> (EDA & analysis), 
-        <strong>Tableau</strong> (dashboards), and a real-world dataset. 
-        Includes insights on delivery delays, customer segmentation, and profitability.
+        <strong>Problem:</strong> It was difficult to identify the root causes of shipping delays. <strong>Action:</strong> I performed an in-depth EDA in Python and built an interactive Tableau dashboard to visualize logistics. <strong>Result:</strong> The analysis revealed that 'Standard Class' shipping was the primary source of delays, providing a clear area for operational improvement.
       </p>
       <div class="image-gallery">
         <a href="projects/SupplyChain_analysis/Page1_supplychain.png" target="_blank">
@@ -378,7 +407,7 @@
   <section id="contact" class="panel panel-contact">
     <h2><i class="fa-solid fa-envelope"></i> Get In Touch</h2>
     <p>
-      As a trained and aspiring data analyst, I'm actively seeking new opportunities. If you have a role that you think would be a good fit, I'd love to hear from you.
+      As a recent graduate and aspiring data analyst, I'm actively seeking new opportunities. If you have a role that you think would be a good fit, I'd love to hear from you.
     </p>
     <div class="contact-links">
       <a href="mailto:Vaibhavjaiswal139@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
@@ -404,13 +433,16 @@
 
     const navbar = document.getElementById('navbar');
     const links = navbar.querySelectorAll('a');
-    const sections = [...links].map(a => document.querySelector(a.getAttribute('href')));
+    const sections = [...links].map(a => {
+        const href = a.getAttribute('href');
+        return href.startsWith('#') ? document.querySelector(href) : null;
+    }).filter(Boolean);
 
     const onScroll = () => {
       if (window.scrollY > 40) navbar.classList.add('shrink');
       else navbar.classList.remove('shrink');
 
-      let currentSection = sections[sections.length - 1];
+      let currentSection = null;
       for (let i = sections.length - 1; i >= 0; i--) {
         if (sections[i] && sections[i].getBoundingClientRect().top - 120 <= 0) {
           currentSection = sections[i];
