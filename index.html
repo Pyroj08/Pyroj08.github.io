@@ -12,20 +12,19 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
-      font-family: 'Poppins', sans-serif;
-      color: #2d1b1b; /* warm dark for readability over light panels */
-      min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    color: #2b1d1d;
+    background: linear-gradient(270deg, #ff7e5f, #feb47b, #86a8e7, #91eae4);
+    background-size: 800% 800%;
+    animation: gradientAnimation 18s ease infinite;
+    min-height: 100vh;
+  }
 
-      /* Animated Sunrise Horizon gradient */
-      background: linear-gradient(-45deg, #ff512f, #f09819, #ff9966, #ff5f6d);
-      background-size: 400% 400%;
-      animation: sunriseHorizon 15s ease infinite;
-    }
-    @keyframes sunriseHorizon {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
+  @keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
 
     /* Reusable button (for project CTAs) */
     .btn-sunrise {
