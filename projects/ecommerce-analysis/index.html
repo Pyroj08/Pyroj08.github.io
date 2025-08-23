@@ -14,7 +14,6 @@
     body {
       font-family: 'Poppins', sans-serif;
       color: #5D4037; /* Dark warm brown */
-      /* Soft Sunrise Gradient */
       background: linear-gradient(270deg, #ff7e5f, #feb47b);
       background-size: 400% 400%;
       animation: gradientAnimation 18s ease infinite;
@@ -97,18 +96,31 @@
     }
     .btn-sunrise:hover { transform: translateY(-3px); box-shadow: 0 6px 15px rgba(0,0,0,0.2); }
 
-    /* --- New UI/UX Styles --- */
+    /* --- ADDED: High-Contrast Panel Style --- */
+    .panel-dark {
+        background: linear-gradient(120deg, #BF360C, #783228);
+        color: #FFFAF0;
+    }
+    .panel-dark h2 { color: #FFFAF0; }
+    .panel-dark h2::after { background: rgba(255, 239, 230, 0.5); }
+    .panel-dark p { color: #FFFAF0; }
+    .panel-dark .kpi-item .kpi-number { color: #feb47b; }
+    .panel-dark .kpi-item .kpi-label { color: #FFFAF0; }
+    .panel-dark .insight-card { background: rgba(0,0,0,0.2); }
+    .panel-dark .insight-card i { color: #feb47b; }
+    .panel-dark .insight-card h3 { color: #FFFAF0; }
+    
     .kpi-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
         gap: 20px; text-align: center; margin-top: 20px;
     }
     .kpi-item .kpi-number {
-        font-size: 2.5rem; font-weight: 600; color: #E65100;
+        font-size: 2.5rem; font-weight: 600;
     }
     .kpi-item .kpi-label {
         font-family: 'Poppins', sans-serif; font-size: 0.9rem;
-        color: #5D4037; text-align: center; margin: 0;
+        text-align: center; margin: 0;
     }
     .insights-grid {
         display: grid;
@@ -117,8 +129,8 @@
     .insight-card {
         background: rgba(255, 255, 255, 0.5); padding: 20px; border-radius: 12px; text-align: center;
     }
-    .insight-card i { font-size: 2rem; color: #E65100; margin-bottom: 10px; }
-    .insight-card h3 { font-size: 1.1rem; color: #5D4037; margin-bottom: 5px; }
+    .insight-card i { font-size: 2rem; margin-bottom: 10px; }
+    .insight-card h3 { font-size: 1.1rem; margin-bottom: 5px; }
     .insight-card p { text-align: center; }
     
     footer { text-align: center; padding: 2rem; color: #fff; font-size: 0.9rem; margin-top: 2rem; }
@@ -126,8 +138,7 @@
     .project-nav {
         display: flex; justify-content: center; gap: 15px; margin-top: 1rem;
     }
-    /* --- End of New Styles --- */
-
+    
     @media (max-width: 768px) { /* media query updates */ }
   </style>
 </head>
@@ -146,7 +157,7 @@
     <p style="text-align: center; max-width: 700px; margin: auto;">This project was designed to uncover key business drivers from raw sales data, demonstrating the complete analytics workflow from database to dashboard.</p>
   </header>
   
-  <section id="questions" class="panel">
+  <section id="questions" class="panel panel-dark">
     <h2><i class="fa-solid fa-briefcase"></i> Key Business Questions</h2>
     <p style="text-align: center;">This project answers critical, industry-level questions that drive business strategy:</p>
     <div class="insights-grid">
@@ -169,7 +180,7 @@
     </div>
   </section>
 
-  <section class="panel">
+  <section class="panel panel-dark">
       <h2><i class="fa-solid fa-bullseye"></i> At a Glance: Key Results</h2>
       <div class="kpi-grid">
           <div class="kpi-item">
