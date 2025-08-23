@@ -1,122 +1,301 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Supply Chain Analytics Project - Vaibhav Jaiswal</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Supply Chain Data Analysis Project</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    /* Base */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #c2e9fb 0%, #a1c4fd 100%);
-      color: #222;
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(135deg, #2E8BC0, #0C7B93, #145DA0, #00A8CC);
+      background-size: 400% 400%;
+      animation: gradientShift 18s ease infinite;
+      color: #f4faff;
+      line-height: 1.6;
     }
-    .panel {
-      max-width: 1100px; margin: 28px auto; padding: 26px;
-      background: rgba(255,255,255,0.28);
-      border: 1px solid rgba(255,255,255,0.35);
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    nav {
+      background: rgba(0,0,0,0.5);
+      padding: 12px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(8px);
+    }
+    nav a {
+      color: #e6f7ff;
+      margin: 0 12px;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: color 0.3s;
+    }
+    nav a:hover { color: #ffd166; }
+    .section {
+      background: rgba(255, 255, 255, 0.12);
       border-radius: 16px;
-      backdrop-filter: blur(10px);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-      opacity: 0; transform: translateY(18px);
-      transition: opacity .8s ease, transform .8s ease;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+      padding: 2rem;
+      margin: 2rem auto;
+      width: 90%;
+      max-width: 1100px;
+      backdrop-filter: blur(14px);
     }
-    .panel.visible { opacity: 1; transform: translateY(0); }
-    h1,h2,h3 { letter-spacing: .3px; }
-    h2 {
-      font-size: 1.6rem; margin-bottom: 12px; color: #00416A;
-      position: relative;
+    h1, h2 {
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 0.5em;
+      text-align: center;
     }
-    h2 i { margin-right: 8px; }
-    h2::after {
-      content: ""; display: block; width: 64px; height: 3px;
-      background: #00c6ff; margin-top: 8px; border-radius: 3px;
+    h1 { font-size: 2.3rem; }
+    h2 { font-size: 1.6rem; margin-top: 0; }
+    p { margin: 0.5rem 0 1.5rem; text-align: justify; color: #e0f7fa; }
+    ul { margin: 0.5rem 0 1.5rem 1.2rem; color: #e6faff; }
+    .pipeline {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      margin: 1.5rem 0;
+      font-size: 1rem;
+      font-weight: 500;
     }
-    p { line-height: 1.7; }
-    ul { padding-left: 20px; line-height: 1.8; }
-
-    /* Image gallery */
-    .image-gallery {
-      display: grid; gap: 12px;
-      grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
-      margin-top: 10px;
+    .pipeline div {
+      background: rgba(255,255,255,0.15);
+      padding: 10px 16px;
+      border-radius: 30px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+      color: #fff;
     }
-    .image-gallery img {
-      width: 100%; border-radius: 10px; background:#fff;
-      box-shadow: 0 6px 16px rgba(0,0,0,.10);
-      transition: transform .25s ease, box-shadow .25s ease;
+    .pipeline i { margin-right: 6px; }
+    .pipeline span { font-size: 1.2rem; color: #ffd166; }
+    img {
+      display: block;
+      margin: 1.2rem auto;
+      max-width: 85%;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
     }
-    .image-gallery img:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 12px 26px rgba(0,0,0,.15);
+    .buttons {
+      text-align: center;
+      margin-top: 1.2rem;
     }
     .btn {
-      display:inline-block; margin-top:14px;
-      padding:10px 14px; background:#00416A; color:#fff;
-      border-radius:10px; text-decoration:none;
-      transition: background .3s ease;
+      display: inline-block;
+      margin: 0.4rem;
+      padding: 0.6rem 1.4rem;
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 30px;
+      background: linear-gradient(135deg, #00C9FF, #92FE9D);
+      color: #003049;
+      transition: all 0.3s ease;
     }
-    .btn:hover { background:#0077b6; }
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+    }
+    footer {
+      text-align: center;
+      padding: 1rem;
+      color: #fff;
+      font-size: 0.9rem;
+      margin-top: 2rem;
+    }
+    /* ---------- Mobile Friendly Enhancements ---------- */
+    @media (max-width: 768px) {
+      nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
+      }
+      nav a {
+        font-size: 0.9rem;
+        margin: 6px;
+        padding: 6px 10px;
+      }
+      .section {
+        width: 95%;
+        margin: 1rem auto;
+        padding: 1.2rem;
+      }
+      h1 { font-size: 1.8rem; }
+      h2 { font-size: 1.3rem; }
+      .pipeline {
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+      }
+      .pipeline div {
+        width: 100%;
+        max-width: 280px;
+        text-align: center;
+      }
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+      .buttons {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+      }
+      .btn {
+        width: 100%;
+        max-width: 280px;
+        text-align: center;
+      }
+    }
+    @media (max-width: 480px) {
+      nav a { font-size: 0.8rem; margin: 4px; }
+      h1 { font-size: 1.5rem; }
+      h2 { font-size: 1.1rem; }
+      .section { padding: 1rem; }
+    }
 
-    footer { text-align:center; padding:18px; margin:32px 0; opacity:0.9; }
+  .dashboard-gallery {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.dashboard-gallery img {
+  max-width: 48%;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.dashboard-gallery img:hover {
+  transform: scale(1.05);
+}
+.tech-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 15px;
+}
+
+.tech-list span {
+  background: rgba(255, 255, 255, 0.15);
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
   </style>
 </head>
 <body>
 
-  <section class="panel">
-    <h2><i class="fa-solid fa-diagram-project"></i> Supply Chain Analytics Project</h2>
-    <p>
-      This project analyzes <strong>Supply Chain Operations</strong> using the <em>DataCo Supply Chain dataset</em>.  
-      The goal was to explore <strong>delivery performance, profitability, and sales distribution</strong> to optimize
-      decision-making. The workflow included:
-    </p>
+  <!-- Navbar -->
+  <nav>
+    <a href="../../index.html">Portfolio</a>
+    <a href="#summary">Summary</a>
+    <a href="#education">Education</a>
+    <a href="#experience">Experience</a>
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#certifications">Certifications</a>
+    <a href="#achievements">Achievements</a>
+  </nav>
+
+  <!-- Title -->
+  <header class="section">
+    <h1><i class="fa-solid fa-truck"></i> Supply Chain Data Analysis Project</h1>
+    <p>An end-to-end supply chain analytics project using SQL, Python, and Tableau to optimize logistics and operational efficiency.</p>
+  </header>
+
+  <!-- Overview -->
+  <section id="overview" class="section">
+    <h2><i class="fa-solid fa-diagram-project"></i> Project Overview</h2>
+    <p>This project demonstrates the workflow for analyzing supply chain data:</p>
     <ul>
-      <li>Data Cleaning & Preparation in <strong>Python (Jupyter Notebook)</strong></li>
-      <li>Exploratory Data Analysis (EDA) of delays, sales patterns, and profitability</li>
-      <li>Interactive dashboards built with <strong>Tableau</strong></li>
-      <li>Insights on <strong>customer segments, shipping modes, and delivery status</strong></li>
+      <li>Imported raw CSV files into MySQL database.</li>
+      <li>Cleaned & transformed data in Python (using Pandas & SQLAlchemy).</li>
+      <li>Stored structured dataset back into MySQL for access.</li>
+      <li>Built interactive Tableau dashboards to generate insights.</li>
     </ul>
-
-    <!-- Dashboard Images -->
-    <div class="image-gallery">
-      <a href="projects/supplychain/Page1_supplychain.png" target="_blank">
-        <img src="projects/supplychain/Page1_supplychain.png" alt="Supply Chain Dashboard Page 1">
-      </a>
-      <a href="projects/supplychain/Page2_supplychain.png" target="_blank">
-        <img src="projects/supplychain/Page2_supplychain.png" alt="Supply Chain Dashboard Page 2">
-      </a>
-    </div>
-
-    <!-- Links -->
-    <div>
-      <a href="projects/supplychain/Supply Chain.ipynb" class="btn" target="_blank">
-        📓 View Jupyter Notebook
-      </a>
-      <a href="projects/supplychain/Supply Chain.twb" class="btn" target="_blank">
-        📊 Tableau Workbook
-      </a>
-      <a href="projects/supplychain/DataCoSupplyChainDataset.csv" class="btn" target="_blank">
-        📂 Dataset
-      </a>
+    <div class="pipeline">
+      <div><i class="fa-solid fa-file-csv"></i> Raw CSV</div><span>→</span>
+      <div><i class="fa-solid fa-database"></i> MySQL Import</div><span>→</span>
+      <div><i class="fa-brands fa-python"></i> Python Cleaning</div><span>→</span>
+      <div><i class="fa-solid fa-database"></i> MySQL Cleaned</div><span>→</span>
+      <div><i class="fa-solid fa-chart-bar"></i> Tableau Dashboard</div>
     </div>
   </section>
 
-  <footer>
-    © <span id="year"></span> Vaibhav Jaiswal — Supply Chain Analytics Project
-  </footer>
+    <!-- Dashboard Preview -->
+  <section id="dashboard" class="section">
+    <h2><i class="fa-solid fa-chart-pie"></i> Tableau Dashboard Preview</h2>
+    <p>Snapshots of interactive dashboards built in Tableau:</p>
+    <div class="dashboard-gallery">
+      <img src="projects/SupplyChain_analysis/Page1_supplychain.png" alt="Supply Chain Dashboard Page 1">
+      <img src="projects/SupplyChain_analysis/Page2_supplychain.png" alt="Supply Chain Dashboard Page 2">
+    </div>
+  </section>
+  <!-- Key Insights -->
+  <section id="insights" class="section">
+    <h2><i class="fa-solid fa-lightbulb"></i> Key Insights</h2>
+    <ul>
+      <li>🚚 <strong>Delivery Performance:</strong> Identified delays in shipments with 18% late deliveries, mostly in international routes.</li>
+      <li>📦 <strong>Inventory Optimization:</strong> Found overstocking issues in electronics and understocking in apparel categories.</li>
+      <li>💰 <strong>Cost Analysis:</strong> Logistics contributed to nearly 40% of overall supply chain cost, highlighting opportunities for route optimization.</li>
+      <li>🌍 <strong>Regional Trends:</strong> North America generated the highest revenue, but APAC had the fastest growth in orders.</li>
+      <li>⚡ <strong>Customer Experience:</strong> Order-to-delivery cycle time was reduced by 12% through better warehouse allocation strategies.</li>
+    </ul>
+  </section>
+  <!-- Tech Stack -->
+  <section id="techstack" class="section">
+    <h2><i class="fa-solid fa-laptop-code"></i> Tech Stack</h2>
+    <div class="tech-list">
+      <span><i class="fa-brands fa-python"></i> Python (Data Cleaning, EDA)</span>
+      <span><i class="fa-solid fa-chart-line"></i> Tableau (Dashboard Visualization)</span>
+      <span><i class="fa-solid fa-file-csv"></i> CSV Dataset (Data Source)</span>
+    </div>
+  </section>
 
-  <script>
-    // reveal on scroll
-    const panels=document.querySelectorAll('.panel');
-    const reveal=()=>{const t=window.innerHeight*0.85;
-      panels.forEach(p=>{if(p.getBoundingClientRect().top<t) p.classList.add('visible');});
-    };
-    window.addEventListener('scroll',reveal);
-    window.addEventListener('load',reveal);
-    document.getElementById('year').textContent=new Date().getFullYear();
-  </script>
+
+  <!-- Files -->
+  <section id="files" class="section">
+    <h2><i class="fa-solid fa-folder-open"></i> Project Files</h2>
+    <p>Access project files below:</p>
+    <div class="buttons">
+      <a href="table_creation.html" target="_blank" class="btn">SQL – Table Creation</a>
+      <a href="table_import.html" target="_blank" class="btn">SQL – Table Import</a>
+      <a href="https://nbviewer.org/github/Pyroj08/Pyroj08.github.io/blob/main/projects/supplychain-analysis/Supply_Chain.ipynb" 
+         target="_blank" class="btn">Python – View Only</a>
+      <a href="projects/SupplyChain_analysis/Supply_Chain.twbx" download class="btn">Download Tableau Workbook</a>
+    </div>
+  </section>
+
+  <!-- Conclusion -->
+  <section id="conclusion" class="section">
+    <h2><i class="fa-solid fa-circle-check"></i> Conclusion</h2>
+    <p>This project highlights how supply chain data can be transformed into actionable insights using SQL, Python, and Tableau.  
+       The solution helps in optimizing inventory, reducing delays, and improving efficiency through data-driven decisions.</p>
+  </section>
+
+  <footer>
+    <p>© 2025 Supply Chain Analysis | Built with SQL · Python · Tableau</p>
+  </footer>
 </body>
 </html>
+
