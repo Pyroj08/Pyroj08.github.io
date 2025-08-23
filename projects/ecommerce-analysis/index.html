@@ -96,10 +96,19 @@
     }
     .btn-sunrise:hover { transform: translateY(-3px); box-shadow: 0 6px 15px rgba(0,0,0,0.2); }
 
-    /* --- ADDED: High-Contrast Panel Style --- */
+    /* --- ADDED: High-Contrast Panel Style with Pattern --- */
     .panel-dark {
-        background: linear-gradient(120deg, #BF360C, #783228);
-        color: #FFFAF0;
+      /* ADDED: Subtle pattern layer on top of the gradient */
+      background: 
+        repeating-linear-gradient(
+          45deg,
+          rgba(255, 255, 255, 0.03),
+          rgba(255, 255, 255, 0.03) 1px,
+          transparent 1px,
+          transparent 15px
+        ),
+        linear-gradient(120deg, #BF360C, #783228);
+      color: #FFFAF0;
     }
     .panel-dark h2 { color: #FFFAF0; }
     .panel-dark h2::after { background: rgba(255, 239, 230, 0.5); }
