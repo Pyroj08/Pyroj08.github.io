@@ -8,164 +8,209 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
   <style>
-   /* Reset & Base */
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+    /* Reset & Base */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: #2d1b1b; /* warm dark for readability over light panels */
+      min-height: 100vh;
 
-body {
-  font-family: 'Poppins', sans-serif;
-  color: #fffdf9;
-  min-height: 100vh;
+      /* Animated Sunrise Horizon gradient */
+      background: linear-gradient(-45deg, #ff512f, #f09819, #ff9966, #ff5f6d);
+      background-size: 400% 400%;
+      animation: sunriseHorizon 15s ease infinite;
+    }
+    @keyframes sunriseHorizon {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
 
-  background: linear-gradient(-45deg, #ff512f, #f09819, #ff9966, #ff5f6d);
-  background-size: 400% 400%;
-  animation: sunriseHorizon 15s ease infinite;
-}
+    /* Reusable button (for project CTAs) */
+    .btn-sunrise {
+      display: inline-block;
+      padding: 10px 14px;
+      background: linear-gradient(90deg, #ff7e5f, #feb47b);
+      color: #fff;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: box-shadow 0.3s ease, transform .15s ease;
+    }
+    .btn-sunrise:hover {
+      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+      transform: translateY(-1px);
+    }
 
-@keyframes sunriseHorizon {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
+    /* Container Panels (Glass) */
+    .panel {
+      max-width: 1100px;
+      margin: 28px auto;
+      padding: 26px;
+      background: rgba(255, 248, 240, 0.72);
+      border: 1px solid rgba(255, 220, 190, 0.55);
+      border-radius: 16px;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity .8s ease, transform .8s ease;
+      color: #2c1a1a;
+    }
+    .panel.visible { opacity: 1; transform: translateY(0); }
 
-/* Container Panels (Glass) */
-.panel {
-  max-width: 1100px;
-  margin: 28px auto;
-  padding: 26px;
-  background: rgba(255, 245, 235, 0.28); /* warm glass */
-  border: 1px solid rgba(255, 230, 200, 0.35);
-  border-radius: 16px;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-  opacity: 0;
-  transform: translateY(18px);
-  transition: opacity .8s ease, transform .8s ease;
-}
-.panel.visible { opacity: 1; transform: translateY(0); }
+    h1, h2, h3 { letter-spacing: 0.2px; }
+    h2 {
+      font-size: 1.6rem;
+      margin-bottom: 12px;
+      color: #8b1a42; /* deep sunrise red */
+      position: relative;
+    }
+    h2 i { margin-right: 8px; }
+    h2::after {
+      content: "";
+      display: block;
+      width: 64px;
+      height: 3px;
+      background: #ffcc70; /* golden accent line */
+      margin-top: 8px;
+      border-radius: 3px;
+    }
+    p { line-height: 1.7; color: #3a2b2b; }
+    ul { padding-left: 20px; line-height: 1.8; color: #3a2b2b; }
 
-h1, h2, h3 { letter-spacing: 0.2px; }
-h2 {
-  font-size: 1.6rem;
-  margin-bottom: 12px;
-  color: #d35400; /* burnt orange */
-  position: relative;
-}
-h2 i { margin-right: 8px; }
-h2::after {
-  content: "";
-  display: block;
-  width: 64px;
-  height: 3px;
-  background: #ffcc70; /* golden yellow */
-  margin-top: 8px;
-  border-radius: 3px;
-}
-p { line-height: 1.7; color: #2c2c2c; }
-ul { padding-left: 20px; line-height: 1.8; color: #2c2c2c; }
+    /* Navbar */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      display: flex;
+      flex-wrap: nowrap;
+      justify-content: center;
+      gap: 12px 18px;
+      background: rgba(139, 26, 66, 0.85); /* warm plum */
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      padding: 12px 10px;
+      border-bottom: 1px solid rgba(255, 230, 200, 0.4);
+      transition: padding .2s ease, background .2s ease, box-shadow .2s ease;
+    }
+    nav.shrink {
+      padding: 8px 8px;
+      background: rgba(139, 26, 66, 0.92);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+    }
+    nav a {
+      color: #fff9f0;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.9rem;
+      padding: 6px 10px;
+      border-radius: 6px;
+      transition: background 0.3s ease, color 0.3s ease;
+      text-align: center;
+    }
+    nav a:hover, nav a.active {
+      background: rgba(255, 180, 130, 0.35);
+      color: #fff;
+    }
 
-/* Navbar */
-nav {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  display: flex;
-  justify-content: center;
-  gap: 12px 18px;
-  background: rgba(120, 40, 20, 0.7); /* warm amber glass */
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  padding: 12px 10px;
-  border-bottom: 1px solid rgba(255, 230, 200, 0.3);
-}
-nav a {
-  color: #fffdf9;
-  text-decoration: none;
-  font-weight: 500;
-  font-size: 0.9rem;
-  padding: 6px 10px;
-  border-radius: 6px;
-  transition: background 0.3s ease, color 0.3s ease;
-  text-align: center;
-}
-nav a:hover {
-  background: rgba(255, 200, 150, 0.35);
-  color: #fff;
-}
+    /* Mobile Navbar: 2 rows × 4 columns */
+    @media (max-width: 768px) {
+      nav {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+        justify-items: center;
+        align-items: center;
+      }
+      nav a {
+        width: 100%;
+        font-size: 0.85rem;
+        padding: 8px 6px;
+      }
+    }
 
-/* Mobile Navbar */
-@media (max-width: 768px) {
-  nav {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
-    justify-items: center;
-    align-items: center;
-  }
-  nav a {
-    width: 100%;
-    font-size: 0.85rem;
-    padding: 8px 6px;
-  }
-}
+    /* Header */
+    .hero {
+      max-width: 1100px;
+      margin: 22px auto 0;
+      padding: 18px;
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 20px;
+      align-items: center;
+    }
+    .profile-pic {
+      width: 140px; height: 140px; border-radius: 50%;
+      object-fit: cover; border: 4px solid rgba(255,235,220,0.9);
+      background: rgba(255,255,255,0.3);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+      transition: transform .35s ease, box-shadow .35s ease;
+      backdrop-filter: blur(6px);
+    }
+    .profile-pic:hover { transform: scale(1.03); box-shadow: 0 12px 28px rgba(0,0,0,0.25); }
+    .hero .meta h1 { font-size: 2.2rem; font-weight: 600; color: #fffaf6; }
+    .hero .meta p.tagline { margin-top: 4px; opacity: 0.9; color: #fff6f0; }
+    .quick-links { margin-top: 10px; display: flex; gap: 12px; }
+    .quick-links a {
+      display: inline-flex; align-items: center; gap: 8px;
+      text-decoration: none; color: #4a1a1a; font-weight: 500;
+      background: rgba(255,240,220,0.65);
+      border: 1px solid rgba(255,220,200,0.55);
+      padding: 8px 12px; border-radius: 10px;
+      transition: transform .2s ease, box-shadow .2s ease, background .3s ease;
+      backdrop-filter: blur(6px);
+    }
+    .quick-links a:hover {
+      transform: translateY(-2px);
+      background: rgba(255,240,220,0.9);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    }
 
-/* Header */
-.hero .meta h1 {
-  font-size: 2.2rem;
-  font-weight: 600;
-  color: #5a1a00; /* dark burnt brown */
-}
-.hero .meta p.tagline {
-  margin-top: 4px;
-  opacity: 0.9;
-  color: #3d2b1f;
-}
-.quick-links a {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  text-decoration: none;
-  color: #5a1a00;
-  font-weight: 500;
-  background: rgba(255,230,200,0.55);
-  border: 1px solid rgba(255,230,200,0.4);
-  padding: 8px 12px;
-  border-radius: 10px;
-  transition: transform .2s ease, box-shadow .2s ease;
-}
-.quick-links a:hover {
-  background: rgba(255,230,200,0.8);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
-}
+    /* Certifications Grid */
+    .cert-grid {
+      display: grid; gap: 14px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
+    .cert-card {
+      display: flex; align-items: center; gap: 12px;
+      background: rgba(255,240,220,0.7);
+      border: 1px solid rgba(255,200,180,0.6);
+      border-radius: 12px; padding: 12px 14px;
+      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .cert-link { text-decoration: none; color: inherit; display: block; }
+    .cert-link .cert-card:hover {
+      background: rgba(255,245,230,0.9);
+      transform: translateY(-4px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+    .cert-card i { font-size: 1.2rem; color: #ff7e5f; }
+    .cert-card h3 { margin: 0; font-size: 1rem; font-weight: 600; color: #6a1a00; }
+    .cert-card p { margin: 2px 0 0 0; font-size: .9rem; opacity: .85; color: #5a2a2a; }
 
-/* Buttons (projects) */
-.project a {
-  display:inline-block;
-  padding:10px 16px;
-  border-radius: 10px;
-  text-decoration: none;
-  font-weight: 600;
-  background: linear-gradient(90deg, #ff7e5f, #feb47b); /* sunrise orange button */
-  color: #fff;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-.project a:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
-}
+    /* Project gallery */
+    .image-gallery {
+      display: grid; gap: 12px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      margin-top: 10px;
+    }
+    .image-gallery img {
+      width: 100%; border-radius: 10px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+      transition: transform .25s ease, box-shadow .25s ease;
+      background: #fff;
+    }
+    .image-gallery img:hover { transform: translateY(-3px); box-shadow: 0 12px 26px rgba(0,0,0,0.25); }
 
-/* Footer */
-footer {
-  text-align: center;
-  padding: 18px;
-  margin: 32px 0;
-  color: #fffdf9;
-  opacity: 0.9;
-}
-
+    /* Footer */
+    footer {
+      text-align: center; padding: 18px; margin: 32px 0;
+      color: #fffdf9; opacity: 0.95;
+    }
   </style>
 </head>
 <body>
@@ -189,9 +234,8 @@ footer {
       <p class="tagline">Data Analyst · SQL · Python · Power BI</p>
       <div class="quick-links">
         <a href="javascript:void(0)" onclick="alert('📧 Vaibhavjaiswal139@gmail.com')">
-  <i class="fa-solid fa-envelope"></i> Email
-</a>
-
+          <i class="fa-solid fa-envelope"></i> Email
+        </a>
         <a href="https://www.linkedin.com/in/vaibhav-jaiswal-995a1119a/" target="_blank"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
       </div>
     </div>
@@ -243,55 +287,54 @@ footer {
     </ul>
   </section>
 
- <!-- Certifications -->
-<section id="certifications" class="panel">
-  <h2><i class="fa-solid fa-award"></i> Certifications</h2>
-  <div class="cert-grid">
-    
-    <!-- Python Programming -->
-    <a href="https://simpli-web.app.link/e/T11JZwzKSVb" target="_blank" class="cert-link">
+  <!-- Certifications -->
+  <section id="certifications" class="panel">
+    <h2><i class="fa-solid fa-award"></i> Certifications</h2>
+    <div class="cert-grid">
+      <!-- Python Programming -->
+      <a href="https://simpli-web.app.link/e/T11JZwzKSVb" target="_blank" class="cert-link">
+        <div class="cert-card">
+          <i class="fa-solid fa-certificate"></i>
+          <div>
+            <h3>Python Programming</h3>
+            <p>Simplilearn</p>
+          </div>
+        </div>
+      </a>
+
+      <!-- Python Libraries -->
+      <a href="https://simpli-web.app.link/e/UegfvDBKSVb" target="_blank" class="cert-link">
+        <div class="cert-card">
+          <i class="fa-solid fa-certificate"></i>
+          <div>
+            <h3>Python Libraries for Data Science</h3>
+            <p>Simplilearn</p>
+          </div>
+        </div>
+      </a>
+
+      <!-- SQL -->
+      <a href="https://simpli-web.app.link/e/6qwSpTGKSVb" target="_blank" class="cert-link">
+        <div class="cert-card">
+          <i class="fa-solid fa-certificate"></i>
+          <div>
+            <h3>SQL</h3>
+            <p>Simplilearn</p>
+          </div>
+        </div>
+      </a>
+
+      <!-- Ducat (normal card) -->
       <div class="cert-card">
         <i class="fa-solid fa-certificate"></i>
         <div>
-          <h3>Python Programming</h3>
-          <p>Simplilearn</p>
+          <h3>Data Analytics Using Python</h3>
+          <p>Ducat (2025)</p>
         </div>
       </div>
-    </a>
 
-    <!-- Python Libraries -->
-    <a href="https://simpli-web.app.link/e/UegfvDBKSVb" target="_blank" class="cert-link">
-      <div class="cert-card">
-        <i class="fa-solid fa-certificate"></i>
-        <div>
-          <h3>Python Libraries for Data Science</h3>
-          <p>Simplilearn</p>
-        </div>
-      </div>
-    </a>
-
-    <!-- SQL -->
-    <a href="https://simpli-web.app.link/e/6qwSpTGKSVb" target="_blank" class="cert-link">
-      <div class="cert-card">
-        <i class="fa-solid fa-certificate"></i>
-        <div>
-          <h3>SQL</h3>
-          <p>Simplilearn</p>
-        </div>
-      </div>
-    </a>
-
-    <!-- Ducat (leave as normal card) -->
-    <div class="cert-card">
-      <i class="fa-solid fa-certificate"></i>
-      <div>
-        <h3>Data Analytics Using Python</h3>
-        <p>Ducat (2025)</p>
-      </div>
     </div>
-
-  </div>
-</section>
+  </section>
 
   <!-- Achievements -->
   <section id="achievements" class="panel">
@@ -304,6 +347,7 @@ footer {
   <!-- Projects -->
   <section id="projects" class="panel">
     <h2><i class="fa-solid fa-diagram-project"></i> Projects</h2>
+
     <div class="project">
       <h3>📦 E-Commerce Sales Analysis</h3>
       <p>
@@ -311,61 +355,54 @@ footer {
         and <strong>Power BI</strong> (interactive dashboards). Includes sales trends, customer segmentation, and payment insights.
       </p>
 
-      <!-- Thumbnails from /assets, but open full images from the project folder -->
+      <!-- Thumbnails from /assets, open full images from the project folder -->
       <div class="image-gallery">
-        <div class="image-gallery">
-    <a href="projects/ecommerce-analysis/Page1.png" target="_blank">
-        <img src="projects/ecommerce-analysis/Page1.png" alt="Dashboard Page 1">
-    </a>
-    <a href="projects/ecommerce-analysis/Page2.png" target="_blank">
-        <img src="projects/ecommerce-analysis/Page2.png" alt="Dashboard Page 2">
-    </a>
-    <a href="projects/ecommerce-analysis/Page3.png" target="_blank">
-        <img src="projects/ecommerce-analysis/Page3.png" alt="Dashboard Page 3">
-    </a>
-</div>
-
+        <a href="projects/ecommerce-analysis/Page1.png" target="_blank">
+            <img src="projects/ecommerce-analysis/Page1.png" alt="Dashboard Page 1">
+        </a>
+        <a href="projects/ecommerce-analysis/Page2.png" target="_blank">
+            <img src="projects/ecommerce-analysis/Page2.png" alt="Dashboard Page 2">
+        </a>
+        <a href="projects/ecommerce-analysis/Page3.png" target="_blank">
+            <img src="projects/ecommerce-analysis/Page3.png" alt="Dashboard Page 3">
+        </a>
       </div>
 
       <div style="margin-top: 12px;">
-        <a href="projects/ecommerce-analysis/index.html"
-           style="display:inline-block; padding:10px 14px; background:#6a11cb; color:#fff; border-radius:10px; text-decoration:none;">
+        <a class="btn-sunrise" href="projects/ecommerce-analysis/index.html">
           View Full Project <i class="fa-solid fa-arrow-up-right-from-square"></i>
         </a>
       </div>
     </div>
+
     <!-- Supply Chain Analytics Project -->
-<div class="project">
-  <h3>🚚 Supply Chain Analytics</h3>
-  <p>
-    An end-to-end analytics project using <strong>Python</strong> (EDA & analysis), 
-    <strong>Tableau</strong> (dashboards), and a real-world dataset. 
-    Includes insights on delivery delays, customer segmentation, and profitability.
-  </p>
+    <div class="project">
+      <h3>🚚 Supply Chain Analytics</h3>
+      <p>
+        An end-to-end analytics project using <strong>Python</strong> (EDA & analysis), 
+        <strong>Tableau</strong> (dashboards), and a real-world dataset. 
+        Includes insights on delivery delays, customer segmentation, and profitability.
+      </p>
 
-  <!-- Thumbnails -->
-  <div class="image-gallery">
-    <a href="projects/SupplyChain_analysis/Page1_supplychain.png" target="_blank">
-        <img src="projects/SupplyChain_analysis/Page1_supplychain.png" alt="Supply Chain Dashboard Page 1">
-    </a>
-    <a href="projects/SupplyChain_analysis/Page2_supplychain.png" target="_blank">
-        <img src="projects/SupplyChain_analysis/Page2_supplychain.png" alt="Supply Chain Dashboard Page 2">
-    </a>
-  </div>
+      <!-- Thumbnails -->
+      <div class="image-gallery">
+        <a href="projects/SupplyChain_analysis/Page1_supplychain.png" target="_blank">
+            <img src="projects/SupplyChain_analysis/Page1_supplychain.png" alt="Supply Chain Dashboard Page 1">
+        </a>
+        <a href="projects/SupplyChain_analysis/Page2_supplychain.png" target="_blank">
+            <img src="projects/SupplyChain_analysis/Page2_supplychain.png" alt="Supply Chain Dashboard Page 2">
+        </a>
+      </div>
 
-  <!-- Button -->
-  <div style="margin-top: 12px;">
-    <a href="projects/SupplyChain_analysis/index.html"
-       style="display:inline-block; padding:10px 14px; background:#6a11cb; color:#fff; border-radius:10px; text-decoration:none;">
-      View Full Project <i class="fa-solid fa-arrow-up-right-from-square"></i>
-    </a>
-  </div>
-</div>
-
-
+      <!-- Button -->
+      <div style="margin-top: 12px;">
+        <a class="btn-sunrise" href="projects/SupplyChain_analysis/index.html">
+          View Full Project <i class="fa-solid fa-arrow-up-right-from-square"></i>
+        </a>
+      </div>
+    </div>
 
   </section>
-  
 
   <footer>
     © <span id="year"></span> Vaibhav Jaiswal — Built with care and data.
@@ -411,4 +448,5 @@ footer {
   </script>
 </body>
 </html>
+
 
