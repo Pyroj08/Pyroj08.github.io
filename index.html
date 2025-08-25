@@ -70,9 +70,9 @@
     }
     .panel.visible { opacity: 1; transform: translateY(0); }
 
-    h1, h2, h3 { 
+    h1, h2, h3 {  
       font-family: 'Poppins', sans-serif;
-      letter-spacing: 0.2px; 
+      letter-spacing: 0.2px;  
     }
     h2 {
       font-size: 1.6rem; margin-bottom: 12px;
@@ -84,9 +84,9 @@
       background: #5EEB9C; margin-top: 8px; border-radius: 3px;
     }
     /* Typography for paragraphs and lists */
-    p, ul { 
+    p, ul {  
       font-family: 'Lora', serif;
-      line-height: 1.8; 
+      line-height: 1.8;  
       font-size: 1.05rem;
       color: #376F74;
     }
@@ -292,7 +292,7 @@
   <section id="education" class="panel">
     <h2><i class="fa-solid fa-graduation-cap"></i> Education</h2>
     <p><strong>B.Tech – Electrical Engineering</strong><br/>
-       Ajay Kumar Garg Engineering College, Ghaziabad (Graduated: 2023)
+        Ajay Kumar Garg Engineering College, Ghaziabad (Graduated: 2023)
     </p>
   </section>
 
@@ -383,7 +383,10 @@
         </a>
       </div>
     </div>
-    <div class="project">
+    
+    <hr style="border-top: 1px solid rgba(0, 121, 107, 0.2); margin: 30px 0;">
+    
+    <div class="project" style="margin-bottom: 30px;">
       <h3>🚚 Supply Chain Analytics</h3>
       <p>
         <strong>Problem:</strong> It was difficult to identify the root causes of shipping delays. <strong>Action:</strong> I performed an in-depth EDA in Python and built an interactive Tableau dashboard to visualize logistics. <strong>Result:</strong> The analysis revealed that 'Standard Class' shipping was the primary source of delays, providing a clear area for operational improvement.
@@ -402,7 +405,29 @@
         </a>
       </div>
     </div>
-  </section>
+
+    <hr style="border-top: 1px solid rgba(0, 121, 107, 0.2); margin: 30px 0;">
+
+    <div class="project">
+      <h3><i class="fa-solid fa-utensils"></i> Zomato Restaurant Analysis</h3>
+      <p>
+        <strong>Problem:</strong> Raw restaurant data from Zomato was unstructured and difficult to analyze for key market trends. <strong>Action:</strong> I designed a relational database in MySQL, built a Python ETL pipeline to clean and load the data, and created an interactive Power BI dashboard. <strong>Result:</strong> The analysis revealed that "Quick Bites" is the most dominant restaurant type, and there is a strong positive correlation between higher ratings and higher costs.
+      </p>
+      <div class="image-gallery">
+        <a href="projects/zomato-analysis/Page1.jpg" target="_blank">
+          <img src="projects/zomato-analysis/Page1.jpg" alt="Zomato analysis executive summary dashboard">
+        </a>
+        <a href="projects/zomato-analysis/Page2.png" target="_blank">
+          <img src="projects/zomato-analysis/Page2.png" alt="Zomato deep dive analysis dashboard">
+        </a>
+      </div>
+      <div style="margin-top: 12px; display: flex; gap: 10px;">
+        <a class="btn-mint" href="projects/zomato-analysis/index.html">
+          View Full Project <i class="fa-solid fa-arrow-up-right-from-square"></i>
+        </a>
+      </div>
+    </div>
+    </section>
 
   <section id="contact" class="panel panel-contact">
     <h2><i class="fa-solid fa-envelope"></i> Get In Touch</h2>
