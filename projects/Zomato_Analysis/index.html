@@ -3,112 +3,106 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Zomato Analysis Project</title>
+  <title>Zomato Restaurant Analysis Project</title>
   
   <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
-    /* Reset & Base Styles */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: 'Poppins', sans-serif;
-      color: #5D4037;
-      background: linear-gradient(270deg, #d32f2f, #c2185b);
-      background-size: 400% 400%;
-      animation: gradientAnimation 18s ease infinite;
-      min-height: 100vh;
-    }
-
-    @keyframes gradientAnimation {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    /* Panels */
-    .panel {
-      max-width: 1100px; margin: 40px auto; padding: 30px;
-      background: rgba(255, 245, 240, 0.9); border: 1px solid rgba(239, 83, 80, 0.6);
-      border-radius: 16px; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.15); opacity: 0;
-      transform: translateY(18px); transition: opacity .8s ease, transform .8s ease;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; } html { scroll-behavior: smooth; }
+    body { font-family: 'Poppins', sans-serif; color: #5D4037; background: linear-gradient(270deg, #d32f2f, #c2185b); background-size: 400% 400%; animation: gradientAnimation 18s ease infinite; min-height: 100vh; }
+    @keyframes gradientAnimation { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+    .panel { max-width: 1100px; margin: 40px auto; padding: 30px; background: rgba(255, 245, 240, 0.9); border: 1px solid rgba(239, 83, 80, 0.6); border-radius: 16px; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); box-shadow: 0 10px 30px rgba(0,0,0,0.15); opacity: 0; transform: translateY(18px); transition: opacity .8s ease, transform .8s ease; }
     .panel.visible { opacity: 1; transform: translateY(0); }
-
-    /* Typography */
-    h1, h2, h3 { font-family: 'Poppins', sans-serif; letter-spacing: 0.2px; text-align: center; }
-    h1 { font-size: 2.3rem; color: #b71c1c; }
-    h2 { font-size: 1.6rem; margin-bottom: 12px; color: #b71c1c; position: relative; }
-    h2 i { margin-right: 8px; }
-    h2::after { content: ""; display: block; width: 64px; height: 3px; background: #ef5350; margin: 8px auto 0; border-radius: 3px; }
-    p, ul { font-family: 'Lora', serif; font-size: 1.05rem; line-height: 1.8; margin: 0.5rem 0 1.5rem; text-align: justify; color: #5D4037; }
-    ul { margin-left: 1.2rem; }
-
-    /* Navbar */
-    nav {
-      position: sticky; top: 0; z-index: 1000; display: flex;
-      flex-wrap: wrap; justify-content: center; gap: 12px 18px;
-      background: rgba(120, 20, 20, 0.88); backdrop-filter: blur(8px);
-      padding: 12px 10px; border-bottom: 1px solid rgba(239, 83, 80, 0.4);
-      transition: all .2s ease;
-    }
+    h1, h2, h3 { font-family: 'Poppins', sans-serif; letter-spacing: 0.2px; text-align: center; } h1 { font-size: 2.3rem; color: #b71c1c; } h2 { font-size: 1.6rem; margin-bottom: 12px; color: #b71c1c; position: relative; } h2 i { margin-right: 8px; } h2::after { content: ""; display: block; width: 64px; height: 3px; background: #ef5350; margin: 8px auto 0; border-radius: 3px; }
+    p, ul { font-family: 'Lora', serif; font-size: 1.05rem; line-height: 1.8; margin: 0.5rem 0 1.5rem; text-align: justify; color: #5D4037; } ul { margin-left: 1.2rem; }
+    nav { position: sticky; top: 0; z-index: 1000; display: flex; flex-wrap: wrap; justify-content: center; gap: 12px 18px; background: rgba(120, 20, 20, 0.88); backdrop-filter: blur(8px); padding: 12px 10px; border-bottom: 1px solid rgba(239, 83, 80, 0.4); transition: all .2s ease; }
     nav.shrink { padding: 8px 8px; background: rgba(120, 20, 20, 0.95); box-shadow: 0 6px 18px rgba(0,0,0,0.18); }
-    nav a { color: #FFFAF0; text-decoration: none; font-weight: 500; font-size: 0.9rem; padding: 6px 10px; border-radius: 6px; transition: background 0.3s ease; }
-    nav a:hover, nav a.active { background: rgba(239, 83, 80, 0.25); }
-
-    /* Buttons */
-    .buttons { text-align: center; display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; }
-    .btn-zomato {
-      display: inline-block; padding: 0.7rem 1.5rem;
-      font-size: 0.95rem; font-weight: 600; text-decoration: none; border-radius: 30px;
-      background: linear-gradient(90deg, #ef5350, #d32f2f);
-      color: #fff; transition: all 0.3s ease;
-    }
-    .btn-zomato:hover { transform: translateY(-3px); box-shadow: 0 6px 15px rgba(0,0,0,0.2); }
-    
-    /* Dark Panel Theme */
-    .panel-dark { background: linear-gradient(120deg, #c62828, #8e0000); color: #FFFAF0; }
-    .panel-dark h2 { color: #FFFAF0; }
-    .panel-dark h2::after { background: rgba(255, 205, 210, 0.5); }
-    .panel-dark p { color: #FFFAF0; text-align: center; }
-    
+    nav a { color: #FFFAF0; text-decoration: none; font-weight: 500; font-size: 0.9rem; padding: 6px 10px; border-radius: 6px; transition: background 0.3s ease; } nav a:hover { background: rgba(239, 83, 80, 0.25); }
+    .buttons { text-align: center; display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; } .btn-zomato { display: inline-block; padding: 0.7rem 1.5rem; font-size: 0.95rem; font-weight: 600; text-decoration: none; border-radius: 30px; background: linear-gradient(90deg, #ef5350, #d32f2f); color: #fff; transition: all 0.3s ease; } .btn-zomato:hover { transform: translateY(-3px); box-shadow: 0 6px 15px rgba(0,0,0,0.2); }
+    .panel-dark { background: linear-gradient(120deg, #c62828, #8e0000); color: #FFFAF0; } .panel-dark h2 { color: #FFFAF0; } .panel-dark h2::after { background: rgba(255, 205, 210, 0.5); } .panel-dark p, .panel-dark .kpi-label { color: #FFFAF0; text-align: center; } .panel-dark .kpi-number { color: #ffcdd2; } .panel-dark .insight-card { background: rgba(0,0,0,0.2); } .panel-dark .insight-card h3 { color: #FFFAF0; } .panel-dark .insight-card i { color: #ffcdd2; }
+    .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; text-align: center; margin-top: 20px; } .kpi-number { font-size: 2.5rem; font-weight: 600; } .kpi-label { font-family: 'Poppins', sans-serif; font-size: 0.9rem; margin: 0; }
+    .insights-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; } .insight-card { background: rgba(255, 255, 255, 0.5); padding: 20px; border-radius: 12px; text-align: center; } .insight-card i { font-size: 2rem; margin-bottom: 10px; color: #b71c1c; } .insight-card h3 { font-size: 1.1rem; margin-bottom: 5px; } .insight-card p { text-align: center; }
     img { display: block; margin: 1.2rem auto; max-width: 90%; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
-    
-    footer { text-align: center; padding: 2rem; color: #fff; font-size: 0.9rem; margin-top: 2rem; }
+    footer { text-align: center; padding: 2rem; color: #fff; font-size: 0.9rem; margin-top: 2rem; } .project-nav { display: flex; justify-content: center; gap: 15px; margin-top: 1rem; }
   </style>
 </head>
 <body>
 
   <nav id="navbar">
     <a href="../../index.html"><i class="fa-solid fa-arrow-left"></i> Back to Portfolio</a>
-    <a href="#about">About</a>
+    <a href="#questions">Questions</a>
     <a href="#dashboard">Dashboard</a>
+    <a href="#insights">Insights</a>
     <a href="#process">Process</a>
-    <a href="#files">Project Files</a>
+    <a href="#files">Files</a>
+    <a href="#conclusion">Conclusion</a>
   </nav>
 
-  <header id="about" class="panel">
+  <header class="panel">
     <h1><i class="fa-solid fa-utensils"></i> Zomato Restaurant Analysis</h1>
-    <p style="text-align: center; max-width: 700px; margin: auto;">This project demonstrates a complete analytics workflow to uncover key business drivers from raw restaurant data, moving from database design and ETL to a final, interactive Power BI dashboard that highlights market trends and restaurant performance.</p>
+    <p style="text-align: center; max-width: 800px; margin: auto;">
+      <strong>Problem:</strong> Raw restaurant data from Zomato was unstructured and difficult to analyze for key market trends. 
+      <strong>Action:</strong> I designed a relational database in MySQL, built a Python ETL pipeline to clean and load the data, and created an interactive Power BI dashboard. 
+      <strong>Result:</strong> The solution provides a clear view of the Bangalore food landscape, revealing that "Quick Bites" is the most dominant restaurant type and that a strong correlation exists between higher ratings and higher costs.
+    </p>
   </header>
   
+  <section id="questions" class="panel panel-dark">
+    <h2><i class="fa-solid fa-briefcase"></i> Key Business Questions</h2>
+    <p>This project was designed to answer critical questions about the Bangalore restaurant market:</p>
+    <div class="insights-grid">
+        <div class="insight-card"><i class="fa-solid fa-chart-pie"></i><h3>Which cuisines dominate the market?</h3></div>
+        <div class="insight-card"><i class="fa-solid fa-store"></i><h3>What are the top restaurant chains?</h3></div>
+        <div class="insight-card"><i class="fa-solid fa-wifi"></i><h3>How does online ordering impact ratings?</h3></div>
+        <div class="insight-card"><i class="fa-solid fa-money-bill-wave"></i><h3>What is the link between cost and rating?</h3></div>
+    </div>
+  </section>
+
+  <section class="panel panel-dark">
+      <h2><i class="fa-solid fa-bullseye"></i> At a Glance: Key Results</h2>
+      <div class="kpi-grid">
+          <div class="kpi-item"><div class="kpi-number">30K</div><p class="kpi-label">Total Restaurants Analyzed</p></div>
+          <div class="kpi-item"><div class="kpi-number">3.73</div><p class="kpi-label">Average Rating</p></div>
+          <div class="kpi-item"><div class="kpi-number">₹633.88</div><p class="kpi-label">Average Cost for Two</p></div>
+          <div class="kpi-item"><div class="kpi-number">107</div><p class="kpi-label">Total Unique Cuisines</p></div>
+      </div>
+  </section>
+
   <section id="dashboard" class="panel">
     <h2><i class="fa-solid fa-chart-bar"></i> Power BI Dashboard</h2>
-    <p>The insights from the SQL analysis were visualized in an interactive, two-page dashboard. The first page provides a high-level executive summary of the Bangalore restaurant market, while the second offers a deep dive into relationships between variables like cost, rating, and restaurant type.</p>
+    <p>The final insights are presented in a two-page interactive dashboard. The first page provides a high-level executive summary, while the second offers a deep dive into relationships between different variables.</p>
     <img src="Page1.png" alt="Executive Summary Dashboard">
     <img src="Page2.png" alt="Deep Dive Analysis Dashboard">
+  </section>
+
+  <section id="insights" class="panel">
+    <h2><i class="fa-solid fa-lightbulb"></i> Key Insights</h2>
+    <div class="insights-grid">
+        <div class="insight-card"><i class="fa-solid fa-person-running"></i><h3>Market Dominance</h3><p>The market is heavily saturated with "Quick Bites" restaurants, followed by "Casual Dining" establishments.</p></div>
+        <div class="insight-card"><i class="fa-solid fa-laptop-code"></i><h3>Online Ordering is Crucial</h3><p>Nearly two-thirds (64.5%) of restaurants offer online ordering, indicating it's a vital service for market competition.</p></div>
+        <div class="insight-card"><i class="fa-solid fa-star"></i><h3>High Ratings, Higher Cost</h3><p>A clear positive correlation exists between a restaurant's rating and its cost, with top-rated venues typically being more expensive.</p></div>
+        <div class="insight-card"><i class="fa-solid fa-calendar-times"></i><h3>Booking is Niche</h3><p>An overwhelming 88% of restaurants do not offer table booking, aligning with the prevalence of quick-service models.</p></div>
+    </div>
   </section>
   
   <section id="process" class="panel">
     <h2><i class="fa-solid fa-gears"></i> Process & Schema</h2>
-    <p>The project began with designing a normalized relational database in MySQL to properly structure the data. A Python script was then used for the ETL process: extracting the raw CSV, cleaning and transforming the data with Pandas, and loading it into the database using SQLAlchemy.</p>
+    <p>The project began with designing a normalized relational database in MySQL. A Python script was then used for the ETL process: extracting the raw CSV, cleaning and transforming the data with Pandas, and loading it into the database using SQLAlchemy.</p>
     <img src="zomato_schema.png" alt="Zomato Database Schema Diagram" style="max-width: 700px; background: none; box-shadow: none;">
   </section>
 
-  <section id="files" class="panel panel-dark">
+  <section id="tools" class="panel">
+    <h2><i class="fa-solid fa-screwdriver-wrench"></i> Tech Stack</h2>
+    <ul>
+      <li><strong>SQL (MySQL):</strong> Utilized for database design, relational schema implementation, data storage, and complex querying.</li>
+      <li><strong>Python & Libraries (Pandas, SQLAlchemy):</strong> The core tools for the ETL process, data cleaning, and transformation.</li>
+      <li><strong>Power BI:</strong> Employed for creating a dynamic and interactive multi-page dashboard to visualize findings.</li>
+    </ul>
+  </section>
+
+  <section id="files" class="panel">
     <h2><i class="fa-solid fa-folder-open"></i> Project Files</h2>
-    <p>Explore the technical assets created for this project, including the database schema, ETL notebook, analysis queries, and the downloadable Power BI file.</p>
+    <p>Access the core project files, including the SQL scripts, the ETL notebook, and the downloadable Power BI file.</p>
     <div class="buttons">
       <a href="https://github.com/Pyroj08/pyroj08.github.io/blob/main/projects/Zomato_Analysis/Schema_and_Table_creation.sql" target="_blank" class="btn-zomato"><i class="fa-solid fa-database"></i> SQL Schema</a>
       <a href="https://nbviewer.org/github/pyroj08/pyroj08.github.io/blob/main/projects/Zomato_Analysis/Data_Cleaning_and_Storage.ipynb" target="_blank" class="btn-zomato"><i class="fa-brands fa-python"></i> ETL Notebook</a>
@@ -116,32 +110,27 @@
       <a href="https://raw.githubusercontent.com/pyroj08/pyroj08.github.io/main/projects/Zomato_Analysis/Zomato_Dashboard.pbix" download="Zomato_Dashboard.pbix" class="btn-zomato"><i class="fa-solid fa-download"></i> Download Power BI File</a>
     </div>
   </section>
-  
+
+  <section id="conclusion" class="panel">
+      <h2><i class="fa-solid fa-circle-check"></i> Conclusion</h2>
+      <p>This project successfully demonstrates an end-to-end data analysis workflow. By structuring raw data into a relational database and creating a user-friendly dashboard, complex trends become simple to understand. The findings provide a clear roadmap for any stakeholder interested in Bangalore's food industry, from identifying dominant market segments to understanding the crucial role of online services.</p>
+  </section>
+
   <footer>
     <p>© 2025 Zomato Data Analysis | Vaibhav Jaiswal</p>
-    <a href="../../index.html" class="btn-zomato" style="text-decoration: none; display: inline-block; margin-top: 10px;"><i class="fa-solid fa-house"></i> Back to Portfolio</a>
+    <div class="project-nav">
+        <a href="../../index.html" class="btn-zomato"><i class="fa-solid fa-house"></i> Back to Portfolio</a>
+        <a href="../SupplyChain_analysis/index.html" class="btn-zomato"><i class="fa-solid fa-arrow-left"></i> Previous Project</a>
+        <a href="../ecommerce-analysis/index.html" class="btn-zomato">Next Project <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
   </footer>
 
   <script>
     const panels = document.querySelectorAll('.panel');
-    const reveal = () => {
-      const trigger = window.innerHeight * 0.85;
-      panels.forEach(p => {
-        const top = p.getBoundingClientRect().top;
-        if (top < trigger) p.classList.add('visible');
-      });
-    };
-    window.addEventListener('scroll', reveal);
-    window.addEventListener('load', reveal);
-
+    const reveal = () => { const trigger = window.innerHeight * 0.85; panels.forEach(p => { const top = p.getBoundingClientRect().top; if (top < trigger) p.classList.add('visible'); }); };
+    window.addEventListener('scroll', reveal); window.addEventListener('load', reveal);
     const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 40) {
-        navbar.classList.add('shrink');
-      } else {
-        navbar.classList.remove('shrink');
-      }
-    });
+    window.addEventListener('scroll', () => { if (window.scrollY > 40) navbar.classList.add('shrink'); else navbar.classList.remove('shrink'); });
   </script>
 </body>
 </html>
