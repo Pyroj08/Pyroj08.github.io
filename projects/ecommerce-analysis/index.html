@@ -4,100 +4,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>E-Commerce Data Analysis Project</title>
-  
   <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
-    /* Reset & Base */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: 'Poppins', sans-serif;
-      color: #5D4037; /* Dark warm brown */
-      background: linear-gradient(270deg, #ff7e5f, #feb47b);
-      background-size: 400% 400%;
-      animation: gradientAnimation 18s ease infinite;
-      min-height: 100vh;
-    }
-
-    @keyframes gradientAnimation {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    /* Panels */
-    .panel {
-      max-width: 1100px; margin: 40px auto; padding: 30px;
-      background: rgba(255, 245, 240, 0.85); border: 1px solid rgba(254, 180, 123, 0.6);
-      border-radius: 16px; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.15); opacity: 0;
-      transform: translateY(18px); transition: opacity .8s ease, transform .8s ease;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; } html { scroll-behavior: smooth; } body { font-family: 'Poppins', sans-serif; color: #5D4037; background: linear-gradient(270deg, #ff7e5f, #feb47b); background-size: 400% 400%; animation: gradientAnimation 18s ease infinite; min-height: 100vh; }
+    @keyframes gradientAnimation { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+    .panel { max-width: 1100px; margin: 40px auto; padding: 30px; background: rgba(255, 245, 240, 0.85); border: 1px solid rgba(254, 180, 123, 0.6); border-radius: 16px; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); box-shadow: 0 10px 30px rgba(0,0,0,0.15); opacity: 0; transform: translateY(18px); transition: opacity .8s ease, transform .8s ease; }
     .panel.visible { opacity: 1; transform: translateY(0); }
-
-    /* Typography */
-    h1, h2, h3 { font-family: 'Poppins', sans-serif; letter-spacing: 0.2px; text-align: center; }
-    h1 { font-size: 2.3rem; color: #E65100; }
-    h2 { font-size: 1.6rem; margin-bottom: 12px; color: #E65100; position: relative; }
-    h2 i { margin-right: 8px; }
-    h2::after { content: ""; display: block; width: 64px; height: 3px; background: #feb47b; margin: 8px auto 0; border-radius: 3px; }
-    p, ul, blockquote { font-family: 'Lora', serif; font-size: 1.05rem; line-height: 1.8; margin: 0.5rem 0 1.5rem; text-align: justify; color: #5D4037; }
-    ul { margin-left: 1.2rem; }
-    blockquote { border-left: 4px solid #feb47b; padding-left: 1rem; margin: 1rem 0; background-color: rgba(254, 180, 123, 0.1); font-style: italic; }
-
-    /* Navbar */
-    nav {
-      position: sticky; top: 0; z-index: 1000; display: flex;
-      flex-wrap: wrap; justify-content: center; gap: 12px 18px;
-      background: rgba(120, 50, 40, 0.88); backdrop-filter: blur(8px);
-      padding: 12px 10px; border-bottom: 1px solid rgba(254, 180, 123, 0.4);
-      transition: all .2s ease;
-    }
-    nav.shrink { padding: 8px 8px; background: rgba(120, 50, 40, 0.95); box-shadow: 0 6px 18px rgba(0,0,0,0.18); }
-    nav a { color: #FFFAF0; text-decoration: none; font-weight: 500; font-size: 0.9rem; padding: 6px 10px; border-radius: 6px; transition: background 0.3s ease; }
-    nav a:hover, nav a.active { background: rgba(254, 180, 123, 0.25); }
-
-    /* Buttons */
-    .buttons { text-align: center; }
-    .btn-sunrise {
-      display: inline-block; margin: 0.4rem; padding: 0.7rem 1.5rem;
-      font-size: 0.95rem; font-weight: 600; text-decoration: none; border-radius: 30px;
-      background: linear-gradient(90deg, #ff7e5f, #ff5f6d);
-      color: #fff; transition: all 0.3s ease;
-    }
-    .btn-sunrise:hover { transform: translateY(-3px); box-shadow: 0 6px 15px rgba(0,0,0,0.2); }
-    
-    /* Dark Panel Theme */
-    .panel-dark { background: linear-gradient(120deg, #BF360C, #783228); color: #FFFAF0; }
-    .panel-dark h2 { color: #FFFAF0; }
-    .panel-dark h2::after { background: rgba(255, 239, 230, 0.5); }
-    .panel-dark p { color: #FFFAF0; text-align: center; }
-    .panel-dark .kpi-number { color: #feb47b; }
-    .panel-dark .kpi-label { color: #FFFAF0; }
-    .panel-dark .insight-card { background: rgba(0,0,0,0.2); }
-    .panel-dark .insight-card h3 { color: #FFFAF0; }
-    .panel-dark .insight-card i { color: #feb47b; }
-
-    /* Grids */
-    .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; text-align: center; margin-top: 20px; }
-    .kpi-number { font-size: 2.5rem; font-weight: 600; }
-    .kpi-label { font-family: 'Poppins', sans-serif; font-size: 0.9rem; margin: 0; }
-    .insights-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-    .insight-card { background: rgba(255, 255, 255, 0.5); padding: 20px; border-radius: 12px; text-align: center; }
-    .insight-card i { font-size: 2rem; margin-bottom: 10px; color: #BF360C; }
-    .insight-card h3 { font-size: 1.1rem; margin-bottom: 5px; }
-    .insight-card p { text-align: center; }
-    
-    /* Other Styles */
-    img { display: block; margin: 1.2rem auto; max-width: 90%; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
-    pre { background: #2d2d2d; color: #f8f8f2; padding: 15px; border-radius: 5px; overflow-x: auto; font-size: 0.9em; }
-    footer { text-align: center; padding: 2rem; color: #fff; font-size: 0.9rem; margin-top: 2rem; }
-    .project-nav { display: flex; justify-content: center; gap: 15px; margin-top: 1rem; }
-
-    /* Media Queries */
-    @media (max-width: 900px) { .insights-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 500px) { .insights-grid { grid-template-columns: 1fr; } }
+    h1, h2, h3 { font-family: 'Poppins', sans-serif; letter-spacing: 0.2px; text-align: center; } h1 { font-size: 2.3rem; color: #E65100; } h2 { font-size: 1.6rem; margin-bottom: 12px; color: #E65100; position: relative; } h2 i { margin-right: 8px; } h2::after { content: ""; display: block; width: 64px; height: 3px; background: #feb47b; margin: 8px auto 0; border-radius: 3px; }
+    p, ul, blockquote { font-family: 'Lora', serif; font-size: 1.05rem; line-height: 1.8; margin: 0.5rem 0 1.5rem; text-align: justify; color: #5D4037; } ul { margin-left: 1.2rem; } blockquote { border-left: 4px solid #feb47b; padding-left: 1rem; margin: 1rem 0; background-color: rgba(254, 180, 123, 0.1); font-style: italic; }
+    nav { position: sticky; top: 0; z-index: 1000; display: flex; flex-wrap: wrap; justify-content: center; gap: 12px 18px; background: rgba(120, 50, 40, 0.88); backdrop-filter: blur(8px); padding: 12px 10px; border-bottom: 1px solid rgba(254, 180, 123, 0.4); transition: all .2s ease; } nav.shrink { padding: 8px 8px; background: rgba(120, 50, 40, 0.95); box-shadow: 0 6px 18px rgba(0,0,0,0.18); } nav a { color: #FFFAF0; text-decoration: none; font-weight: 500; font-size: 0.9rem; padding: 6px 10px; border-radius: 6px; transition: background 0.3s ease; } nav a:hover { background: rgba(254, 180, 123, 0.25); }
+    .buttons { text-align: center; } .btn-sunrise { display: inline-block; margin: 0.4rem; padding: 0.7rem 1.5rem; font-size: 0.95rem; font-weight: 600; text-decoration: none; border-radius: 30px; background: linear-gradient(90deg, #ff7e5f, #ff5f6d); color: #fff; transition: all 0.3s ease; } .btn-sunrise:hover { transform: translateY(-3px); box-shadow: 0 6px 15px rgba(0,0,0,0.2); }
+    .panel-dark { background: linear-gradient(120deg, #BF360C, #783228); color: #FFFAF0; } .panel-dark h2 { color: #FFFAF0; } .panel-dark h2::after { background: rgba(255, 239, 230, 0.5); } .panel-dark p, .panel-dark .kpi-label { color: #FFFAF0; text-align: center; } .panel-dark .kpi-number { color: #feb47b; } .panel-dark .insight-card { background: rgba(0,0,0,0.2); } .panel-dark .insight-card h3 { color: #FFFAF0; } .panel-dark .insight-card i { color: #feb47b; }
+    .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; text-align: center; margin-top: 20px; } .kpi-number { font-size: 2.5rem; font-weight: 600; } .kpi-label { font-family: 'Poppins', sans-serif; font-size: 0.9rem; margin: 0; }
+    .insights-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; } .insight-card { background: rgba(255, 255, 255, 0.5); padding: 20px; border-radius: 12px; text-align: center; } .insight-card i { font-size: 2rem; margin-bottom: 10px; color: #BF360C; } .insight-card h3 { font-size: 1.1rem; margin-bottom: 5px; } .insight-card p { text-align: center; }
+    img { display: block; margin: 1.2rem auto; max-width: 90%; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); } pre { background: #2d2d2d; color: #f8f8f2; padding: 15px; border-radius: 5px; overflow-x: auto; font-size: 0.9em; }
+    footer { text-align: center; padding: 2rem; color: #fff; font-size: 0.9rem; margin-top: 2rem; } .project-nav { display: flex; justify-content: center; gap: 15px; margin-top: 1rem; }
   </style>
 </head>
 <body>
@@ -161,14 +83,12 @@
 
   <section id="analysis" class="panel">
     <h2><i class="fa-solid fa-magnifying-glass-chart"></i> SQL Analysis</h2>
-    <p>The insights in the dashboard were driven by SQL queries against the structured database. Below are some examples of the logic used.</p>
+    <p>The insights in the dashboard were driven by SQL queries. Below are examples of the logic used to uncover key findings.</p>
     <h3>Top Customers by Revenue</h3>
-    <blockquote>This query joins order and payment data, groups by customer, and uses a window function to identify the top 10% of customers who contribute the most to revenue.</blockquote>
+    <blockquote>This query uses a Common Table Expression (CTE) and a window function (NTILE) to segment customers into deciles based on total spending, identifying the high-value group.</blockquote>
     <pre><code>
 WITH CustomerRevenue AS (
-    SELECT
-        c.customer_id,
-        SUM(p.payment_value) AS total_revenue
+    SELECT c.customer_id, SUM(p.payment_value) AS total_revenue
     FROM customers c
     JOIN orders o ON c.customer_id = o.customer_id
     JOIN payments p ON o.order_id = p.order_id
@@ -178,16 +98,13 @@ SELECT
     COUNT(*) AS top_10_percent_customers,
     SUM(total_revenue) / (SELECT SUM(total_revenue) FROM CustomerRevenue) * 100 AS revenue_percentage
 FROM (
-    SELECT
-        customer_id,
-        total_revenue,
-        NTILE(10) OVER (ORDER BY total_revenue DESC) as percentile
+    SELECT *, NTILE(10) OVER (ORDER BY total_revenue DESC) as percentile
     FROM CustomerRevenue
 ) AS PercentiledCustomers
 WHERE percentile = 1;
     </code></pre>
     <h3>Sales by Quarter</h3>
-    <blockquote>This query extracts the quarter from the order purchase date to aggregate total sales value, identifying seasonal trends and peak performance periods.</blockquote>
+    <blockquote>This query extracts the quarter from the purchase timestamp to aggregate sales value, identifying seasonal trends and peak performance periods.</blockquote>
     <pre><code>
 SELECT
     CONCAT('Q', QUARTER(o.order_purchase_timestamp)) AS sales_quarter,
@@ -202,7 +119,7 @@ ORDER BY quarterly_sales DESC;
 
   <section id="process" class="panel">
     <h2><i class="fa-solid fa-database"></i> Process & Schema</h2>
-    <p>The project followed a standard analytics workflow: importing raw CSVs into a MySQL database, cleaning the data using a Python script (Pandas & SQLAlchemy), and storing the cleaned data back into MySQL. The relational schema below was designed to ensure data integrity and efficient querying.</p>
+    <p>The project followed a standard analytics workflow, beginning with the design of a relational schema to ensure data integrity. Raw CSVs were then cleaned and loaded into the database using a Python ETL script.</p>
     <img src="Schema_diagram.png" alt="Database Schema Diagram">
   </section>
 
@@ -210,18 +127,16 @@ ORDER BY quarterly_sales DESC;
     <h2><i class="fa-solid fa-screwdriver-wrench"></i> Tech Stack</h2>
     <ul>
       <li><strong>SQL (MySQL):</strong> Utilized for database design, relational schema implementation, and complex analytical querying.</li>
-      <li><strong>Python:</strong> The core tool for the ETL process, including data cleaning, transformation, and database loading.</li>
-      <li><strong>Key Libraries (Pandas, SQLAlchemy):</strong> Used for data manipulation and seamless integration between Python and MySQL.</li>
-      <li><strong>Power BI:</strong> Employed for creating a dynamic and interactive multi-page dashboard to visualize findings.</li>
+      <li><strong>Python & Libraries (Pandas, SQLAlchemy):</strong> The core tools for the ETL process, data cleaning, and transformation.</li>
+      <li><strong>Power BI:</strong> Employed for creating the dynamic and interactive multi-page dashboard to visualize findings.</li>
     </ul>
   </section>
 
   <section id="files" class="panel">
     <h2><i class="fa-solid fa-folder-open"></i> Project Files</h2>
-    <p>Access the core project files, including the SQL scripts for database setup and the Jupyter Notebook for the data cleaning process.</p>
+    <p>Access the core project files, including the SQL scripts and the Jupyter Notebook for the data cleaning process.</p>
     <div class="buttons">
       <a href="table_creation.html" target="_blank" class="btn-sunrise"><i class="fa-solid fa-database"></i> SQL – Table Creation</a>
-      <a href="table_import.html" target="_blank" class="btn-sunrise"><i class="fa-solid fa-upload"></i> SQL – Table Import</a>
       <a href="https://nbviewer.org/github/Pyroj08/Pyroj08.github.io/blob/main/projects/ecommerce-analysis/E_commerce_project_sqlalchemy.ipynb" target="_blank" class="btn-sunrise"><i class="fa-brands fa-python"></i> Python Cleaning Notebook</a>
     </div>
   </section>
@@ -232,32 +147,21 @@ ORDER BY quarterly_sales DESC;
   </section>
 
   <footer>
-    <p>© 2025 E-Commerce Data Analysis | Built with SQL · Python · Power BI</p>
+    <p>© 2025 E-Commerce Data Analysis | Vaibhav Jaiswal</p>
     <div class="project-nav">
         <a href="../../index.html" class="btn-sunrise"><i class="fa-solid fa-house"></i> Back to Portfolio</a>
+        <a href="../Zomato_Analysis/index.html" class="btn-sunrise"><i class="fa-solid fa-arrow-left"></i> Previous Project</a>
         <a href="../SupplyChain_analysis/index.html" class="btn-sunrise">Next Project <i class="fa-solid fa-arrow-right"></i></a>
     </div>
   </footer>
 
   <script>
     const panels = document.querySelectorAll('.panel');
-    const reveal = () => {
-      const trigger = window.innerHeight * 0.85;
-      panels.forEach(p => {
-        const top = p.getBoundingClientRect().top;
-        if (top < trigger) p.classList.add('visible');
-      });
-    };
-    window.addEventListener('scroll', reveal);
-    window.addEventListener('load', reveal);
-
+    const reveal = () => { const trigger = window.innerHeight * 0.85; panels.forEach(p => { const top = p.getBoundingClientRect().top; if (top < trigger) p.classList.add('visible'); }); };
+    window.addEventListener('scroll', reveal); window.addEventListener('load', reveal);
     const navbar = document.getElementById('navbar');
-    const onScroll = () => {
-      if (window.scrollY > 40) navbar.classList.add('shrink');
-      else navbar.classList.remove('shrink');
-    };
-    window.addEventListener('scroll', onScroll);
-    window.addEventListener('load', onScroll);
+    const onScroll = () => { if (window.scrollY > 40) navbar.classList.add('shrink'); else navbar.classList.remove('shrink'); };
+    window.addEventListener('scroll', onScroll); window.addEventListener('load', onScroll);
   </script>
 </body>
 </html>
