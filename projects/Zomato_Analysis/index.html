@@ -171,7 +171,7 @@
     <h3>1. Database Design & Schema</h3>
     <p>A normalized relational database schema was created in MySQL to structure the data, eliminate redundancy, and ensure data integrity. The schema consists of three tables: <code>restaurants</code>, <code>cuisines</code>, and the linking table <code>restaurant_cuisines</code> to manage the many-to-many relationship.</p>
     <pre><code class="language-sql">
--- SQL Schema from Schema_and_Table_creation.sql
+-- From Schema_and_Table_creation.sql
 CREATE TABLE restaurants (
     restaurant_id INT PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(255) NOT NULL,
@@ -206,50 +206,60 @@ CREATE TABLE restaurant_cuisines (
     
     <h3>Top 10 Restaurant Chains</h3>
     <p><strong>Question:</strong> Which restaurant chains have the most outlets in Bangalore?</p>
-    <blockquote><strong>Insight:</strong> This query identifies the most dominant chains by outlet count, a key indicator of market share and brand presence. The dashboard shows that chains like North Indian and Chinese are leaders.</blockquote>
+    <blockquote><strong>Insight:</strong> This query identifies the top 10 chains by counting occurrences, a key indicator of market dominance.</blockquote>
     <pre><code class="language-sql">-- From Top_10_Restaurant_Chains.sql
 SELECT name AS restaurant_chain, COUNT(*) AS number_of_outlets
-FROM restaurants
-GROUP BY name
-ORDER BY number_of_outlets DESC
-LIMIT 10;
+FROM restaurants GROUP BY name ORDER BY number_of_outlets DESC LIMIT 10;
     </code></pre>
 
     <h3>Impact of Online Ordering</h3>
     <p><strong>Question:</strong> How does offering online ordering affect a restaurant's average rating and vote count?</p>
-    <blockquote><strong>Insight:</strong> The analysis shows that the vast majority of restaurants (64.48%) have online ordering capabilities, indicating its importance in the market.</blockquote>
+    <blockquote><strong>Insight:</strong> This query reveals that the majority of restaurants (64.48%) have online ordering, suggesting its market importance.</blockquote>
     <pre><code class="language-sql">-- From Impact_of_Online_Ordering.sql
-SELECT
-    CASE WHEN has_online_order = 1 THEN 'Yes' ELSE 'No' END AS has_online_order,
+SELECT CASE WHEN has_online_order = 1 THEN 'Yes' ELSE 'No' END AS has_online_order,
     COUNT(*) AS number_of_restaurants,
     ROUND(AVG(rating), 2) AS average_rating,
     ROUND(AVG(votes), 0) AS average_votes
-FROM restaurants
-WHERE rating IS NOT NULL
-GROUP BY has_online_order;
+FROM restaurants WHERE rating IS NOT NULL GROUP BY has_online_order;
+    </code></pre>
+
+    <h3>Top 10 Most Popular Cuisines</h3>
+    <p><strong>Question:</strong> What are the most widely available cuisines in Bangalore?</p>
+    <blockquote><strong>Insight:</strong> By counting restaurants per cuisine, this query identifies the most common food types, with North Indian and Chinese being the most prevalent.</blockquote>
+    <pre><code class="language-sql">-- From Top_10_Most_Popular_Cuisines.sql
+SELECT c.cuisine_name, COUNT(rc.restaurant_id) AS number_of_restaurants
+FROM cuisines c JOIN restaurant_cuisines rc ON c.cuisine_id = rc.cuisine_id
+GROUP BY c.cuisine_name ORDER BY number_of_restaurants DESC LIMIT 10;
+    </code></pre>
+
+    <h3>Most Popular Restaurant by Type</h3>
+    <p><strong>Question:</strong> For each restaurant type, which establishment is the most popular based on votes?</p>
+    <blockquote><strong>Insight:</strong> This query finds the restaurant with the maximum votes in each category, highlighting top performers like "Quick Bites" and "Casual Dining".</blockquote>
+    <pre><code class="language-sql">-- From Most_Popular_Restaurant_by_Type.sql
+SELECT r.restaurant_type, r.name, r.rating, r.votes
+FROM restaurants r JOIN (
+    SELECT restaurant_type, MAX(votes) AS max_votes
+    FROM restaurants WHERE restaurant_type IS NOT NULL
+    GROUP BY restaurant_type
+) AS max_votes_per_type
+ON r.restaurant_type = max_votes_per_type.restaurant_type AND r.votes = max_votes_per_type.max_votes
+ORDER BY r.votes DESC;
     </code></pre>
 
     <h3>Average Cost for Top Cuisines</h3>
     <p><strong>Question:</strong> What is the average cost for two at restaurants serving the top 5 most popular cuisines?</p>
-    <blockquote><strong>Insight:</strong> By calculating the average cost for the most widespread cuisines, we can gauge the general price point and affordability of the most popular dining options in the city. The dashboard shows that North Indian and Chinese are among the most popular cuisines.</blockquote>
+    <blockquote><strong>Insight:</strong> This analysis helps gauge the affordability of the most popular dining options in the city.</blockquote>
     <pre><code class="language-sql">-- From Average_Cost_for_Top_Cuisines.sql
 WITH TopCuisines AS (
-    SELECT c.cuisine_id
-    FROM cuisines c
-    JOIN restaurant_cuisines rc ON c.cuisine_id = rc.cuisine_id
-    GROUP BY c.cuisine_id
-    ORDER BY COUNT(rc.restaurant_id) DESC
-    LIMIT 5
+    SELECT c.cuisine_id, c.cuisine_name
+    FROM cuisines c JOIN restaurant_cuisines rc ON c.cuisine_id = rc.cuisine_id
+    GROUP BY c.cuisine_id, c.cuisine_name ORDER BY COUNT(rc.restaurant_id) DESC LIMIT 5
 )
-SELECT
-    tc.cuisine_name,
-    ROUND(AVG(r.cost_for_two), 2) AS average_cost_for_two
+SELECT tc.cuisine_name, ROUND(AVG(r.cost_for_two), 2) AS average_cost_for_two
 FROM restaurants r
 JOIN restaurant_cuisines rc ON r.restaurant_id = rc.restaurant_id
 JOIN TopCuisines tc ON rc.cuisine_id = tc.cuisine_id
-WHERE r.cost_for_two IS NOT NULL
-GROUP BY tc.cuisine_name
-ORDER BY average_cost_for_two DESC;
+WHERE r.cost_for_two IS NOT NULL GROUP BY tc.cuisine_name ORDER BY average_cost_for_two DESC;
     </code></pre>
   </section>
 
