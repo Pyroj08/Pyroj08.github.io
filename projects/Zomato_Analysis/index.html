@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Zomato Restaurant Analysis Project</title>
+  <title>Zomato Analysis Project</title>
   
   <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -147,19 +147,19 @@
       <div class="kpi-grid">
           <div class="kpi-item">
               <div class="kpi-number">30K</div>
-              [cite_start]<p class="kpi-label">Total Restaurants Analyzed [cite: 6]</p>
+              <p class="kpi-label">Total Restaurants Analyzed</p>
           </div>
           <div class="kpi-item">
               <div class="kpi-number">3.73</div>
-              [cite_start]<p class="kpi-label">Average Rating [cite: 6]</p>
+              <p class="kpi-label">Average Rating</p>
           </div>
           <div class="kpi-item">
               <div class="kpi-number">₹633.88</div>
-              [cite_start]<p class="kpi-label">Average Cost for Two [cite: 6]</p>
+              <p class="kpi-label">Average Cost for Two</p>
           </div>
           <div class="kpi-item">
               <div class="kpi-number">107</div>
-              [cite_start]<p class="kpi-label">Total Unique Cuisines [cite: 6]</p>
+              <p class="kpi-label">Total Unique Cuisines</p>
           </div>
       </div>
   </section>
@@ -168,7 +168,7 @@
     <h2><i class="fa-solid fa-gears"></i> Project Process</h2>
     
     <h3>1. Database Design & Schema</h3>
-    [cite_start]<p>A normalized relational database schema was created in MySQL to structure the data, eliminate redundancy, and ensure data integrity[cite: 1]. [cite_start]The schema consists of three tables: <code>restaurants</code>, <code>cuisines</code>, and the linking table <code>restaurant_cuisines</code> to manage the many-to-many relationship[cite: 1].</p>
+    <p>A normalized relational database schema was created in MySQL to structure the data, eliminate redundancy, and ensure data integrity. The schema consists of three tables: <code>restaurants</code>, <code>cuisines</code>, and the linking table <code>restaurant_cuisines</code> to manage the many-to-many relationship.</p>
     <pre><code class="language-sql">
 -- SQL Schema from Schema_and_Table_creation.sql
 CREATE TABLE restaurants (
@@ -177,7 +177,7 @@ CREATE TABLE restaurants (
     restaurant_type VARCHAR(255),
     has_online_order BOOLEAN,
     has_table_booking BOOLEAN,
-    rating DECIMAL(3, 2),
+    rating DECIMAL(3, 2), 
     votes INT,
     cost_for_two INT
 );
@@ -197,7 +197,7 @@ CREATE TABLE restaurant_cuisines (
     </code></pre>
 
     <h3>2. Data Cleaning & ETL</h3>
-    [cite_start]<p>A Python script, detailed in the <code>Data_Cleaning_and_Storage.ipynb</code> notebook, was used to perform the ETL process[cite: 2]. [cite_start]Key transformation steps included dropping irrelevant columns, handling null values and duplicates, converting data types (e.g., `rate` to numeric, `cost_for_two` to integer), and mapping categorical columns like `online_order` to boolean values[cite: 2]. [cite_start]The cleaned data was then loaded into the MySQL database using SQLAlchemy[cite: 2].</p>
+    <p>A Python script, detailed in the <code>Data_Cleaning_and_Storage.ipynb</code> notebook, was used to perform the ETL process. Key transformation steps included dropping irrelevant columns, renaming columns for clarity, handling <code>null</code> values, removing duplicates, converting data types (e.g., `rate` to numeric, `cost_for_two` to integer), and mapping categorical columns like `online_order` to boolean values. The cleaned data was then loaded into the MySQL database using SQLAlchemy.</p>
   </section>
 
   <section id="analysis" class="panel">
@@ -205,7 +205,7 @@ CREATE TABLE restaurant_cuisines (
     
     <h3>Top 10 Restaurant Chains</h3>
     <p><strong>Question:</strong> Which restaurant chains have the most outlets in Bangalore?</p>
-    <blockquote><strong>Insight:</strong> This query identifies the most dominant chains by outlet count, a key indicator of market share and brand presence.</blockquote>
+    <blockquote><strong>Insight:</strong> This query identifies the most dominant chains by outlet count, a key indicator of market share and brand presence. The dashboard shows that chains like North Indian and Chinese are leaders.</blockquote>
     <pre><code class="language-sql">-- From Top_10_Restaurant_Chains.sql
 SELECT name AS restaurant_chain, COUNT(*) AS number_of_outlets
 FROM restaurants
@@ -216,7 +216,7 @@ LIMIT 10;
 
     <h3>Impact of Online Ordering</h3>
     <p><strong>Question:</strong> How does offering online ordering affect a restaurant's average rating and vote count?</p>
-    [cite_start]<blockquote><strong>Insight:</strong> The analysis shows that the vast majority of restaurants (64.48%) have online ordering[cite: 6], suggesting it's a critical component for reaching a wider customer base in the modern market.</blockquote>
+    <blockquote><strong>Insight:</strong> The analysis shows that the vast majority of restaurants (64.48%) have online ordering capabilities, indicating its importance in the market.</blockquote>
     <pre><code class="language-sql">-- From Impact_of_Online_Ordering.sql
 SELECT
     CASE WHEN has_online_order = 1 THEN 'Yes' ELSE 'No' END AS has_online_order,
@@ -230,7 +230,7 @@ GROUP BY has_online_order;
 
     <h3>Average Cost for Top Cuisines</h3>
     <p><strong>Question:</strong> What is the average cost for two at restaurants serving the top 5 most popular cuisines?</p>
-    <blockquote><strong>Insight:</strong> By calculating the average cost for the most widespread cuisines, we can gauge the general price point and affordability of the most popular dining options in the city. [cite_start]The dashboard shows that North Indian and Chinese are among the most popular cuisines[cite: 6].</blockquote>
+    <blockquote><strong>Insight:</strong> By calculating the average cost for the most widespread cuisines, we can gauge the general price point and affordability of the most popular dining options in the city. The dashboard shows that North Indian and Chinese are among the most popular cuisines.</blockquote>
     <pre><code class="language-sql">-- From Average_Cost_for_Top_Cuisines.sql
 WITH TopCuisines AS (
     SELECT c.cuisine_id
@@ -254,24 +254,24 @@ ORDER BY average_cost_for_two DESC;
 
   <section id="dashboard" class="panel">
     <h2><i class="fa-solid fa-chart-pie"></i> Power BI Dashboard</h2>
-    [cite_start]<p>The final insights are presented in a two-page interactive Power BI dashboard, which was created using the <code>Zomato_Dashboard.pbix</code> file[cite: 4].</p>
+    <p>The final insights are presented in a two-page interactive Power BI dashboard, which was created using the <code>Zomato_Dashboard.pbix</code> file.</p>
     
     <h3>Executive Summary</h3>
-    [cite_start]<p>This page provides a high-level overview of the Bangalore restaurant market, highlighting key metrics, top cuisines, restaurant density by location, and the prevalence of online ordering[cite: 6].</p>
+    <p>This page provides a high-level overview of the Bangalore restaurant market, highlighting key metrics, top cuisines, restaurant density by location, and the prevalence of online ordering.</p>
     <img src="Page1.jpg" alt="Executive Summary Dashboard">
 
     <h3>Deep Dive Analysis</h3>
-    [cite_start]<p>This page allows for a more detailed exploration, featuring a scatter plot of rating vs. cost, a breakdown of restaurant types by count, and an analysis of table booking availability[cite: 5].</p>
+    <p>This page allows for a more detailed exploration, featuring a scatter plot of rating vs. cost, a breakdown of restaurant types by count, and an analysis of table booking availability.</p>
     <img src="Page2.png" alt="Deep Dive Analysis Dashboard">
   </section>
 
   <section id="tools" class="panel">
     <h2><i class="fa-solid fa-screwdriver-wrench"></i> Tech Stack</h2>
     <ul>
-      [cite_start]<li><strong>SQL (MySQL):</strong> Utilized for database design, relational schema implementation, data storage, and complex querying[cite: 1, 3, 7, 8, 9, 10, 11].</li>
-      [cite_start]<li><strong>Python:</strong> The core tool for the ETL process, including data cleaning, transformation, and database loading[cite: 2].</li>
-      <li><strong>Key Libraries (Pandas, SQLAlchemy):</strong> Pandas for data manipulation and analysis; [cite_start]SQLAlchemy for seamless integration between Python and the MySQL database[cite: 2].</li>
-      [cite_start]<li><strong>Power BI:</strong> Employed for creating a dynamic and interactive multi-page dashboard to visualize findings and generate business insights[cite: 4, 5, 6].</li>
+      <li><strong>SQL (MySQL):</strong> Utilized for database design, relational schema implementation, data storage, and complex querying.</li>
+      <li><strong>Python:</strong> The core tool for the ETL process, including data cleaning, transformation, and database loading.</li>
+      <li><strong>Key Libraries (Pandas, SQLAlchemy):</strong> Pandas for data manipulation and analysis; SQLAlchemy for seamless integration between Python and the MySQL database.</li>
+      <li><strong>Power BI:</strong> Employed for creating a dynamic and interactive multi-page dashboard to visualize findings and generate business insights.</li>
     </ul>
   </section>
   
