@@ -13,8 +13,8 @@
     html { scroll-behavior: smooth; }
     body {
       font-family: 'Poppins', sans-serif;
-      color: #5D4037; /* Dark warm brown */
-      background: linear-gradient(270deg, #d32f2f, #c2185b); /* Zomato Red Gradient */
+      color: #5D4037;
+      background: linear-gradient(270deg, #d32f2f, #c2185b);
       background-size: 400% 400%;
       animation: gradientAnimation 18s ease infinite;
       min-height: 100vh;
@@ -26,105 +26,56 @@
       100% { background-position: 0% 50%; }
     }
 
-    /* Container Panels (Glass Effect) */
+    /* Panels */
     .panel {
-      max-width: 1100px;
-      margin: 40px auto;
-      padding: 30px;
-      background: rgba(255, 245, 240, 0.9); /* Lighter tint */
-      border: 1px solid rgba(239, 83, 80, 0.6); /* Soft red border */
-      border-radius: 16px;
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-      opacity: 0;
-      transform: translateY(18px);
-      transition: opacity .8s ease, transform .8s ease;
+      max-width: 1100px; margin: 40px auto; padding: 30px;
+      background: rgba(255, 245, 240, 0.9); border: 1px solid rgba(239, 83, 80, 0.6);
+      border-radius: 16px; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15); opacity: 0;
+      transform: translateY(18px); transition: opacity .8s ease, transform .8s ease;
     }
     .panel.visible { opacity: 1; transform: translateY(0); }
 
-    h1, h2, h3 {  
-      font-family: 'Poppins', sans-serif;
-      letter-spacing: 0.2px; text-align: center;  
-    }
-    h1 { font-size: 2.3rem; color: #b71c1c; } /* Deep Red */
+    /* Typography */
+    h1, h2, h3 { font-family: 'Poppins', sans-serif; letter-spacing: 0.2px; text-align: center; }
+    h1 { font-size: 2.3rem; color: #b71c1c; }
     h2 { font-size: 1.6rem; margin-bottom: 12px; color: #b71c1c; position: relative; }
     h2 i { margin-right: 8px; }
-    h2::after {
-      content: ""; display: block; width: 64px; height: 3px;
-      background: #ef5350; /* Zomato light red */
-      margin: 8px auto 0; border-radius: 3px;
-    }
-    
-    p, ul, blockquote {  
-      font-family: 'Lora', serif;
-      font-size: 1.05rem;
-      line-height: 1.8;
-      margin: 0.5rem 0 1.5rem; text-align: justify; color: #5D4037;  
-    }
-    ul { margin: 0.5rem 0 1.5rem 1.2rem; }
-    blockquote {
-        border-left: 4px solid #ef5350;
-        padding-left: 1rem;
-        margin: 1rem 0;
-        background-color: rgba(239, 83, 80, 0.05);
-        font-style: italic;
-    }
-    
+    h2::after { content: ""; display: block; width: 64px; height: 3px; background: #ef5350; margin: 8px auto 0; border-radius: 3px; }
+    p, ul { font-family: 'Lora', serif; font-size: 1.05rem; line-height: 1.8; margin: 0.5rem 0 1.5rem; text-align: justify; color: #5D4037; }
+    ul { margin-left: 1.2rem; }
+
+    /* Navbar */
     nav {
       position: sticky; top: 0; z-index: 1000; display: flex;
       flex-wrap: wrap; justify-content: center; gap: 12px 18px;
-      background: rgba(120, 20, 20, 0.88); /* Deep Zomato Red */
-      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+      background: rgba(120, 20, 20, 0.88); backdrop-filter: blur(8px);
       padding: 12px 10px; border-bottom: 1px solid rgba(239, 83, 80, 0.4);
-      transition: padding .2s ease, background .2s ease, box-shadow .2s ease;
+      transition: all .2s ease;
     }
-    nav.shrink {
-      padding: 8px 8px; background: rgba(120, 20, 20, 0.95);
-      box-shadow: 0 6px 18px rgba(0,0,0,0.18);
-    }
-    nav a {
-      color: #FFFAF0; text-decoration: none; font-weight: 500; font-size: 0.9rem;
-      padding: 6px 10px; border-radius: 6px; transition: background 0.3s ease;
-    }
+    nav.shrink { padding: 8px 8px; background: rgba(120, 20, 20, 0.95); box-shadow: 0 6px 18px rgba(0,0,0,0.18); }
+    nav a { color: #FFFAF0; text-decoration: none; font-weight: 500; font-size: 0.9rem; padding: 6px 10px; border-radius: 6px; transition: background 0.3s ease; }
     nav a:hover, nav a.active { background: rgba(239, 83, 80, 0.25); }
-    
-    img {
-      display: block; margin: 1.2rem auto; max-width: 90%;
-      border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+
+    /* Buttons */
+    .buttons { text-align: center; display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; }
+    .btn-zomato {
+      display: inline-block; padding: 0.7rem 1.5rem;
+      font-size: 0.95rem; font-weight: 600; text-decoration: none; border-radius: 30px;
+      background: linear-gradient(90deg, #ef5350, #d32f2f);
+      color: #fff; transition: all 0.3s ease;
     }
+    .btn-zomato:hover { transform: translateY(-3px); box-shadow: 0 6px 15px rgba(0,0,0,0.2); }
     
-    .panel-dark {
-      background: linear-gradient(120deg, #c62828, #8e0000);
-      color: #FFFAF0;
-    }
+    /* Dark Panel Theme */
+    .panel-dark { background: linear-gradient(120deg, #c62828, #8e0000); color: #FFFAF0; }
     .panel-dark h2 { color: #FFFAF0; }
     .panel-dark h2::after { background: rgba(255, 205, 210, 0.5); }
-    .panel-dark p { color: #FFFAF0; }
-    .panel-dark .kpi-item .kpi-number { color: #ffcdd2; }
-    .panel-dark .kpi-item .kpi-label { color: #FFFAF0; }
-
-    .kpi-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 20px; text-align: center; margin-top: 20px;
-    }
-    .kpi-item .kpi-number {
-        font-size: 2.5rem; font-weight: 600;
-    }
-    .kpi-item .kpi-label {
-        font-family: 'Poppins', sans-serif; font-size: 0.9rem;
-        text-align: center; margin: 0;
-    }
+    .panel-dark p { color: #FFFAF0; text-align: center; }
     
-    pre {
-      background-color: #2d2d2d; color: #f8f8f2;
-      padding: 15px; border-radius: 5px; overflow-x: auto;
-      font-family: "Courier New", Courier, monospace; font-size: 0.9em;
-    }
+    img { display: block; margin: 1.2rem auto; max-width: 90%; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
     
     footer { text-align: center; padding: 2rem; color: #fff; font-size: 0.9rem; margin-top: 2rem; }
-    footer p { color: #fff; text-align: center; }
   </style>
 </head>
 <body>
@@ -132,166 +83,46 @@
   <nav id="navbar">
     <a href="../../index.html"><i class="fa-solid fa-arrow-left"></i> Back to Portfolio</a>
     <a href="#about">About</a>
-    <a href="#process">Process</a>
-    <a href="#analysis">Analysis</a>
     <a href="#dashboard">Dashboard</a>
-    <a href="#tools">Tools</a>
+    <a href="#process">Process</a>
+    <a href="#files">Project Files</a>
   </nav>
 
   <header id="about" class="panel">
     <h1><i class="fa-solid fa-utensils"></i> Zomato Restaurant Analysis</h1>
-    <p style="text-align: center; max-width: 700px; margin: auto;">This project performs a comprehensive analysis of the Zomato dataset for Bangalore to uncover insights into restaurant trends, ratings, costs, and cuisine popularity. The workflow involved designing a relational database, executing an ETL pipeline with Python for data cleaning, performing in-depth SQL analysis, and visualizing the findings in an interactive Power BI dashboard.</p>
+    <p style="text-align: center; max-width: 700px; margin: auto;">This project demonstrates a complete analytics workflow to uncover key business drivers from raw restaurant data, moving from database design and ETL to a final, interactive Power BI dashboard that highlights market trends and restaurant performance.</p>
   </header>
   
-  <section class="panel panel-dark">
-      <h2><i class="fa-solid fa-bullseye"></i> At a Glance: Key Performance Indicators</h2>
-      <div class="kpi-grid">
-          <div class="kpi-item">
-              <div class="kpi-number">30K</div>
-              <p class="kpi-label">Total Restaurants Analyzed</p>
-          </div>
-          <div class="kpi-item">
-              <div class="kpi-number">3.73</div>
-              <p class="kpi-label">Average Rating</p>
-          </div>
-          <div class="kpi-item">
-              <div class="kpi-number">₹633.88</div>
-              <p class="kpi-label">Average Cost for Two</p>
-          </div>
-          <div class="kpi-item">
-              <div class="kpi-number">107</div>
-              <p class="kpi-label">Total Unique Cuisines</p>
-          </div>
-      </div>
-  </section>
-
-  <section id="process" class="panel">
-    <h2><i class="fa-solid fa-gears"></i> Project Process</h2>
-    
-    <h3>1. Database Design & Schema</h3>
-    <p>A normalized relational database schema was created in MySQL to structure the data, eliminate redundancy, and ensure data integrity. The schema consists of three tables: <code>restaurants</code>, <code>cuisines</code>, and the linking table <code>restaurant_cuisines</code> to manage the many-to-many relationship.</p>
-    <pre><code class="language-sql">
--- From Schema_and_Table_creation.sql
-CREATE TABLE restaurants (
-    restaurant_id INT PRIMARY KEY AUTO_INCREMENT,
-    name VARCHAR(255) NOT NULL,
-    restaurant_type VARCHAR(255),
-    has_online_order BOOLEAN,
-    has_table_booking BOOLEAN,
-    rating DECIMAL(3, 2), 
-    votes INT,
-    cost_for_two INT
-);
-
-CREATE TABLE cuisines (
-    cuisine_id INT PRIMARY KEY AUTO_INCREMENT,
-    cuisine_name VARCHAR(100) UNIQUE NOT NULL
-);
-
-CREATE TABLE restaurant_cuisines (
-    rc_id INT PRIMARY KEY AUTO_INCREMENT,
-    restaurant_id INT,
-    cuisine_id INT,
-    FOREIGN KEY (restaurant_id) REFERENCES restaurants(restaurant_id),
-    FOREIGN KEY (cuisine_id) REFERENCES cuisines(cuisine_id)
-);
-    </code></pre>
-
-    <h3>2. Data Cleaning & ETL</h3>
-    <p>A Python script, detailed in the <code>Data_Cleaning_and_Storage.ipynb</code> notebook, was used to perform the ETL process. Key transformation steps included dropping irrelevant columns, renaming columns for clarity, handling <code>null</code> values, removing duplicates, converting data types (e.g., `rate` to numeric, `cost_for_two` to integer), and mapping categorical columns like `online_order` to boolean values. The cleaned data was then loaded into the MySQL database using SQLAlchemy.</p>
-  </section>
-
-  <section id="analysis" class="panel">
-    <h2><i class="fa-solid fa-magnifying-glass-chart"></i> SQL Analysis & Insights</h2>
-    
-    <h3>Top 10 Restaurant Chains</h3>
-    <p><strong>Question:</strong> Which restaurant chains have the most outlets in Bangalore?</p>
-    <blockquote><strong>Insight:</strong> This query identifies the top 10 chains by counting occurrences, a key indicator of market dominance.</blockquote>
-    <pre><code class="language-sql">-- From Top_10_Restaurant_Chains.sql
-SELECT name AS restaurant_chain, COUNT(*) AS number_of_outlets
-FROM restaurants GROUP BY name ORDER BY number_of_outlets DESC LIMIT 10;
-    </code></pre>
-
-    <h3>Impact of Online Ordering</h3>
-    <p><strong>Question:</strong> How does offering online ordering affect a restaurant's average rating and vote count?</p>
-    <blockquote><strong>Insight:</strong> This query reveals that the majority of restaurants (64.48%) have online ordering, suggesting its market importance.</blockquote>
-    <pre><code class="language-sql">-- From Impact_of_Online_Ordering.sql
-SELECT CASE WHEN has_online_order = 1 THEN 'Yes' ELSE 'No' END AS has_online_order,
-    COUNT(*) AS number_of_restaurants,
-    ROUND(AVG(rating), 2) AS average_rating,
-    ROUND(AVG(votes), 0) AS average_votes
-FROM restaurants WHERE rating IS NOT NULL GROUP BY has_online_order;
-    </code></pre>
-
-    <h3>Top 10 Most Popular Cuisines</h3>
-    <p><strong>Question:</strong> What are the most widely available cuisines in Bangalore?</p>
-    <blockquote><strong>Insight:</strong> By counting restaurants per cuisine, this query identifies the most common food types, with North Indian and Chinese being the most prevalent.</blockquote>
-    <pre><code class="language-sql">-- From Top_10_Most_Popular_Cuisines.sql
-SELECT c.cuisine_name, COUNT(rc.restaurant_id) AS number_of_restaurants
-FROM cuisines c JOIN restaurant_cuisines rc ON c.cuisine_id = rc.cuisine_id
-GROUP BY c.cuisine_name ORDER BY number_of_restaurants DESC LIMIT 10;
-    </code></pre>
-
-    <h3>Most Popular Restaurant by Type</h3>
-    <p><strong>Question:</strong> For each restaurant type, which establishment is the most popular based on votes?</p>
-    <blockquote><strong>Insight:</strong> This query finds the restaurant with the maximum votes in each category, highlighting top performers like "Quick Bites" and "Casual Dining".</blockquote>
-    <pre><code class="language-sql">-- From Most_Popular_Restaurant_by_Type.sql
-SELECT r.restaurant_type, r.name, r.rating, r.votes
-FROM restaurants r JOIN (
-    SELECT restaurant_type, MAX(votes) AS max_votes
-    FROM restaurants WHERE restaurant_type IS NOT NULL
-    GROUP BY restaurant_type
-) AS max_votes_per_type
-ON r.restaurant_type = max_votes_per_type.restaurant_type AND r.votes = max_votes_per_type.max_votes
-ORDER BY r.votes DESC;
-    </code></pre>
-
-    <h3>Average Cost for Top Cuisines</h3>
-    <p><strong>Question:</strong> What is the average cost for two at restaurants serving the top 5 most popular cuisines?</p>
-    <blockquote><strong>Insight:</strong> This analysis helps gauge the affordability of the most popular dining options in the city.</blockquote>
-    <pre><code class="language-sql">-- From Average_Cost_for_Top_Cuisines.sql
-WITH TopCuisines AS (
-    SELECT c.cuisine_id, c.cuisine_name
-    FROM cuisines c JOIN restaurant_cuisines rc ON c.cuisine_id = rc.cuisine_id
-    GROUP BY c.cuisine_id, c.cuisine_name ORDER BY COUNT(rc.restaurant_id) DESC LIMIT 5
-)
-SELECT tc.cuisine_name, ROUND(AVG(r.cost_for_two), 2) AS average_cost_for_two
-FROM restaurants r
-JOIN restaurant_cuisines rc ON r.restaurant_id = rc.restaurant_id
-JOIN TopCuisines tc ON rc.cuisine_id = tc.cuisine_id
-WHERE r.cost_for_two IS NOT NULL GROUP BY tc.cuisine_name ORDER BY average_cost_for_two DESC;
-    </code></pre>
-  </section>
-
   <section id="dashboard" class="panel">
-    <h2><i class="fa-solid fa-chart-pie"></i> Power BI Dashboard</h2>
-    <p>The final insights are presented in a two-page interactive Power BI dashboard, which was created using the <code>Zomato_Dashboard.pbix</code> file.</p>
-    
-    <h3>Executive Summary</h3>
-    <p>This page provides a high-level overview of the Bangalore restaurant market, highlighting key metrics, top cuisines, restaurant density by location, and the prevalence of online ordering.</p>
+    <h2><i class="fa-solid fa-chart-bar"></i> Power BI Dashboard</h2>
+    <p>The insights from the SQL analysis were visualized in an interactive, two-page dashboard. The first page provides a high-level executive summary of the Bangalore restaurant market, while the second offers a deep dive into relationships between variables like cost, rating, and restaurant type.</p>
     <img src="Page1.png" alt="Executive Summary Dashboard">
-
-    <h3>Deep Dive Analysis</h3>
-    <p>This page allows for a more detailed exploration, featuring a scatter plot of rating vs. cost, a breakdown of restaurant types by count, and an analysis of table booking availability.</p>
     <img src="Page2.png" alt="Deep Dive Analysis Dashboard">
   </section>
+  
+  <section id="process" class="panel">
+    <h2><i class="fa-solid fa-gears"></i> Process & Schema</h2>
+    <p>The project began with designing a normalized relational database in MySQL to properly structure the data. A Python script was then used for the ETL process: extracting the raw CSV, cleaning and transforming the data with Pandas, and loading it into the database using SQLAlchemy.</p>
+    <img src="zomato_schema.png" alt="Zomato Database Schema Diagram" style="max-width: 700px; background: none; box-shadow: none;">
+  </section>
 
-  <section id="tools" class="panel">
-    <h2><i class="fa-solid fa-screwdriver-wrench"></i> Tech Stack</h2>
-    <ul>
-      <li><strong>SQL (MySQL):</strong> Utilized for database design, relational schema implementation, data storage, and complex querying.</li>
-      <li><strong>Python:</strong> The core tool for the ETL process, including data cleaning, transformation, and database loading.</li>
-      <li><strong>Key Libraries (Pandas, SQLAlchemy):</strong> Pandas for data manipulation and analysis; SQLAlchemy for seamless integration between Python and the MySQL database.</li>
-      <li><strong>Power BI:</strong> Employed for creating a dynamic and interactive multi-page dashboard to visualize findings and generate business insights.</li>
-    </ul>
+  <section id="files" class="panel panel-dark">
+    <h2><i class="fa-solid fa-folder-open"></i> Project Files</h2>
+    <p>Explore the technical assets created for this project, including the database schema, ETL notebook, analysis queries, and the downloadable Power BI file.</p>
+    <div class="buttons">
+      <a href="https://github.com/Pyroj08/pyroj08.github.io/blob/main/projects/Zomato_Analysis/Schema_and_Table_creation.sql" target="_blank" class="btn-zomato"><i class="fa-solid fa-database"></i> SQL Schema</a>
+      <a href="https://nbviewer.org/github/pyroj08/pyroj08.github.io/blob/main/projects/Zomato_Analysis/Data_Cleaning_and_Storage.ipynb" target="_blank" class="btn-zomato"><i class="fa-brands fa-python"></i> ETL Notebook</a>
+      <a href="https://github.com/Pyroj08/pyroj08.github.io/tree/main/projects/Zomato_Analysis" target="_blank" class="btn-zomato"><i class="fa-solid fa-magnifying-glass"></i> SQL & CSV Files</a>
+      <a href="https://raw.githubusercontent.com/pyroj08/pyroj08.github.io/main/projects/Zomato_Analysis/Zomato_Dashboard.pbix" download="Zomato_Dashboard.pbix" class="btn-zomato"><i class="fa-solid fa-download"></i> Download Power BI File</a>
+    </div>
   </section>
   
   <footer>
-    <p>© 2025 Zomato Data Analysis | Built with SQL · Python · Power BI</p>
+    <p>© 2025 Zomato Data Analysis | Vaibhav Jaiswal</p>
+    <a href="../../index.html" class="btn-zomato" style="text-decoration: none; display: inline-block; margin-top: 10px;"><i class="fa-solid fa-house"></i> Back to Portfolio</a>
   </footer>
 
   <script>
-    // Panel reveal on scroll
     const panels = document.querySelectorAll('.panel');
     const reveal = () => {
       const trigger = window.innerHeight * 0.85;
@@ -303,7 +134,6 @@ WHERE r.cost_for_two IS NOT NULL GROUP BY tc.cuisine_name ORDER BY average_cost_
     window.addEventListener('scroll', reveal);
     window.addEventListener('load', reveal);
 
-    // Navbar shrink on scroll
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => {
       if (window.scrollY > 40) {
