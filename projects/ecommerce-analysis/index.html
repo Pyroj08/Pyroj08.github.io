@@ -19,9 +19,30 @@
     .panel-dark { background: linear-gradient(120deg, #BF360C, #783228); color: #FFFAF0; } .panel-dark h2 { color: #FFFAF0; } .panel-dark h2::after { background: rgba(255, 239, 230, 0.5); } .panel-dark p, .panel-dark .kpi-label { color: #FFFAF0; text-align: center; } .panel-dark .kpi-number { color: #feb47b; } .panel-dark .insight-card { background: rgba(0,0,0,0.2); } .panel-dark .insight-card h3 { color: #FFFAF0; } .panel-dark .insight-card i { color: #feb47b; }
     .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; text-align: center; margin-top: 20px; } .kpi-number { font-size: 2.5rem; font-weight: 600; } .kpi-label { font-family: 'Poppins', sans-serif; font-size: 0.9rem; margin: 0; }
     .insights-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; } .insight-card { background: rgba(255, 255, 255, 0.5); padding: 20px; border-radius: 12px; text-align: center; } .insight-card i { font-size: 2rem; margin-bottom: 10px; color: #BF360C; } .insight-card h3 { font-size: 1.1rem; margin-bottom: 5px; } .insight-card p { text-align: center; }
-    img { display: block; margin: 1.2rem auto; max-width: 90%; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); } pre { background: #2d2d2d; color: #f8f8f2; padding: 15px; border-radius: 5px; overflow-x: auto; font-size: 0.9em; }
     footer { text-align: center; padding: 2rem; color: #fff; font-size: 0.9rem; margin-top: 2rem; } .project-nav { display: flex; justify-content: center; gap: 15px; margin-top: 1rem; } .btn-sunrise { display: inline-block; padding: 0.7rem 1.5rem; font-size: 0.95rem; font-weight: 600; text-decoration: none; border-radius: 30px; background: linear-gradient(90deg, #ff7e5f, #ff5f6d); color: #fff; transition: all 0.3s ease; } .btn-sunrise:hover { transform: translateY(-3px); box-shadow: 0 6px 15px rgba(0,0,0,0.2); }
-    @media (max-width: 900px) { .insights-grid { grid-template-columns: repeat(2, 1fr); } } @media (max-width: 500px) { .insights-grid { grid-template-columns: 1fr; } }
+    
+    /* Slideshow Styles */
+    .slideshow-container { max-width: 1000px; position: relative; margin: auto; }
+    .mySlides { display: none; }
+    .mySlides img { width: 100%; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
+    .prev, .next { cursor: pointer; position: absolute; top: 50%; width: auto; padding: 16px; margin-top: -22px; color: white; font-weight: bold; font-size: 18px; transition: 0.6s ease; border-radius: 0 3px 3px 0; user-select: none; background-color: rgba(0,0,0,0.3); }
+    .next { right: 0; border-radius: 3px 0 0 3px; }
+    .prev:hover, .next:hover { background-color: rgba(0,0,0,0.8); }
+    .dot-container { text-align: center; padding: 20px 0; }
+    .dot { cursor: pointer; height: 15px; width: 15px; margin: 0 2px; background-color: #bbb; border-radius: 50%; display: inline-block; transition: background-color 0.6s ease; }
+    .active, .dot:hover { background-color: #717171; }
+    .fade { animation-name: fade; animation-duration: 1.5s; }
+    @keyframes fade { from {opacity: .4} to {opacity: 1} }
+
+    /* Workflow Styles */
+    .workflow-container { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-top: 2rem; }
+    .workflow-step { text-align: center; flex: 1; position: relative; }
+    .workflow-step i { font-size: 2.5rem; color: #E65100; margin-bottom: 10px; }
+    .workflow-step h3 { font-size: 1rem; color: #5D4037; }
+    .workflow-step:not(:last-child)::after { content: ''; position: absolute; top: 20px; right: -25px; width: 50px; height: 2px; background: #feb47b; }
+
+    @media (max-width: 900px) { .insights-grid { grid-template-columns: repeat(2, 1fr); } .workflow-container { flex-direction: column; gap: 30px; } .workflow-step:not(:last-child)::after { display: none; } }
+    @media (max-width: 500px) { .insights-grid { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
@@ -30,8 +51,9 @@
     <a href="../../index.html"><i class="fa-solid fa-arrow-left"></i> Back to Portfolio</a>
     <a href="#questions">Questions</a>
     <a href="#dashboard">Dashboard</a>
-    <a href="#process">Process</a>
-    <a href="#scripts">Scripts</a>
+    <a href="#workflow">Workflow</a>
+    <a href="#insights">Insights</a>
+    <a href="#tools">Tools</a>
   </nav>
 
   <header class="panel">
@@ -50,99 +72,73 @@
     </div>
   </section>
 
-  <section class="panel panel-dark">
-      <h2><i class="fa-solid fa-bullseye"></i> At a Glance: Key Results</h2>
-      <div class="kpi-grid">
-          <div class="kpi-item"><div class="kpi-number">47.17%</div><p class="kpi-label">Revenue from Top 10% of Customers</p></div>
-          <div class="kpi-item"><div class="kpi-number">Q2</div><p class="kpi-label">Highest Sales Quarter</p></div>
-          <div class="kpi-item"><div class="kpi-number">73.81%</div><p class="kpi-label">Transactions via Credit Card</p></div>
-      </div>
-  </section>
-
   <section id="dashboard" class="panel">
     <h2><i class="fa-solid fa-chart-bar"></i> Power BI Dashboard</h2>
     <p>A preview of the interactive dashboard pages, which highlight KPIs, sales trends over time, customer segmentation, and product performance.</p>
-    <img src="Page1.png" alt="Dashboard Page 1: Sales Overview">
-    <img src="Page2.png" alt="Dashboard Page 2: Customer Analysis">
-    <img src="Page3.png" alt="Dashboard Page 3: Product and Payment Insights">
+    
+    <div class="slideshow-container">
+        <div class="mySlides fade">
+            <img src="Page1.png" alt="Dashboard Page 1: Sales Overview">
+        </div>
+        <div class="mySlides fade">
+            <img src="Page2.png" alt="Dashboard Page 2: Customer Analysis">
+        </div>
+        <div class="mySlides fade">
+            <img src="Page3.png" alt="Dashboard Page 3: Product and Payment Insights">
+        </div>
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+    <div class="dot-container">
+        <span class="dot" onclick="currentSlide(1)"></span> 
+        <span class="dot" onclick="currentSlide(2)"></span> 
+        <span class="dot" onclick="currentSlide(3)"></span> 
+    </div>
+  </section>
+
+  <section id="workflow" class="panel">
+    <h2><i class="fa-solid fa-cogs"></i> Project Workflow</h2>
+    <div class="workflow-container">
+        <div class="workflow-step">
+            <i class="fa-solid fa-database"></i>
+            <h3>1. SQL Table Creation</h3>
+        </div>
+        <div class="workflow-step">
+            <i class="fa-solid fa-upload"></i>
+            <h3>2. SQL Table Import</h3>
+        </div>
+        <div class="workflow-step">
+            <i class="fa-brands fa-python"></i>
+            <h3>3. Python ETL</h3>
+        </div>
+        <div class="workflow-step">
+            <i class="fa-solid fa-floppy-disk"></i>
+            <h3>4. Store Cleaned Data</h3>
+        </div>
+        <div class="workflow-step">
+            <i class="fa-solid fa-chart-simple"></i>
+            <h3>5. Visualize in Power BI</h3>
+        </div>
+    </div>
   </section>
   
-  <section id="process" class="panel">
-    <h2><i class="fa-solid fa-database"></i> Process & Schema</h2>
-    <p>The project followed a standard analytics workflow, beginning with the design of a relational schema to ensure data integrity. Raw CSVs were then cleaned and loaded into the database using the Python ETL script shown below.</p>
-    <img src="Schema_diagram.png" alt="Database Schema Diagram">
-    
-    <h3>Python ETL Script</h3>
-    <p>A Python script using Pandas and SQLAlchemy was used to automate the process of cleaning the raw data and loading it into the structured MySQL tables.</p>
-    <pre><code>
-# --- 1. Import Libraries & Connect to Database ---
-import pandas as pd
-from sqlalchemy import create_engine
-
-db_connection_str = 'mysql+pymysql://user:password@host/ecommerce_db'
-db_connection = create_engine(db_connection_str)
-
-# --- 2. Extract: Load Raw Data ---
-customers_df = pd.read_csv('customers_dataset.csv')
-orders_df = pd.read_csv('orders_dataset.csv')
-payments_df = pd.read_csv('order_payments_dataset.csv')
-
-# --- 3. Transform: Clean and Prepare Data ---
-# Example: Convert timestamp columns to datetime objects
-orders_df['order_purchase_timestamp'] = pd.to_datetime(orders_df['order_purchase_timestamp'])
-
-# Example: Handle missing values
-products_df['product_category_name'].fillna('Unknown', inplace=True)
-
-# --- 4. Load: Save Cleaned Data to SQL ---
-customers_df.to_sql('customers', con=db_connection, if_exists='replace', index=False)
-orders_df.to_sql('orders', con=db_connection, if_exists='replace', index=False)
-payments_df.to_sql('payments', con=db_connection, if_exists='replace', index=False)
-    </code></pre>
+  <section id="insights" class="panel">
+    <h2><i class="fa-solid fa-lightbulb"></i> Key Insights</h2>
+    <div class="insights-grid">
+        <div class="insight-card"><i class="fa-solid fa-calendar-days"></i><h3>Sales Peaks</h3><p>Sales show a significant peak in the second quarter (Q2), suggesting opportunities for mid-year marketing campaigns.</p></div>
+        <div class="insight-card"><i class="fa-solid fa-users"></i><h3>Loyal Customers</h3><p>The top 10% of customers contribute to nearly half (47.17%) of total revenue, highlighting the importance of loyalty programs.</p></div>
+        <div class="insight-card"><i class="fa-solid fa-credit-card"></i><h3>Payment Methods</h3><p>Credit card payments are the most frequent transaction method, used in almost three-quarters of all purchases.</p></div>
+        <div class="insight-card"><i class="fa-solid fa-truck"></i><h3>Delivery Delays</h3><p>Analysis shows that delivery delays are most commonly linked to specific geographic regions, pointing to logistical bottlenecks.</p></div>
+    </div>
   </section>
 
-  <section id="scripts" class="panel">
-    <h2><i class="fa-solid fa-code"></i> SQL Scripts</h2>
-    <p>The database was constructed and populated using the following SQL scripts.</p>
-    <h3>Database & Table Creation</h3>
-    <pre><code>
--- Create the main tables for the E-Commerce database
-CREATE TABLE customers (
-    customer_id VARCHAR(255) PRIMARY KEY,
-    customer_unique_id VARCHAR(255),
-    customer_zip_code_prefix INT,
-    customer_city VARCHAR(255),
-    customer_state VARCHAR(2)
-);
-
-CREATE TABLE orders (
-    order_id VARCHAR(255) PRIMARY KEY,
-    customer_id VARCHAR(255),
-    order_status VARCHAR(255),
-    order_purchase_timestamp DATETIME,
-    FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
-);
-
-CREATE TABLE payments (
-    order_id VARCHAR(255),
-    payment_sequential INT,
-    payment_type VARCHAR(255),
-    payment_installments INT,
-    payment_value DECIMAL(10, 2),
-    FOREIGN KEY (order_id) REFERENCES orders(order_id)
-);
-    </code></pre>
-
-    <h3>Data Import from CSV</h3>
-    <pre><code>
--- Example script to load data from a CSV file into a MySQL table
-LOAD DATA INFILE '/path/to/your/csv/olist_customers_dataset.csv'
-INTO TABLE customers
-FIELDS TERMINATED BY ','
-ENCLOSED BY '"'
-LINES TERMINATED BY '\n'
-IGNORE 1 ROWS;
-    </code></pre>
+  <section id="tools" class="panel">
+    <h2><i class="fa-solid fa-screwdriver-wrench"></i> Tech Stack</h2>
+    <ul>
+      <li><strong>SQL (MySQL):</strong> Utilized for database design, relational schema implementation, and complex analytical querying.</li>
+      <li><strong>Python & Libraries (Pandas, SQLAlchemy):</strong> The core tools for the ETL process, data cleaning, and transformation.</li>
+      <li><strong>Power BI:</strong> Employed for creating the dynamic and interactive multi-page dashboard to visualize findings.</li>
+    </ul>
   </section>
 
   <footer>
@@ -158,9 +154,38 @@ IGNORE 1 ROWS;
     const panels = document.querySelectorAll('.panel');
     const reveal = () => { const trigger = window.innerHeight * 0.85; panels.forEach(p => { const top = p.getBoundingClientRect().top; if (top < trigger) p.classList.add('visible'); }); };
     window.addEventListener('scroll', reveal); window.addEventListener('load', reveal);
+    
     const navbar = document.getElementById('navbar');
     const onScroll = () => { if (window.scrollY > 40) navbar.classList.add('shrink'); else navbar.classList.remove('shrink'); };
     window.addEventListener('scroll', onScroll); window.addEventListener('load', onScroll);
+
+    // Slideshow Script
+    let slideIndex = 1;
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+      showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+      showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+      let i;
+      let slides = document.getElementsByClassName("mySlides");
+      let dots = document.getElementsByClassName("dot");
+      if (n > slides.length) {slideIndex = 1}    
+      if (n < 1) {slideIndex = slides.length}
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";  
+      }
+      for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+      }
+      slides[slideIndex-1].style.display = "block";  
+      dots[slideIndex-1].className += " active";
+    }
   </script>
 </body>
 </html>
