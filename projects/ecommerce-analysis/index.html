@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>E-Commerce Data Analysis Project</title>
   <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; } html { scroll-behavior: smooth; } body { font-family: 'Poppins', sans-serif; color: #5D4037; background: linear-gradient(270deg, #ff7e5f, #feb47b); background-size: 400% 400%; animation: gradientAnimation 18s ease infinite; min-height: 100vh; }
+    * { margin: 0; padding: 0; box-sizing: border-box; } html { scroll-behavior: smooth; }
+    body { font-family: 'Poppins', sans-serif; color: #5D4037; background: linear-gradient(270deg, #ff7e5f, #feb47b); background-size: 400% 400%; animation: gradientAnimation 18s ease infinite; min-height: 100vh; }
     @keyframes gradientAnimation { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
     .panel { max-width: 1100px; margin: 40px auto; padding: 30px; background: rgba(255, 245, 240, 0.85); border: 1px solid rgba(254, 180, 123, 0.6); border-radius: 16px; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); box-shadow: 0 10px 30px rgba(0,0,0,0.15); opacity: 0; transform: translateY(18px); transition: opacity .8s ease, transform .8s ease; }
     .panel.visible { opacity: 1; transform: translateY(0); }
     h1, h2, h3 { font-family: 'Poppins', sans-serif; letter-spacing: 0.2px; text-align: center; } h1 { font-size: 2.3rem; color: #E65100; } h2 { font-size: 1.6rem; margin-bottom: 12px; color: #E65100; position: relative; } h2 i { margin-right: 8px; } h2::after { content: ""; display: block; width: 64px; height: 3px; background: #feb47b; margin: 8px auto 0; border-radius: 3px; }
     p, ul, blockquote { font-family: 'Lora', serif; font-size: 1.05rem; line-height: 1.8; margin: 0.5rem 0 1.5rem; text-align: justify; color: #5D4037; } ul { margin-left: 1.2rem; } blockquote { border-left: 4px solid #feb47b; padding-left: 1rem; margin: 1rem 0; background-color: rgba(254, 180, 123, 0.1); font-style: italic; }
-    nav { position: sticky; top: 0; z-index: 1000; display: flex; flex-wrap: wrap; justify-content: center; gap: 12px 18px; background: rgba(120, 50, 40, 0.88); backdrop-filter: blur(8px); padding: 12px 10px; border-bottom: 1px solid rgba(254, 180, 123, 0.4); transition: all .2s ease; } nav.shrink { padding: 8px 8px; background: rgba(120, 50, 40, 0.95); box-shadow: 0 6px 18px rgba(0,0,0,0.18); } nav a { color: #FFFAF0; text-decoration: none; font-weight: 500; font-size: 0.9rem; padding: 6px 10px; border-radius: 6px; transition: background 0.3s ease; } nav a:hover { background: rgba(254, 180, 123, 0.25); }
+    nav { position: sticky; top: 0; z-index: 1000; display: flex; flex-wrap: wrap; justify-content: center; gap: 12px 18px; background: rgba(120, 50, 40, 0.88); backdrop-filter: blur(8px); padding: 12px 10px; border-bottom: 1px solid rgba(254, 180, 123, 0.4); transition: all .2s ease; } nav.shrink { padding: 8px 8px; background: rgba(120, 50, 40, 0.95); box-shadow: 0 6px 18px rgba(0,0,0,0.18); } nav a { color: #FFFAF0; text-decoration: none; font-weight: 500; font-size: 0.9rem; padding: 6px 10px; border-radius: 6px; transition: background 0.3s ease; } nav a:hover, nav a.active { background: rgba(254, 180, 123, 0.25); }
     .buttons { text-align: center; } .btn-sunrise { display: inline-block; margin: 0.4rem; padding: 0.7rem 1.5rem; font-size: 0.95rem; font-weight: 600; text-decoration: none; border-radius: 30px; background: linear-gradient(90deg, #ff7e5f, #ff5f6d); color: #fff; transition: all 0.3s ease; } .btn-sunrise:hover { transform: translateY(-3px); box-shadow: 0 6px 15px rgba(0,0,0,0.2); }
     .panel-dark { background: linear-gradient(120deg, #BF360C, #783228); color: #FFFAF0; } .panel-dark h2 { color: #FFFAF0; } .panel-dark h2::after { background: rgba(255, 239, 230, 0.5); } .panel-dark p, .panel-dark .kpi-label { color: #FFFAF0; text-align: center; } .panel-dark .kpi-number { color: #feb47b; } .panel-dark .insight-card { background: rgba(0,0,0,0.2); } .panel-dark .insight-card h3 { color: #FFFAF0; } .panel-dark .insight-card i { color: #feb47b; }
     .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; text-align: center; margin-top: 20px; } .kpi-number { font-size: 2.5rem; font-weight: 600; } .kpi-label { font-family: 'Poppins', sans-serif; font-size: 0.9rem; margin: 0; }
@@ -143,7 +143,7 @@ ORDER BY quarterly_sales DESC;
 
   <section id="conclusion" class="panel">
     <h2><i class="fa-solid fa-circle-check"></i> Conclusion</h2>
-    <p>This project successfully demonstrates how a combination of standard industry tools—SQL, Python, and Power BI—can create a robust and scalable workflow. By transforming raw, unstructured e-commerce data into a clean, relational format and visualizing the results, we can uncover actionable business insights that drive strategic decision-making and identify areas for operational improvement.</p>
+    <p>This project successfully demonstrates how a combination of standard industry tools—SQL, Python, and Power BI—can create a robust and scalable workflow. By transforming raw data into a clean, relational format and visualizing the results, we can uncover actionable business insights that drive strategic decision-making and identify areas for operational improvement.</p>
   </section>
 
   <footer>
