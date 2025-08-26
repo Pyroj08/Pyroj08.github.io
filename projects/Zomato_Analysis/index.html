@@ -138,14 +138,11 @@
 
   <section id="files" class="panel">
     <h2><i class="fa-solid fa-folder-open"></i> Project Files</h2>
-    <p style="text-align: center;">Access the SQL scripts used for database setup and analysis.</p>
+    <p style="text-align: center;">Access the SQL scripts and the Python notebook used for this project.</p>
     <div class="buttons">
-      <a href="https://raw.githubusercontent.com/pyroj08/pyroj08.github.io/main/projects/Zomato_Analysis/Schema_and_Table_creation.sql" target="_blank" class="btn-zomato">SQL Schema & Table Creation</a>
-      <a href="https://raw.githubusercontent.com/pyroj08/pyroj08.github.io/main/projects/Zomato_Analysis/Top_10_Restaurant_Chains.sql" target="_blank" class="btn-zomato">Top 10 Restaurant Chains</a>
-      <a href="https://raw.githubusercontent.com/pyroj08/pyroj08.github.io/main/projects/Zomato_Analysis/Impact_of_Online_Ordering.sql" target="_blank" class="btn-zomato">Impact of Online Ordering</a>
-      <a href="https://raw.githubusercontent.com/pyroj08/pyroj08.github.io/main/projects/Zomato_Analysis/Top_10_Most_Popular_Cuisines.sql" target="_blank" class="btn-zomato">Top 10 Most Popular Cuisines</a>
-      <a href="https://raw.githubusercontent.com/pyroj08/pyroj08.github.io/main/projects/Zomato_Analysis/Most_Popular_Restaurant_by_Type.sql" target="_blank" class="btn-zomato">Most Popular Restaurant by Type</a>
-      <a href="https://raw.githubusercontent.com/pyroj08/pyroj08.github.io/main/projects/Zomato_Analysis/Average_Cost_for_Top_Cuisines.sql" target="_blank" class="btn-zomato">Average Cost for Top Cuisines</a>
+      <a href="https://raw.githubusercontent.com/pyroj08/pyroj08.github.io/main/projects/Zomato_Analysis/Schema_and_Table_creation.sql" target="_blank" class="btn-zomato"><i class="fa-solid fa-database"></i> SQL Schema & Table Creation</a>
+      <a href="https://nbviewer.org/github/pyroj08/pyroj08.github.io/blob/main/projects/Zomato_Analysis/Data_Cleaning_and_Storage.ipynb" target="_blank" class="btn-zomato"><i class="fa-brands fa-python"></i> Python ETL Notebook</a>
+      <a href="https://github.com/Pyroj08/pyroj08.github.io/tree/main/projects/Zomato_Analysis" target="_blank" class="btn-zomato"><i class="fa-solid fa-magnifying-glass"></i> All SQL Queries</a>
     </div>
   </section>
 
@@ -180,7 +177,7 @@
     function currentSlide(n) { showSlides(slideIndex = n); }
     function showSlides(n) {
         let i; let slides = document.getElementsByClassName("mySlides"); let dots = document.getElementsByClassName("dot");
-        if (slides.length === 0) return; // Exit if no slides
+        if (slides.length === 0) return;
         if (n > slides.length) {slideIndex = 1} if (n < 1) {slideIndex = slides.length}
         for (i = 0; i < slides.length; i++) { slides[i].style.display = "none"; }
         for (i = 0; i < dots.length; i++) { dots[i].className = dots[i].className.replace(" active", ""); }
