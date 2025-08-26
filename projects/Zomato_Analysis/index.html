@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Zomato Restaurant Analysis Project</title>
+  
   <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
@@ -13,16 +14,20 @@
     .panel { max-width: 1100px; margin: 40px auto; padding: 30px; background: rgba(255, 245, 240, 0.9); border: 1px solid rgba(239, 83, 80, 0.6); border-radius: 16px; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); box-shadow: 0 10px 30px rgba(0,0,0,0.15); opacity: 0; transform: translateY(18px); transition: opacity .8s ease, transform .8s ease; }
     .panel.visible { opacity: 1; transform: translateY(0); }
     h1, h2, h3 { font-family: 'Poppins', sans-serif; letter-spacing: 0.2px; text-align: center; } h1 { font-size: 2.3rem; color: #b71c1c; } h2 { font-size: 1.6rem; margin-bottom: 12px; color: #b71c1c; position: relative; } h2 i { margin-right: 8px; } h2::after { content: ""; display: block; width: 64px; height: 3px; background: #ef5350; margin: 8px auto 0; border-radius: 3px; }
-    p, ul, blockquote { font-family: 'Lora', serif; font-size: 1.05rem; line-height: 1.8; margin: 0.5rem 0 1.5rem; text-align: justify; color: #5D4037; } ul { margin-left: 1.2rem; } blockquote { border-left: 4px solid #ef5350; padding-left: 1rem; margin: 1rem 0; background-color: rgba(239, 83, 80, 0.05); font-style: italic; }
+    p, ul { font-family: 'Lora', serif; font-size: 1.05rem; line-height: 1.8; margin: 0.5rem 0 1.5rem; text-align: justify; color: #5D4037; } ul { margin-left: 1.2rem; }
     nav { position: sticky; top: 0; z-index: 1000; display: flex; flex-wrap: wrap; justify-content: center; gap: 12px 18px; background: rgba(120, 20, 20, 0.88); backdrop-filter: blur(8px); padding: 12px 10px; border-bottom: 1px solid rgba(239, 83, 80, 0.4); transition: all .2s ease; }
     nav.shrink { padding: 8px 8px; background: rgba(120, 20, 20, 0.95); box-shadow: 0 6px 18px rgba(0,0,0,0.18); }
     nav a { color: #FFFAF0; text-decoration: none; font-weight: 500; font-size: 0.9rem; padding: 6px 10px; border-radius: 6px; transition: background 0.3s ease; } nav a:hover { background: rgba(239, 83, 80, 0.25); }
     .buttons { text-align: center; display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; } .btn-zomato { display: inline-block; padding: 0.7rem 1.5rem; font-size: 0.95rem; font-weight: 600; text-decoration: none; border-radius: 30px; background: linear-gradient(90deg, #ef5350, #d32f2f); color: #fff; transition: all 0.3s ease; } .btn-zomato:hover { transform: translateY(-3px); box-shadow: 0 6px 15px rgba(0,0,0,0.2); }
     .panel-dark { background: linear-gradient(120deg, #c62828, #8e0000); color: #FFFAF0; } .panel-dark h2 { color: #FFFAF0; } .panel-dark h2::after { background: rgba(255, 205, 210, 0.5); } .panel-dark p, .panel-dark .kpi-label { color: #FFFAF0; text-align: center; } .panel-dark .kpi-number { color: #ffcdd2; } .panel-dark .insight-card { background: rgba(0,0,0,0.2); } .panel-dark .insight-card h3 { color: #FFFAF0; } .panel-dark .insight-card i { color: #ffcdd2; }
-    .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; text-align: center; margin-top: 20px; } .kpi-number { font-size: 2.5rem; font-weight: 600; } .kpi-label { font-family: 'Poppins', sans-serif; font-size: 0.9rem; margin: 0; }
-    .insights-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; } .insight-card { background: rgba(255, 255, 255, 0.5); padding: 20px; border-radius: 12px; text-align: center; } .insight-card i { font-size: 2rem; margin-bottom: 10px; color: #b71c1c; } .insight-card h3 { font-size: 1.1rem; margin-bottom: 5px; } .insight-card p { text-align: center; }
-    img { display: block; margin: 1.2rem auto; max-width: 90%; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); } pre { background-color: #2d2d2d; color: #f8f8f2; padding: 15px; border-radius: 5px; overflow-x: auto; font-size: 0.9em; }
+    .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; text-align: center; margin-top: 20px; } .kpi-number { font-size: 2.5rem; font-weight: 600; } .kpi-number i { font-size: 1.5rem; color: #ef9a9a; margin-left: 8px; vertical-align: middle;} .kpi-label { font-family: 'Poppins', sans-serif; font-size: 0.9rem; margin: 0; }
+    .insights-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; } .insight-card { background: rgba(255, 255, 255, 0.5); padding: 20px; border-radius: 12px; text-align: center; } .insight-card i { font-size: 2rem; margin-bottom: 10px; color: #b71c1c; } .insight-card h3 { font-size: 1.1rem; margin-bottom: 5px; } .insight-card p { text-align: center; }
+    .workflow-container { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; margin-top: 2rem; } .workflow-step { text-align: center; flex: 1; position: relative; } .workflow-step i { font-size: 2.5rem; color: #b71c1c; margin-bottom: 10px; } .workflow-step h3 { font-size: 1rem; color: #5D4037; } .workflow-step:not(:last-child)::after { content: ''; position: absolute; top: 20px; right: -25px; width: 50px; height: 2px; background: #ef5350; }
+    .slideshow-container { max-width: 1000px; position: relative; margin: auto; } .mySlides { display: none; } .mySlides img { width: 100%; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); } .prev, .next { cursor: pointer; position: absolute; top: 50%; width: auto; padding: 16px; margin-top: -22px; color: white; font-weight: bold; font-size: 18px; transition: 0.6s ease; border-radius: 0 3px 3px 0; user-select: none; background-color: rgba(0,0,0,0.3); } .next { right: 0; border-radius: 3px 0 0 3px; } .prev:hover, .next:hover { background-color: rgba(0,0,0,0.8); } .dot-container { text-align: center; padding: 20px 0; } .dot { cursor: pointer; height: 15px; width: 15px; margin: 0 2px; background-color: #bbb; border-radius: 50%; display: inline-block; transition: background-color 0.6s ease; } .active, .dot:hover { background-color: #717171; } .fade { animation-name: fade; animation-duration: 1.5s; } @keyframes fade { from {opacity: .4} to {opacity: 1} }
+    img { display: block; margin: 1.2rem auto; max-width: 90%; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
     footer { text-align: center; padding: 2rem; color: #fff; font-size: 0.9rem; margin-top: 2rem; } .project-nav { display: flex; justify-content: center; gap: 15px; margin-top: 1rem; }
+    @media (max-width: 1000px) { .insights-grid { grid-template-columns: repeat(2, 1fr); } .workflow-container { flex-direction: column; gap: 30px; } .workflow-step:not(:last-child)::after { display: none; } }
+    @media (max-width: 500px) { .insights-grid { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
@@ -31,9 +36,9 @@
     <a href="../../index.html"><i class="fa-solid fa-arrow-left"></i> Back to Portfolio</a>
     <a href="#questions">Questions</a>
     <a href="#dashboard">Dashboard</a>
+    <a href="#workflow">Workflow</a>
     <a href="#insights">Insights</a>
-    <a href="#analysis">Analysis</a>
-    <a href="#process">Process</a>
+    <a href="#findings">Findings</a>
     <a href="#files">Files</a>
   </nav>
 
@@ -57,21 +62,41 @@
     </div>
   </section>
 
-  <section class="panel panel-dark">
+  <section id="kpis" class="panel panel-dark">
       <h2><i class="fa-solid fa-bullseye"></i> At a Glance: Key Results</h2>
       <div class="kpi-grid">
-          <div class="kpi-item"><div class="kpi-number">30K</div><p class="kpi-label">Total Restaurants Analyzed</p></div>
-          <div class="kpi-item"><div class="kpi-number">3.73</div><p class="kpi-label">Average Rating</p></div>
-          <div class="kpi-item"><div class="kpi-number">₹633.88</div><p class="kpi-label">Average Cost for Two</p></div>
-          <div class="kpi-item"><div class="kpi-number">107</div><p class="kpi-label">Total Unique Cuisines</p></div>
+          <div class="kpi-item"><div class="kpi-number">30K <i class="fa-solid fa-store"></i></div><p class="kpi-label">Total Restaurants Analyzed</p></div>
+          <div class="kpi-item"><div class="kpi-number">3.73 <i class="fa-solid fa-star-half-alt"></i></div><p class="kpi-label">Average Rating</p></div>
+          <div class="kpi-item"><div class="kpi-number">₹633 <i class="fa-solid fa-indian-rupee-sign"></i></div><p class="kpi-label">Average Cost for Two</p></div>
+          <div class="kpi-item"><div class="kpi-number">107 <i class="fa-solid fa-utensil-spoon"></i></div><p class="kpi-label">Total Unique Cuisines</p></div>
       </div>
   </section>
 
   <section id="dashboard" class="panel">
     <h2><i class="fa-solid fa-chart-bar"></i> Power BI Dashboard</h2>
-    <p>The final insights are presented in a two-page interactive dashboard. The first page provides a high-level executive summary, while the second offers a deep dive into relationships between different variables.</p>
-    <img src="Page1.png" alt="Executive Summary Dashboard">
-    <img src="Page2.png" alt="Deep Dive Analysis Dashboard">
+    <p style="text-align: center;">The final insights are presented in an automatic two-page slideshow. The first page is an executive summary, while the second offers a deep dive analysis.</p>
+    <div class="slideshow-container">
+        <div class="mySlides fade"><img src="Page1.png" alt="Executive Summary Dashboard"></div>
+        <div class="mySlides fade"><img src="Page2.png" alt="Deep Dive Analysis Dashboard"></div>
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+    <div class="dot-container">
+        <span class="dot" onclick="currentSlide(1)"></span> 
+        <span class="dot" onclick="currentSlide(2)"></span> 
+    </div>
+  </section>
+
+  <section id="workflow" class="panel">
+    <h2><i class="fa-solid fa-cogs"></i> Project Workflow</h2>
+    <p style="text-align: center;">The project followed a 5-step process from database design to visualization.</p>
+    <div class="workflow-container">
+        <div class="workflow-step"><i class="fa-solid fa-database"></i><h3>1. Schema Design</h3></div>
+        <div class="workflow-step"><i class="fa-brands fa-python"></i><h3>2. Python ETL</h3></div>
+        <div class="workflow-step"><i class="fa-solid fa-floppy-disk"></i><h3>3. Load to MySQL</h3></div>
+        <div class="workflow-step"><i class="fa-solid fa-magnifying-glass"></i><h3>4. SQL Analysis</h3></div>
+        <div class="workflow-step"><i class="fa-solid fa-chart-simple"></i><h3>5. Power BI Dashboard</h3></div>
+    </div>
   </section>
 
   <section id="insights" class="panel">
@@ -83,26 +108,21 @@
         <div class="insight-card"><i class="fa-solid fa-calendar-times"></i><h3>Booking is Niche</h3><p>An overwhelming 88% of restaurants do not offer table booking, aligning with the prevalence of quick-service models.</p></div>
     </div>
   </section>
-  
-  <section id="analysis" class="panel">
-    <h2><i class="fa-solid fa-magnifying-glass-chart"></i> SQL Analysis</h2>
-    <p>The dashboard insights were generated by running SQL queries against the structured database. Below is an example query used to identify the most popular cuisines.</p>
-    <blockquote>This query joins the cuisines table with the linking table to count how many restaurants are associated with each cuisine, then orders the results to find the top 10.</blockquote>
-    <pre><code>
--- From Top_10_Most_Popular_Cuisines.sql
-SELECT
-    c.cuisine_name,
-    COUNT(rc.restaurant_id) AS number_of_restaurants
-FROM cuisines c
-JOIN restaurant_cuisines rc ON c.cuisine_id = rc.cuisine_id
-GROUP BY c.cuisine_name
-ORDER BY number_of_restaurants DESC
-LIMIT 10;
-    </code></pre>
-  </section>
 
+  <section id="findings" class="panel">
+    <h2><i class="fa-solid fa-table"></i> SQL Query Findings</h2>
+    <p style="text-align: center;">The following CSV files are the direct outputs of the SQL analysis queries, providing the raw data behind the insights.</p>
+    <div class="buttons">
+        <a href="https://raw.githubusercontent.com/pyroj08/pyroj08.github.io/main/projects/Zomato_Analysis/Top_10_Restaurant_Chains.csv" target="_blank" class="btn-zomato">Top 10 Restaurant Chains</a>
+        <a href="https://raw.githubusercontent.com/pyroj08/pyroj08.github.io/main/projects/Zomato_Analysis/Impact_of_Online_Ordering.csv" target="_blank" class="btn-zomato">Impact of Online Ordering</a>
+        <a href="https://raw.githubusercontent.com/pyroj08/pyroj08.github.io/main/projects/Zomato_Analysis/Top_10_Most_Popular_Cuisines.csv" target="_blank" class="btn-zomato">Top 10 Most Popular Cuisines</a>
+        <a href="https://raw.githubusercontent.com/pyroj08/pyroj08.github.io/main/projects/Zomato_Analysis/Most_Popular_Restaurant_by_Type.csv" target="_blank" class="btn-zomato">Most Popular Restaurant by Type</a>
+        <a href="https://raw.githubusercontent.com/pyroj08/pyroj08.github.io/main/projects/Zomato_Analysis/Average_Cost_for_Top_Cuisines.csv" target="_blank" class="btn-zomato">Average Cost for Top Cuisines</a>
+    </div>
+  </section>
+  
   <section id="process" class="panel">
-    <h2><i class="fa-solid fa-gears"></i> Process & Schema</h2>
+    <h2><i class="fa-solid fa-database"></i> Process & Schema</h2>
     <p>The project began with designing a normalized relational database in MySQL. A Python script was then used for the ETL process: extracting the raw CSV, cleaning and transforming the data with Pandas, and loading it into the database using SQLAlchemy.</p>
     <img src="zomato_schema.png" alt="Zomato Database Schema Diagram" style="max-width: 700px; background: none; box-shadow: none;">
   </section>
@@ -118,12 +138,14 @@ LIMIT 10;
 
   <section id="files" class="panel">
     <h2><i class="fa-solid fa-folder-open"></i> Project Files</h2>
-    <p>Access the core project files, including the SQL scripts, the ETL notebook, and the downloadable Power BI file.</p>
+    <p style="text-align: center;">Access the SQL scripts used for database setup and analysis.</p>
     <div class="buttons">
-      <a href="https://github.com/Pyroj08/pyroj08.github.io/blob/main/projects/Zomato_Analysis/Schema_and_Table_creation.sql" target="_blank" class="btn-zomato"><i class="fa-solid fa-database"></i> SQL Schema</a>
-      <a href="https://nbviewer.org/github/pyroj08/pyroj08.github.io/blob/main/projects/Zomato_Analysis/Data_Cleaning_and_Storage.ipynb" target="_blank" class="btn-zomato"><i class="fa-brands fa-python"></i> ETL Notebook</a>
-      <a href="https://github.com/Pyroj08/pyroj08.github.io/tree/main/projects/Zomato_Analysis" target="_blank" class="btn-zomato"><i class="fa-solid fa-magnifying-glass"></i> SQL & CSV Files</a>
-      <a href="https://raw.githubusercontent.com/pyroj08/pyroj08.github.io/main/projects/Zomato_Analysis/Zomato_Dashboard.pbix" download="Zomato_Dashboard.pbix" class="btn-zomato"><i class="fa-solid fa-download"></i> Download Power BI File</a>
+      <a href="https://raw.githubusercontent.com/pyroj08/pyroj08.github.io/main/projects/Zomato_Analysis/Schema_and_Table_creation.sql" target="_blank" class="btn-zomato">SQL Schema & Table Creation</a>
+      <a href="https://raw.githubusercontent.com/pyroj08/pyroj08.github.io/main/projects/Zomato_Analysis/Top_10_Restaurant_Chains.sql" target="_blank" class="btn-zomato">Top 10 Restaurant Chains</a>
+      <a href="https://raw.githubusercontent.com/pyroj08/pyroj08.github.io/main/projects/Zomato_Analysis/Impact_of_Online_Ordering.sql" target="_blank" class="btn-zomato">Impact of Online Ordering</a>
+      <a href="https://raw.githubusercontent.com/pyroj08/pyroj08.github.io/main/projects/Zomato_Analysis/Top_10_Most_Popular_Cuisines.sql" target="_blank" class="btn-zomato">Top 10 Most Popular Cuisines</a>
+      <a href="https://raw.githubusercontent.com/pyroj08/pyroj08.github.io/main/projects/Zomato_Analysis/Most_Popular_Restaurant_by_Type.sql" target="_blank" class="btn-zomato">Most Popular Restaurant by Type</a>
+      <a href="https://raw.githubusercontent.com/pyroj08/pyroj08.github.io/main/projects/Zomato_Analysis/Average_Cost_for_Top_Cuisines.sql" target="_blank" class="btn-zomato">Average Cost for Top Cuisines</a>
     </div>
   </section>
 
@@ -145,8 +167,32 @@ LIMIT 10;
     const panels = document.querySelectorAll('.panel');
     const reveal = () => { const trigger = window.innerHeight * 0.85; panels.forEach(p => { const top = p.getBoundingClientRect().top; if (top < trigger) p.classList.add('visible'); }); };
     window.addEventListener('scroll', reveal); window.addEventListener('load', reveal);
+    
     const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => { if (window.scrollY > 40) navbar.classList.add('shrink'); else navbar.classList.remove('shrink'); });
+    const onScroll = () => { if (window.scrollY > 40) navbar.classList.add('shrink'); else navbar.classList.remove('shrink'); };
+    window.addEventListener('scroll', onScroll); window.addEventListener('load', onScroll);
+
+    // Slideshow Script
+    let slideIndex = 1;
+    let slideInterval;
+    function startSlideshow() { slideInterval = setInterval(() => { plusSlides(1); }, 4000); }
+    function plusSlides(n) { showSlides(slideIndex += n); }
+    function currentSlide(n) { showSlides(slideIndex = n); }
+    function showSlides(n) {
+        let i; let slides = document.getElementsByClassName("mySlides"); let dots = document.getElementsByClassName("dot");
+        if (slides.length === 0) return; // Exit if no slides
+        if (n > slides.length) {slideIndex = 1} if (n < 1) {slideIndex = slides.length}
+        for (i = 0; i < slides.length; i++) { slides[i].style.display = "none"; }
+        for (i = 0; i < dots.length; i++) { dots[i].className = dots[i].className.replace(" active", ""); }
+        slides[slideIndex-1].style.display = "block";  
+        dots[slideIndex-1].className += " active";
+    }
+    window.onload = function() {
+        showSlides(slideIndex); startSlideshow();
+        const slideshow = document.querySelector('.slideshow-container');
+        slideshow.addEventListener('mouseenter', () => clearInterval(slideInterval));
+        slideshow.addEventListener('mouseleave', startSlideshow);
+    }
   </script>
 </body>
 </html>
