@@ -16,32 +16,23 @@
     h1, h2, h3 { font-family: 'Poppins', sans-serif; letter-spacing: 0.2px; text-align: center; } h1 { font-size: 2.3rem; color: #E65100; } h2 { font-size: 1.6rem; margin-bottom: 12px; color: #E65100; position: relative; } h2 i { margin-right: 8px; } h2::after { content: ""; display: block; width: 64px; height: 3px; background: #feb47b; margin: 8px auto 0; border-radius: 3px; }
     p, ul { font-family: 'Lora', serif; font-size: 1.05rem; line-height: 1.8; margin: 0.5rem 0 1.5rem; text-align: justify; color: #5D4037; } ul { margin-left: 1.2rem; }
     nav { position: sticky; top: 0; z-index: 1000; display: flex; flex-wrap: wrap; justify-content: center; gap: 12px 18px; background: rgba(120, 50, 40, 0.88); backdrop-filter: blur(8px); padding: 12px 10px; border-bottom: 1px solid rgba(254, 180, 123, 0.4); transition: all .2s ease; } nav.shrink { padding: 8px 8px; background: rgba(120, 50, 40, 0.95); box-shadow: 0 6px 18px rgba(0,0,0,0.18); } nav a { color: #FFFAF0; text-decoration: none; font-weight: 500; font-size: 0.9rem; padding: 6px 10px; border-radius: 6px; transition: background 0.3s ease; } nav a:hover, nav a.active { background: rgba(254, 180, 123, 0.25); }
+    .buttons { text-align: center; display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; } .btn-sunrise { display: inline-block; padding: 0.7rem 1.5rem; font-size: 0.95rem; font-weight: 600; text-decoration: none; border-radius: 30px; background: linear-gradient(90deg, #ff7e5f, #ff5f6d); color: #fff; transition: all 0.3s ease; } .btn-sunrise:hover { transform: translateY(-3px); box-shadow: 0 6px 15px rgba(0,0,0,0.2); }
     .panel-dark { background: linear-gradient(120deg, #BF360C, #783228); color: #FFFAF0; } .panel-dark h2 { color: #FFFAF0; } .panel-dark h2::after { background: rgba(255, 239, 230, 0.5); } .panel-dark p, .panel-dark .kpi-label { color: #FFFAF0; text-align: center; } .panel-dark .kpi-number { color: #feb47b; } .panel-dark .insight-card { background: rgba(0,0,0,0.2); } .panel-dark .insight-card h3 { color: #FFFAF0; } .panel-dark .insight-card i { color: #feb47b; }
     .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; text-align: center; margin-top: 20px; } .kpi-number { font-size: 2.5rem; font-weight: 600; } .kpi-label { font-family: 'Poppins', sans-serif; font-size: 0.9rem; margin: 0; }
     .insights-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; } .insight-card { background: rgba(255, 255, 255, 0.5); padding: 20px; border-radius: 12px; text-align: center; } .insight-card i { font-size: 2rem; margin-bottom: 10px; color: #BF360C; } .insight-card h3 { font-size: 1.1rem; margin-bottom: 5px; } .insight-card p { text-align: center; }
-    footer { text-align: center; padding: 2rem; color: #fff; font-size: 0.9rem; margin-top: 2rem; } .project-nav { display: flex; justify-content: center; gap: 15px; margin-top: 1rem; } .btn-sunrise { display: inline-block; padding: 0.7rem 1.5rem; font-size: 0.95rem; font-weight: 600; text-decoration: none; border-radius: 30px; background: linear-gradient(90deg, #ff7e5f, #ff5f6d); color: #fff; transition: all 0.3s ease; } .btn-sunrise:hover { transform: translateY(-3px); box-shadow: 0 6px 15px rgba(0,0,0,0.2); }
+    .workflow-container { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; margin-top: 2rem; } .workflow-step { text-align: center; flex: 1; position: relative; } .workflow-step i { font-size: 2.5rem; color: #E65100; margin-bottom: 10px; } .workflow-step h3 { font-size: 1rem; color: #5D4037; } .workflow-step:not(:last-child)::after { content: ''; position: absolute; top: 20px; right: -25px; width: 50px; height: 2px; background: #feb47b; }
     
     /* Slideshow Styles */
     .slideshow-container { max-width: 1000px; position: relative; margin: auto; }
-    .mySlides { display: none; }
-    .mySlides img { width: 100%; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
+    .mySlides { display: none; } .mySlides img { width: 100%; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
     .prev, .next { cursor: pointer; position: absolute; top: 50%; width: auto; padding: 16px; margin-top: -22px; color: white; font-weight: bold; font-size: 18px; transition: 0.6s ease; border-radius: 0 3px 3px 0; user-select: none; background-color: rgba(0,0,0,0.3); }
-    .next { right: 0; border-radius: 3px 0 0 3px; }
-    .prev:hover, .next:hover { background-color: rgba(0,0,0,0.8); }
-    .dot-container { text-align: center; padding: 20px 0; }
-    .dot { cursor: pointer; height: 15px; width: 15px; margin: 0 2px; background-color: #bbb; border-radius: 50%; display: inline-block; transition: background-color 0.6s ease; }
+    .next { right: 0; border-radius: 3px 0 0 3px; } .prev:hover, .next:hover { background-color: rgba(0,0,0,0.8); }
+    .dot-container { text-align: center; padding: 20px 0; } .dot { cursor: pointer; height: 15px; width: 15px; margin: 0 2px; background-color: #bbb; border-radius: 50%; display: inline-block; transition: background-color 0.6s ease; }
     .active, .dot:hover { background-color: #717171; }
-    .fade { animation-name: fade; animation-duration: 1.5s; }
-    @keyframes fade { from {opacity: .4} to {opacity: 1} }
+    .fade { animation-name: fade; animation-duration: 1.5s; } @keyframes fade { from {opacity: .4} to {opacity: 1} }
 
-    /* Workflow Styles */
-    .workflow-container { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-top: 2rem; }
-    .workflow-step { text-align: center; flex: 1; position: relative; }
-    .workflow-step i { font-size: 2.5rem; color: #E65100; margin-bottom: 10px; }
-    .workflow-step h3 { font-size: 1rem; color: #5D4037; }
-    .workflow-step:not(:last-child)::after { content: ''; position: absolute; top: 20px; right: -25px; width: 50px; height: 2px; background: #feb47b; }
-
-    @media (max-width: 900px) { .insights-grid { grid-template-columns: repeat(2, 1fr); } .workflow-container { flex-direction: column; gap: 30px; } .workflow-step:not(:last-child)::after { display: none; } }
+    footer { text-align: center; padding: 2rem; color: #fff; font-size: 0.9rem; margin-top: 2rem; } .project-nav { display: flex; justify-content: center; gap: 15px; margin-top: 1rem; }
+    @media (max-width: 1000px) { .insights-grid { grid-template-columns: repeat(2, 1fr); } .workflow-container { flex-direction: column; gap: 30px; } .workflow-step:not(:last-child)::after { display: none; } }
     @media (max-width: 500px) { .insights-grid { grid-template-columns: 1fr; } }
   </style>
 </head>
@@ -53,7 +44,8 @@
     <a href="#dashboard">Dashboard</a>
     <a href="#workflow">Workflow</a>
     <a href="#insights">Insights</a>
-    <a href="#tools">Tools</a>
+    <a href="#files">Files</a>
+    <a href="#conclusion">Conclusion</a>
   </nav>
 
   <header class="panel">
@@ -70,6 +62,15 @@
         <div class="insight-card"><i class="fa-solid fa-credit-card"></i><h3>What are the preferred payment methods?</h3></div>
         <div class="insight-card"><i class="fa-solid fa-truck-fast"></i><h3>Where are our delivery inefficiencies?</h3></div>
     </div>
+  </section>
+
+  <section class="panel panel-dark">
+      <h2><i class="fa-solid fa-bullseye"></i> At a Glance: Key Results</h2>
+      <div class="kpi-grid">
+          <div class="kpi-item"><div class="kpi-number">47.17%</div><p class="kpi-label">Revenue from Top 10% of Customers</p></div>
+          <div class="kpi-item"><div class="kpi-number">Q2</div><p class="kpi-label">Highest Sales Quarter</p></div>
+          <div class="kpi-item"><div class="kpi-number">73.81%</div><p class="kpi-label">Transactions via Credit Card</p></div>
+      </div>
   </section>
 
   <section id="dashboard" class="panel">
@@ -98,27 +99,13 @@
 
   <section id="workflow" class="panel">
     <h2><i class="fa-solid fa-cogs"></i> Project Workflow</h2>
+    <p style="text-align: center;">The project followed a 5-step process from data ingestion to final visualization.</p>
     <div class="workflow-container">
-        <div class="workflow-step">
-            <i class="fa-solid fa-database"></i>
-            <h3>1. SQL Table Creation</h3>
-        </div>
-        <div class="workflow-step">
-            <i class="fa-solid fa-upload"></i>
-            <h3>2. SQL Table Import</h3>
-        </div>
-        <div class="workflow-step">
-            <i class="fa-brands fa-python"></i>
-            <h3>3. Python ETL</h3>
-        </div>
-        <div class="workflow-step">
-            <i class="fa-solid fa-floppy-disk"></i>
-            <h3>4. Store Cleaned Data</h3>
-        </div>
-        <div class="workflow-step">
-            <i class="fa-solid fa-chart-simple"></i>
-            <h3>5. Visualize in Power BI</h3>
-        </div>
+        <div class="workflow-step"><i class="fa-solid fa-database"></i><h3>1. SQL Table Creation</h3></div>
+        <div class="workflow-step"><i class="fa-solid fa-upload"></i><h3>2. SQL Table Import</h3></div>
+        <div class="workflow-step"><i class="fa-brands fa-python"></i><h3>3. Python ETL</h3></div>
+        <div class="workflow-step"><i class="fa-solid fa-floppy-disk"></i><h3>4. Store Cleaned Data</h3></div>
+        <div class="workflow-step"><i class="fa-solid fa-chart-simple"></i><h3>5. Visualize in Power BI</h3></div>
     </div>
   </section>
   
@@ -141,6 +128,21 @@
     </ul>
   </section>
 
+  <section id="files" class="panel">
+    <h2><i class="fa-solid fa-folder-open"></i> Project Files</h2>
+    <p style="text-align: center;">Access the core project files, including the SQL scripts and the Jupyter Notebook for the data cleaning process.</p>
+    <div class="buttons">
+      <a href="table_creation.html" target="_blank" class="btn-sunrise"><i class="fa-solid fa-database"></i> SQL – Table Creation</a>
+      <a href="table_import.html" target="_blank" class="btn-sunrise"><i class="fa-solid fa-upload"></i> SQL – Table Import</a>
+      <a href="https://nbviewer.org/github/Pyroj08/Pyroj08.github.io/blob/main/projects/ecommerce-analysis/E_commerce_project_sqlalchemy.ipynb" target="_blank" class="btn-sunrise"><i class="fa-brands fa-python"></i> Python Cleaning Notebook</a>
+    </div>
+  </section>
+
+  <section id="conclusion" class="panel">
+    <h2><i class="fa-solid fa-circle-check"></i> Conclusion</h2>
+    <p>This project successfully demonstrates how a combination of standard industry tools—SQL, Python, and Power BI—can create a robust and scalable workflow. By transforming raw, unstructured e-commerce data into a clean, relational format and visualizing the results, we can uncover actionable business insights that drive strategic decision-making and identify areas for operational improvement.</p>
+  </section>
+
   <footer>
     <p>© 2025 E-Commerce Data Analysis | Vaibhav Jaiswal</p>
     <div class="project-nav">
@@ -161,7 +163,13 @@
 
     // Slideshow Script
     let slideIndex = 1;
-    showSlides(slideIndex);
+    let slideInterval;
+
+    function startSlideshow() {
+        slideInterval = setInterval(function() {
+            plusSlides(1);
+        }, 4000); // Change image every 4 seconds
+    }
 
     function plusSlides(n) {
       showSlides(slideIndex += n);
@@ -185,6 +193,15 @@
       }
       slides[slideIndex-1].style.display = "block";  
       dots[slideIndex-1].className += " active";
+    }
+
+    window.onload = function() {
+        showSlides(slideIndex);
+        startSlideshow();
+
+        const slideshow = document.querySelector('.slideshow-container');
+        slideshow.addEventListener('mouseenter', () => clearInterval(slideInterval));
+        slideshow.addEventListener('mouseleave', startSlideshow);
     }
   </script>
 </body>
